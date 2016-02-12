@@ -23,13 +23,15 @@ namespace ISD_10
     }
     public partial class MainForm : Form, IMainForm
     {
+        Presenter present = null;
         public event EventHandler FightClick;
         int hit;
         int block;
         public MainForm()
         {
-            InitializeComponent();
-        }
+            InitializeComponent();            
+            present = new Presenter(this);
+        }       
         public string PlayerName
         {
             set { lblPlayer.Text = value; }
@@ -65,11 +67,6 @@ namespace ISD_10
         public string Log
         {
             set { txtLog.Text += value + Environment.NewLine; }
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void butFight_Click(object sender, EventArgs e)

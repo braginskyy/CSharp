@@ -9,70 +9,61 @@ namespace ISD_10
 
     public class Presenter
     {
-        private readonly IPlayer _player;
-        private readonly IBot _bot;
-        private readonly IMainForm _view;
+        private readonly IPlayer player;
+        private readonly IBot bot;
+        private readonly IMainForm view;
 
 
-        public Presenter(IPlayer player, IMainForm view, IBot bot)
+        public Presenter(IMainForm view)
         {
-            _player = player;
-            _bot = bot;
-            _view = view;
+            Player player = new Player();
+            Bot bot = new Bot();
 
-            _view.PlayerName = _player.PlayerName;
-            _view.BotName = _bot.BotName;
-            _view.PlayerHp = _player.PlayerHp;
-            _view.BotHp = _bot.BotHp;
+            this.player = player;
+            this.bot = bot;
+            this.view = view;
 
-            _view.FightClick += _view_FightClick;
+            view.PlayerName = player.PlayerName;
+            view.BotName = bot.BotName;
+            view.PlayerHp = player.PlayerHp;
+            view.BotHp = bot.BotHp;
 
-            _player.Wound += _player_Wound;
-            _player.Block += _player_Block;
-            _player.Death += _player_Death;
-            _bot.Wound += _bot_Wound;
-            _bot.Block += _bot_Block;
-            _bot.Death += _bot_Death;
+            view.FightClick += view_FightClick;
+
+            player.Wound += player_Wound;
+            player.Block += player_Block;
+            player.Death += player_Death;
+            bot.Wound += player_Wound;
+            bot.Block += player_Block;
+            bot.Death += player_Death;
+            
         }
 
-        void _bot_Death(int damage, int xp, string name)
+        void player_Death(object sender, InfoEventArgs e)
         {
-            _view.Log = "Игрок " + name.ToUpper() + " повержен " + xp + "хп.";
+            
+            view.Log = "Игрок " + e.Name.ToUpper() + " повержен " + e.Hp + "хп.";
         }
 
-        void _bot_Block(int damage, int xp, string name)
+        void player_Block(object sender, InfoEventArgs e)
         {
-            _view.Log = "Игрок " + name.ToUpper() + " заблокировал удар ";
+            view.Log = "Игрок " + e.Name.ToUpper() + " заблокировал удар ";
         }
 
-        void _bot_Wound(int damage, int xp, string name)
+        void player_Wound(object sender, InfoEventArgs e)
         {
-            _view.Log = "Игрок " + name.ToUpper() + " получил урон " + damage + " хп. " + " Осталось " + xp + " хп. ";
+            view.Log = "Игрок " + e.Name.ToUpper() + " получил урон " + e.Damage + " хп. " + " Осталось " + e.Hp + " хп. ";
         }
-
-        void _player_Death(int damage, int xp, string name)
+        
+        void view_FightClick(object sender, EventArgs e)
         {
-            _view.Log = "Игрок " + name.ToUpper() + " повержен " + xp + "хп."; 
-        }
+            player.SetBlock((Position)view.GetBlock);
+            player.GetHit((Position)bot.RandomHit);
+            bot.SetBlock((Position)bot.RandomBlock);
+            bot.GetHit((Position)view.GetHit);
 
-        void _player_Block(int damage, int xp, string name)
-        {
-            _view.Log = "Игрок " + name.ToUpper() + " заблокировал удар ";
-        }
-
-        void _player_Wound(int damage, int xp, string name)
-        {
-            _view.Log = "Игрок "+name.ToUpper()+" получил урон "+damage+" хп. " + " Осталось " +xp +" хп. ";
-        }  
-        void _view_FightClick(object sender, EventArgs e)
-        {
-            _player.SetBlock((Position)_view.GetBlock);
-            _player.GetHit((Position)_bot.RandomHit);
-            _bot.SetBlock((Position)_bot.RandomBlock);
-            _bot.GetHit((Position)_view.GetHit);
-
-            _view.BotHp = _bot.BotHp;
-            _view.PlayerHp = _player.PlayerHp;
+            view.BotHp = bot.BotHp;
+            view.PlayerHp = player.PlayerHp;
         }
     }
 }

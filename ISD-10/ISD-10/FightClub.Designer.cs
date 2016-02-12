@@ -242,8 +242,8 @@
             this.Controls.Add(this.lblBot);
             this.Controls.Add(this.lblPlayer);
             this.Name = "MainForm";
-            this.Text = " ";
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Text = " Бойцовский клуб";
+            this.Load += new System.EventHandler(this.butFight_Click);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

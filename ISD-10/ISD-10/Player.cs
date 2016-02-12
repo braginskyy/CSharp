@@ -6,30 +6,27 @@ using System.Threading.Tasks;
 
 namespace ISD_10
 {
-   
-    public delegate void StatusPlayer (int damage, int xp, string name);
     public interface IPlayer
     {
         string PlayerName { get; }
-        int PlayerHp { get; set; }
+        int PlayerHp { get; }
         int GetHit(Position b);
         void SetBlock(Position b);
-        event StatusPlayer Wound;
-        event StatusPlayer Block;
-        event StatusPlayer Death;
-        
+        event EventHandler<InfoEventArgs> Wound;
+        event EventHandler<InfoEventArgs> Block;
+        event EventHandler<InfoEventArgs> Death;
     }
     public enum Position { Head = 1, Body, Legs }
     public class Player : IPlayer
     {
-        public event StatusPlayer Wound;
-        public event StatusPlayer Block;
-        public event StatusPlayer Death;
-       
+        public event EventHandler<InfoEventArgs> Wound;
+        public event EventHandler<InfoEventArgs> Block;
+        public event EventHandler<InfoEventArgs> Death;
+
         private string name = "Player";
         private int xp = 100;
         private int block;
-        private int damage = 5;       
+        private int damage = 5;
 
         public string PlayerName
         {
@@ -40,33 +37,41 @@ namespace ISD_10
             get { return xp; }
             set { xp = value; }
         }
-       
+
         public int GetHit(Position b)
-        {              
+        {
             if (block != (int)b)
             {
                 if (xp - damage > 0)
                 {
                     xp = xp - damage;
-                    if (Wound != null) Wound(damage, xp, name);
+                    if (Wound != null)
+                    {
+                        Wound(this, new InfoEventArgs(damage, xp, name));
+                    }
                 }
-                else 
+                else
                 {
                     xp = 0;
-                    if (Death != null) Death(damage, xp, name);
-                }                              
+                    if (Death != null)
+                    {
+                        Death(this, new InfoEventArgs(damage, xp, name));
+                    }
+                }
             }
             else if (block == (int)b)
             {
-                if (Block != null) Block(damage, xp, name);
+                if (Block != null)
+                {
+                    Block(this, new InfoEventArgs(damage, xp, name));
+                }
             }
-            
             return xp;
         }
         public void SetBlock(Position b)
         {
-            block = (int)b; 
-        }   
-        
+            block = (int)b;
+        }
+
     }
 }

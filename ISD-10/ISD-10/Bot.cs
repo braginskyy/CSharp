@@ -6,24 +6,25 @@ using System.Threading.Tasks;
 
 namespace ISD_10
 {
-    public delegate void StatusBot (int damage, int xp, string name);
     public interface IBot
     {
         string BotName { get; }
-        int BotHp { get; set; }
+        int BotHp { get; }
         int RandomBlock { get; }
         int RandomHit { get; }
         int GetHit(Position b);
         void SetBlock(Position b);
-        event StatusBot Wound;
-        event StatusBot Block;
-        event StatusBot Death;
+        event EventHandler<InfoEventArgs> Wound;
+        event EventHandler<InfoEventArgs> Block;
+        event EventHandler<InfoEventArgs> Death;
     }    
     public class Bot : IBot
     {
-        public event StatusBot Wound;
-        public event StatusBot Block;
-        public event StatusBot Death;
+        public event EventHandler<InfoEventArgs> Wound;
+        public event EventHandler<InfoEventArgs> Block;
+        public event EventHandler<InfoEventArgs> Death;
+        
+
         private string name = "Bot";
         private int xp = 100;
         private int block;
@@ -54,17 +55,26 @@ namespace ISD_10
                 if (xp - damage > 0)
                 {
                     xp = xp - damage;
-                    if (Wound != null) Wound(damage, xp, name);
+                    if (Wound != null)
+                    {
+                        Wound(this, new InfoEventArgs(damage, xp, name));
+                    }
                 }
                 else
                 {
                     xp = 0;
-                    if (Death != null) Death(damage, xp, name);
+                    if (Death != null)
+                    {
+                        Death(this, new InfoEventArgs(damage, xp, name));
+                    }
                 }
             }
             else if (block == (int)b)
             {
-                if (Block != null) Block(damage, xp, name);
+                if (Block != null)
+                {
+                    Block(this, new InfoEventArgs(damage, xp, name));
+                }
             }
 
             return xp;

@@ -15,14 +15,9 @@ namespace ISD_10
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-           
-            Player player = new Player();
-            Bot bot = new Bot();
-            MainForm form = new MainForm();
+            Application.SetCompatibleTextRenderingDefault(false);           
             
-
-            Presenter present = new Presenter(player,form,bot);
+            MainForm form = new MainForm();   
             Application.Run(form);
         }
     }
