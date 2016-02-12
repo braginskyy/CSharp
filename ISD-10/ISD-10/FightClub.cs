@@ -71,21 +71,22 @@ namespace ISD_10
 
         private void butFight_Click(object sender, EventArgs e)
         {
-            
+             
             if (rbHeadBlock.Checked) { block = (int)Position.Head; }
             if (rbBodyBlock.Checked) { block = (int)Position.Body; }
             if (rbLegsBlock.Checked) { block = (int)Position.Legs; }
             if (rbHeadFight.Checked) { hit = (int)Position.Head; }
             if (rbBodyFight.Checked) { hit = (int)Position.Body; }
             if (rbLegsFight.Checked) { hit = (int)Position.Legs; }
-            if (block == 0 || hit == 0)
-            {
-                return;
-            }
 
-            if (FightClick != null) { FightClick(this, EventArgs.Empty); }
+            if (rbHeadBlock.Checked == rbBodyBlock.Checked == rbLegsBlock.Checked && 
+                rbHeadFight.Checked == rbBodyFight.Checked == rbLegsFight.Checked)
+            {
+                if (FightClick != null) { FightClick(this, EventArgs.Empty); }
+                
+            }
             rbHeadBlock.Checked = rbBodyBlock.Checked = rbLegsBlock.Checked = false;
-            rbHeadFight.Checked = rbBodyFight.Checked = rbLegsFight.Checked = false; 
+            rbHeadFight.Checked = rbBodyFight.Checked = rbLegsFight.Checked = false;   
         }
     }
 }

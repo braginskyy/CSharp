@@ -6,72 +6,89 @@ using System.Threading.Tasks;
 
 namespace ISD_10
 {
+    public enum Position { Head = 1, Body, Legs }
     public interface IPlayer
     {
-        string PlayerName { get; }
-        int PlayerHp { get; }
-        int GetHit(Position b);
+        string Name { get; }
+        int Hp { get; }
+        int Strength { get; set; }
+        int Armor { set; }
+        int Rand { set; }
+        int GetHit(Position p, int damage);
         void SetBlock(Position b);
         event EventHandler<InfoEventArgs> Wound;
         event EventHandler<InfoEventArgs> Block;
         event EventHandler<InfoEventArgs> Death;
     }
-    public enum Position { Head = 1, Body, Legs }
-    public class Player : IPlayer
+    class Player : IPlayer
     {
-        public event EventHandler<InfoEventArgs> Wound;
-        public event EventHandler<InfoEventArgs> Block;
-        public event EventHandler<InfoEventArgs> Death;
+        protected int rand = 0;
+        protected string name = "Player";
+        protected int hp = 100;
+        protected int strength = 0;
+        protected int armor = 0;
+        protected int block = 0;
 
-        private string name = "Player";
-        private int xp = 100;
-        private int block;
-        private int damage = 5;
-
-        public string PlayerName
+        public int GetHit(Position p, int damage)
         {
-            get { return name; }
-        }
-        public int PlayerHp
-        {
-            get { return xp; }
-            set { xp = value; }
-        }
-
-        public int GetHit(Position b)
-        {
-            if (block != (int)b)
+            if (block != (int)p)
             {
-                if (xp - damage > 0)
+                if (hp - (damage - armor) > 0)
                 {
-                    xp = xp - damage;
+                    hp = hp - (damage - armor);
                     if (Wound != null)
                     {
-                        Wound(this, new InfoEventArgs(damage, xp, name));
+                        Wound(this, new InfoEventArgs(damage, hp, name));
                     }
                 }
                 else
                 {
-                    xp = 0;
+                    hp = 0;
                     if (Death != null)
                     {
-                        Death(this, new InfoEventArgs(damage, xp, name));
+                        Death(this, new InfoEventArgs(damage, hp, name));
                     }
                 }
             }
-            else if (block == (int)b)
+            else if (block == (int)p)
             {
                 if (Block != null)
                 {
-                    Block(this, new InfoEventArgs(damage, xp, name));
+                    Block(this, new InfoEventArgs(damage, hp, name));
                 }
             }
-            return xp;
+            return hp;
         }
         public void SetBlock(Position b)
         {
             block = (int)b;
         }
+
+        public string Name
+        {
+            get { return name; }
+        }
+        public int Hp
+        {
+            get { return hp; }
+        }
+        public int Strength
+        {
+            get { return strength + rand; }
+            set { strength = value; }
+        }
+        public int Armor
+        {
+            set { armor = value; }
+        }
+        public int Rand
+        {
+            set { rand = value; }
+        }
+
+        public event EventHandler<InfoEventArgs> Wound;
+        public event EventHandler<InfoEventArgs> Block;
+        public event EventHandler<InfoEventArgs> Death;
 
     }
 }

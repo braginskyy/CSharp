@@ -9,7 +9,7 @@ namespace ISD_10
 
     public class Presenter
     {
-        private readonly IPlayer player;
+        private readonly IPlayer player;        
         private readonly IBot bot;
         private readonly IMainForm view;
 
@@ -17,16 +17,16 @@ namespace ISD_10
         public Presenter(IMainForm view)
         {
             Player player = new Player();
-            Bot bot = new Bot();
+            Bot bot = new Bot();  
 
             this.player = player;
-            this.bot = bot;
+            this.bot = bot;           
             this.view = view;
 
-            view.PlayerName = player.PlayerName;
-            view.BotName = bot.BotName;
-            view.PlayerHp = player.PlayerHp;
-            view.BotHp = bot.BotHp;
+            view.PlayerName = player.Name;
+            view.BotName = bot.Name;
+            view.PlayerHp = player.Hp;
+            view.BotHp = bot.Hp;
 
             view.FightClick += view_FightClick;
 
@@ -57,13 +57,16 @@ namespace ISD_10
         
         void view_FightClick(object sender, EventArgs e)
         {
+            Random r = new Random();
+            bot.Rand = r.Next(1, 20);
+            player.Rand = r.Next(1, 20);
             player.SetBlock((Position)view.GetBlock);
-            player.GetHit((Position)bot.RandomHit);
+            player.GetHit((Position)bot.RandomHit, bot.Strength);
             bot.SetBlock((Position)bot.RandomBlock);
-            bot.GetHit((Position)view.GetHit);
+            bot.GetHit((Position)view.GetHit,player.Strength);            
 
-            view.BotHp = bot.BotHp;
-            view.PlayerHp = player.PlayerHp;
+            view.BotHp = bot.Hp;
+            view.PlayerHp = player.Hp;
         }
     }
 }
