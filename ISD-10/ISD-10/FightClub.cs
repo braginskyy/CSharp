@@ -19,6 +19,10 @@ namespace ISD_10
         int GetHit { get; }
         int GetBlock { get; }
         string Log { set; }
+        int PlayerStrength { get; }
+        int PlayerArmor { get; }
+        int BotStrength { set; }
+        int BotArmor { set; }
         event EventHandler FightClick;
     }
     public partial class MainForm : Form, IMainForm
@@ -29,9 +33,9 @@ namespace ISD_10
         int block;
         public MainForm()
         {
-            InitializeComponent();            
+            InitializeComponent();
             present = new Presenter(this);
-        }       
+        }
         public string PlayerName
         {
             set { lblPlayer.Text = value; }
@@ -68,25 +72,100 @@ namespace ISD_10
         {
             set { txtLog.Text += value + Environment.NewLine; }
         }
-
-        private void butFight_Click(object sender, EventArgs e)
+        public int PlayerStrength
         {
-             
+            get { return pbStrengthPlayer.Value / 10; }
+        }
+        public int PlayerArmor
+        {
+            get { return pbArmorPlayer.Value / 10; }
+        }
+        public int BotStrength 
+        {
+            set
+            {                
+                pbStrengthBot.Value = value * 10;
+                lblStatBotStrength.Text = (pbStrengthBot.Value / 10).ToString();
+            }
+        }
+        public int BotArmor 
+        {
+            set 
+            { 
+                pbArmorBot.Value = value * 10;
+                lblStatBotArmor.Text = (pbArmorBot.Value / 10).ToString();
+            }
+        }
+        private void butFight_Click(object sender, EventArgs e)
+        {            
+            lblStatPlayerStrength.Text = (pbStrengthPlayer.Value/10).ToString();
+            lblStatPlayerArmor.Text = (pbArmorPlayer.Value / 10).ToString(); 
+            VisibleControl();
+            CheckRadioButton();            
+        }
+        private void VisibleControl()
+        {
+            butStrengthPlayer.Visible = false;
+            butArmorPlayer.Visible = false;
+            lblStat.Visible = false;
+            lblStatPlayerStrength.Visible = true;
+            lblStatPlayerArmor.Visible = true;
+            lblStatBotStrength.Visible = true;
+            lblStatBotArmor.Visible = true;
+        }
+        private void CheckRadioButton()
+        {
             if (rbHeadBlock.Checked) { block = (int)Position.Head; }
             if (rbBodyBlock.Checked) { block = (int)Position.Body; }
             if (rbLegsBlock.Checked) { block = (int)Position.Legs; }
             if (rbHeadFight.Checked) { hit = (int)Position.Head; }
             if (rbBodyFight.Checked) { hit = (int)Position.Body; }
             if (rbLegsFight.Checked) { hit = (int)Position.Legs; }
-
-            if (rbHeadBlock.Checked == rbBodyBlock.Checked == rbLegsBlock.Checked && 
+            if (rbHeadBlock.Checked == rbBodyBlock.Checked == rbLegsBlock.Checked &&
                 rbHeadFight.Checked == rbBodyFight.Checked == rbLegsFight.Checked)
             {
-                if (FightClick != null) { FightClick(this, EventArgs.Empty); }
-                
+                if (pbPlayer.Value != 0 && bpBot.Value != 0)
+                {
+                    if (FightClick != null) { FightClick(this, EventArgs.Empty); }
+                }
             }
             rbHeadBlock.Checked = rbBodyBlock.Checked = rbLegsBlock.Checked = false;
-            rbHeadFight.Checked = rbBodyFight.Checked = rbLegsFight.Checked = false;   
+            rbHeadFight.Checked = rbBodyFight.Checked = rbLegsFight.Checked = false;           
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+        }
+        private void butStrengthPlayer_Click(object sender, EventArgs e)
+        {
+            if (pbStrengthPlayer.Value < 100)
+            {
+                if (pbStrengthPlayer.Value + pbArmorPlayer.Value < 100)
+                {
+                    pbStrengthPlayer.Value += 10;
+                    lblStat.Text = "У вас осталось " + (100 - (pbArmorPlayer.Value + pbStrengthPlayer.Value)) / 10 + " свободных статов";
+                }
+                else
+                {
+                    pbArmorPlayer.Value -= 10;
+                    pbStrengthPlayer.Value += 10;
+                }
+            }
+        }
+        private void butArmorPlayer_Click(object sender, EventArgs e)
+        {
+            if (pbArmorPlayer.Value < 100)
+            {
+                if (pbStrengthPlayer.Value + pbArmorPlayer.Value < 100)
+                {
+                    pbArmorPlayer.Value += 10;
+                    lblStat.Text = "У вас осталось " + (100 - (pbArmorPlayer.Value + pbStrengthPlayer.Value)) / 10 + " свободных статов";
+                }
+                else
+                {
+                    pbStrengthPlayer.Value -= 10;
+                    pbArmorPlayer.Value += 10;
+                }
+            }
         }
     }
 }

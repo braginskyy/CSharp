@@ -51,6 +51,11 @@
     <Compile Include="FightClub.Designer.cs">
       <DependentUpon>FightClub.cs</DependentUpon>
     </Compile>
+    <Compile Include="FightClub1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FightClub.resx</DependentUpon>
+    </Compile>
     <Compile Include="Info.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Presenter.cs" />
@@ -58,6 +63,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FightClub.resx">
       <DependentUpon>FightClub.cs</DependentUpon>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FightClub1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -80,6 +87,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plus.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plus_1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

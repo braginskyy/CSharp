@@ -12,8 +12,9 @@ namespace ISD_10
         string Name { get; }
         int Hp { get; }
         int Strength { get; set; }
-        int Armor { set; }
+        int Armor { get; set; }
         int Rand { set; }
+        int Damage { get; }
         int GetHit(Position p, int damage);
         void SetBlock(Position b);
         event EventHandler<InfoEventArgs> Wound;
@@ -28,7 +29,6 @@ namespace ISD_10
         protected int strength = 0;
         protected int armor = 0;
         protected int block = 0;
-
         public int GetHit(Position p, int damage)
         {
             if (block != (int)p)
@@ -38,7 +38,7 @@ namespace ISD_10
                     hp = hp - (damage - armor);
                     if (Wound != null)
                     {
-                        Wound(this, new InfoEventArgs(damage, hp, name));
+                        Wound(this, new InfoEventArgs(damage - armor, hp, name));
                     }
                 }
                 else
@@ -63,7 +63,6 @@ namespace ISD_10
         {
             block = (int)b;
         }
-
         public string Name
         {
             get { return name; }
@@ -74,21 +73,24 @@ namespace ISD_10
         }
         public int Strength
         {
-            get { return strength + rand; }
+            get { return strength; }
             set { strength = value; }
         }
         public int Armor
         {
+            get { return armor; }
             set { armor = value; }
         }
         public int Rand
         {
             set { rand = value; }
         }
-
+        public int Damage
+        {
+            get { return strength + rand; }
+        }
         public event EventHandler<InfoEventArgs> Wound;
         public event EventHandler<InfoEventArgs> Block;
         public event EventHandler<InfoEventArgs> Death;
-
     }
 }

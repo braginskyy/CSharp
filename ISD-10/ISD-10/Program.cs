@@ -15,8 +15,7 @@ namespace ISD_10
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);           
-            
+            Application.SetCompatibleTextRenderingDefault(false);  
             MainForm form = new MainForm();   
             Application.Run(form);
         }

@@ -22,23 +22,18 @@ namespace ISD_10
             this.player = player;
             this.bot = bot;           
             this.view = view;
-
             view.PlayerName = player.Name;
             view.BotName = bot.Name;
             view.PlayerHp = player.Hp;
-            view.BotHp = bot.Hp;
-
+            view.BotHp = bot.Hp; 
             view.FightClick += view_FightClick;
-
             player.Wound += player_Wound;
             player.Block += player_Block;
             player.Death += player_Death;
             bot.Wound += player_Wound;
             bot.Block += player_Block;
-            bot.Death += player_Death;
-            
+            bot.Death += player_Death;            
         }
-
         void player_Death(object sender, InfoEventArgs e)
         {
             
@@ -58,15 +53,26 @@ namespace ISD_10
         void view_FightClick(object sender, EventArgs e)
         {
             Random r = new Random();
-            bot.Rand = r.Next(1, 20);
-            player.Rand = r.Next(1, 20);
-            player.SetBlock((Position)view.GetBlock);
-            player.GetHit((Position)bot.RandomHit, bot.Strength);
-            bot.SetBlock((Position)bot.RandomBlock);
-            bot.GetHit((Position)view.GetHit,player.Strength);            
-
+            bot.Rand = r.Next(16);
+            player.Rand = r.Next(16);
+            player.Strength = view.PlayerStrength;
+            player.Armor = view.PlayerArmor;
+            FightControl();
+            ViewControl();            
+        }
+        private void ViewControl()
+        {
             view.BotHp = bot.Hp;
             view.PlayerHp = player.Hp;
+            view.BotStrength = bot.Strength;
+            view.BotArmor = bot.Armor;
+        }
+        private void FightControl()
+        {
+            player.SetBlock((Position)view.GetBlock);
+            player.GetHit((Position)bot.RandomHit, bot.Damage);
+            bot.SetBlock((Position)bot.RandomBlock);
+            bot.GetHit((Position)view.GetHit, player.Damage); 
         }
     }
 }

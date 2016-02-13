@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblPlayer = new System.Windows.Forms.Label();
             this.lblBot = new System.Windows.Forms.Label();
             this.pbPlayer = new System.Windows.Forms.ProgressBar();
@@ -46,6 +47,22 @@
             this.butFight = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.pbArmorPlayer = new System.Windows.Forms.ProgressBar();
+            this.pbStrengthPlayer = new System.Windows.Forms.ProgressBar();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pbStrengthBot = new System.Windows.Forms.ProgressBar();
+            this.pbArmorBot = new System.Windows.Forms.ProgressBar();
+            this.butArmorPlayer = new System.Windows.Forms.Button();
+            this.butStrengthPlayer = new System.Windows.Forms.Button();
+            this.lblStat = new System.Windows.Forms.Label();
+            this.lblStatPlayerStrength = new System.Windows.Forms.Label();
+            this.lblStatPlayerArmor = new System.Windows.Forms.Label();
+            this.lblStatBotStrength = new System.Windows.Forms.Label();
+            this.lblStatBotArmor = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -73,6 +90,7 @@
             this.pbPlayer.Location = new System.Drawing.Point(30, 45);
             this.pbPlayer.Name = "pbPlayer";
             this.pbPlayer.Size = new System.Drawing.Size(225, 10);
+            this.pbPlayer.Step = 1;
             this.pbPlayer.TabIndex = 2;
             this.pbPlayer.Value = 100;
             // 
@@ -81,6 +99,7 @@
             this.bpBot.Location = new System.Drawing.Point(325, 45);
             this.bpBot.Name = "bpBot";
             this.bpBot.Size = new System.Drawing.Size(225, 10);
+            this.bpBot.Step = 1;
             this.bpBot.TabIndex = 3;
             this.bpBot.Value = 100;
             // 
@@ -122,7 +141,7 @@
             // 
             this.rbBodyBlock.AutoSize = true;
             this.rbBodyBlock.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbBodyBlock.Location = new System.Drawing.Point(17, 66);
+            this.rbBodyBlock.Location = new System.Drawing.Point(18, 44);
             this.rbBodyBlock.Name = "rbBodyBlock";
             this.rbBodyBlock.Size = new System.Drawing.Size(55, 17);
             this.rbBodyBlock.TabIndex = 9;
@@ -133,7 +152,7 @@
             // 
             this.rbLegsBlock.AutoSize = true;
             this.rbLegsBlock.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbLegsBlock.Location = new System.Drawing.Point(21, 112);
+            this.rbLegsBlock.Location = new System.Drawing.Point(23, 70);
             this.rbLegsBlock.Name = "rbLegsBlock";
             this.rbLegsBlock.Size = new System.Drawing.Size(50, 17);
             this.rbLegsBlock.TabIndex = 10;
@@ -166,7 +185,7 @@
             // rbLegsFight
             // 
             this.rbLegsFight.AutoSize = true;
-            this.rbLegsFight.Location = new System.Drawing.Point(13, 112);
+            this.rbLegsFight.Location = new System.Drawing.Point(13, 70);
             this.rbLegsFight.Name = "rbLegsFight";
             this.rbLegsFight.Size = new System.Drawing.Size(50, 17);
             this.rbLegsFight.TabIndex = 13;
@@ -176,7 +195,7 @@
             // rbBodyFight
             // 
             this.rbBodyFight.AutoSize = true;
-            this.rbBodyFight.Location = new System.Drawing.Point(13, 65);
+            this.rbBodyFight.Location = new System.Drawing.Point(13, 44);
             this.rbBodyFight.Name = "rbBodyFight";
             this.rbBodyFight.Size = new System.Drawing.Size(61, 17);
             this.rbBodyFight.TabIndex = 12;
@@ -209,7 +228,7 @@
             this.groupBox1.Controls.Add(this.rbBodyBlock);
             this.groupBox1.Location = new System.Drawing.Point(168, 89);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(87, 142);
+            this.groupBox1.Size = new System.Drawing.Size(87, 105);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             // 
@@ -220,15 +239,170 @@
             this.groupBox2.Controls.Add(this.rbBodyFight);
             this.groupBox2.Location = new System.Drawing.Point(325, 89);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(88, 142);
+            this.groupBox2.Size = new System.Drawing.Size(88, 105);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // pbArmorPlayer
+            // 
+            this.pbArmorPlayer.Location = new System.Drawing.Point(30, 255);
+            this.pbArmorPlayer.Name = "pbArmorPlayer";
+            this.pbArmorPlayer.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.pbArmorPlayer.Size = new System.Drawing.Size(145, 12);
+            this.pbArmorPlayer.TabIndex = 21;
+            // 
+            // pbStrengthPlayer
+            // 
+            this.pbStrengthPlayer.Location = new System.Drawing.Point(30, 223);
+            this.pbStrengthPlayer.Name = "pbStrengthPlayer";
+            this.pbStrengthPlayer.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.pbStrengthPlayer.Size = new System.Drawing.Size(145, 12);
+            this.pbStrengthPlayer.TabIndex = 22;
+            this.pbStrengthPlayer.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(28, 207);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Атака";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(28, 238);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Защита";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(507, 238);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.TabIndex = 31;
+            this.label5.Text = "Защита";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(515, 207);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "Атака";
+            // 
+            // pbStrengthBot
+            // 
+            this.pbStrengthBot.Location = new System.Drawing.Point(404, 223);
+            this.pbStrengthBot.Name = "pbStrengthBot";
+            this.pbStrengthBot.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.pbStrengthBot.Size = new System.Drawing.Size(145, 12);
+            this.pbStrengthBot.TabIndex = 29;
+            // 
+            // pbArmorBot
+            // 
+            this.pbArmorBot.Location = new System.Drawing.Point(404, 255);
+            this.pbArmorBot.Name = "pbArmorBot";
+            this.pbArmorBot.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.pbArmorBot.Size = new System.Drawing.Size(145, 12);
+            this.pbArmorBot.TabIndex = 28;
+            // 
+            // butArmorPlayer
+            // 
+            this.butArmorPlayer.Location = new System.Drawing.Point(186, 248);
+            this.butArmorPlayer.Name = "butArmorPlayer";
+            this.butArmorPlayer.Size = new System.Drawing.Size(28, 20);
+            this.butArmorPlayer.TabIndex = 35;
+            this.butArmorPlayer.Text = "+1";
+            this.butArmorPlayer.UseVisualStyleBackColor = true;
+            this.butArmorPlayer.Click += new System.EventHandler(this.butArmorPlayer_Click);
+            // 
+            // butStrengthPlayer
+            // 
+            this.butStrengthPlayer.Location = new System.Drawing.Point(186, 216);
+            this.butStrengthPlayer.Name = "butStrengthPlayer";
+            this.butStrengthPlayer.Size = new System.Drawing.Size(28, 20);
+            this.butStrengthPlayer.TabIndex = 34;
+            this.butStrengthPlayer.Text = "+1";
+            this.butStrengthPlayer.UseVisualStyleBackColor = true;
+            this.butStrengthPlayer.Click += new System.EventHandler(this.butStrengthPlayer_Click);
+            // 
+            // lblStat
+            // 
+            this.lblStat.AutoSize = true;
+            this.lblStat.Location = new System.Drawing.Point(192, 197);
+            this.lblStat.Name = "lblStat";
+            this.lblStat.Size = new System.Drawing.Size(196, 13);
+            this.lblStat.TabIndex = 36;
+            this.lblStat.Text = "У вас осталось 10 свободных статов";
+            // 
+            // lblStatPlayerStrength
+            // 
+            this.lblStatPlayerStrength.AutoSize = true;
+            this.lblStatPlayerStrength.Location = new System.Drawing.Point(181, 222);
+            this.lblStatPlayerStrength.Name = "lblStatPlayerStrength";
+            this.lblStatPlayerStrength.Size = new System.Drawing.Size(0, 13);
+            this.lblStatPlayerStrength.TabIndex = 37;
+            this.lblStatPlayerStrength.Visible = false;
+            // 
+            // lblStatPlayerArmor
+            // 
+            this.lblStatPlayerArmor.AutoSize = true;
+            this.lblStatPlayerArmor.Location = new System.Drawing.Point(181, 254);
+            this.lblStatPlayerArmor.Name = "lblStatPlayerArmor";
+            this.lblStatPlayerArmor.Size = new System.Drawing.Size(0, 13);
+            this.lblStatPlayerArmor.TabIndex = 38;
+            this.lblStatPlayerArmor.Visible = false;
+            // 
+            // lblStatBotStrength
+            // 
+            this.lblStatBotStrength.AutoSize = true;
+            this.lblStatBotStrength.Location = new System.Drawing.Point(392, 223);
+            this.lblStatBotStrength.Name = "lblStatBotStrength";
+            this.lblStatBotStrength.Size = new System.Drawing.Size(0, 13);
+            this.lblStatBotStrength.TabIndex = 39;
+            this.lblStatBotStrength.Visible = false;
+            // 
+            // lblStatBotArmor
+            // 
+            this.lblStatBotArmor.AutoSize = true;
+            this.lblStatBotArmor.Location = new System.Drawing.Point(392, 254);
+            this.lblStatBotArmor.Name = "lblStatBotArmor";
+            this.lblStatBotArmor.Size = new System.Drawing.Size(0, 13);
+            this.lblStatBotArmor.TabIndex = 40;
+            this.lblStatBotArmor.Visible = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.lblStatBotArmor);
+            this.Controls.Add(this.lblStatBotStrength);
+            this.Controls.Add(this.lblStatPlayerArmor);
+            this.Controls.Add(this.lblStatPlayerStrength);
+            this.Controls.Add(this.lblStat);
+            this.Controls.Add(this.butArmorPlayer);
+            this.Controls.Add(this.butStrengthPlayer);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.pbStrengthBot);
+            this.Controls.Add(this.pbArmorBot);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.pbStrengthPlayer);
+            this.Controls.Add(this.pbArmorPlayer);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.butFight);
@@ -243,7 +417,6 @@
             this.Controls.Add(this.lblPlayer);
             this.Name = "MainForm";
             this.Text = " Бойцовский клуб";
-            this.Load += new System.EventHandler(this.butFight_Click);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -273,6 +446,22 @@
         private System.Windows.Forms.Button butFight;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ProgressBar pbArmorPlayer;
+        private System.Windows.Forms.ProgressBar pbStrengthPlayer;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ProgressBar pbStrengthBot;
+        private System.Windows.Forms.ProgressBar pbArmorBot;
+        private System.Windows.Forms.Button butArmorPlayer;
+        private System.Windows.Forms.Button butStrengthPlayer;
+        private System.Windows.Forms.Label lblStat;
+        private System.Windows.Forms.Label lblStatPlayerStrength;
+        private System.Windows.Forms.Label lblStatPlayerArmor;
+        private System.Windows.Forms.Label lblStatBotStrength;
+        private System.Windows.Forms.Label lblStatBotArmor;
     }
 }
 
