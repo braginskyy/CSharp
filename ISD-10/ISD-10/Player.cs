@@ -35,7 +35,10 @@ namespace ISD_10
             {
                 if (hp - (damage - armor) > 0)
                 {
-                    hp = hp - (damage - armor);
+                    if (damage - armor > 0)
+                    {
+                        hp = hp - (damage - armor);
+                    }
                     if (Wound != null)
                     {
                         Wound(this, new InfoEventArgs(damage - armor, hp, name));

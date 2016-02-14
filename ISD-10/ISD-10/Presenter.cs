@@ -12,67 +12,28 @@ namespace ISD_10
         private readonly IPlayer player;        
         private readonly IBot bot;
         private readonly IMainForm view;
-
-
+        private readonly IGameController controller;
+        private readonly IMessanger messange;
         public Presenter(IMainForm view)
         {
             Player player = new Player();
-            Bot bot = new Bot();  
-
+            Bot bot = new Bot();
+            GameController controller = new GameController();
+            Messanger message = new Messanger();  
             this.player = player;
             this.bot = bot;           
             this.view = view;
-            view.PlayerName = player.Name;
-            view.BotName = bot.Name;
-            view.PlayerHp = player.Hp;
-            view.BotHp = bot.Hp; 
+            this.controller = controller;
+            this.messange = message;
+            controller.View(view, player, bot);
+            messange.Message(view, player, bot); 
             view.FightClick += view_FightClick;
-            player.Wound += player_Wound;
-            player.Block += player_Block;
-            player.Death += player_Death;
-            bot.Wound += player_Wound;
-            bot.Block += player_Block;
-            bot.Death += player_Death;            
         }
-        void player_Death(object sender, InfoEventArgs e)
-        {
-            
-            view.Log = "Игрок " + e.Name.ToUpper() + " повержен " + e.Hp + "хп.";
-        }
-
-        void player_Block(object sender, InfoEventArgs e)
-        {
-            view.Log = "Игрок " + e.Name.ToUpper() + " заблокировал удар ";
-        }
-
-        void player_Wound(object sender, InfoEventArgs e)
-        {
-            view.Log = "Игрок " + e.Name.ToUpper() + " получил урон " + e.Damage + " хп. " + " Осталось " + e.Hp + " хп. ";
-        }
-        
         void view_FightClick(object sender, EventArgs e)
         {
-            Random r = new Random();
-            bot.Rand = r.Next(16);
-            player.Rand = r.Next(16);
-            player.Strength = view.PlayerStrength;
-            player.Armor = view.PlayerArmor;
-            FightControl();
-            ViewControl();            
-        }
-        private void ViewControl()
-        {
-            view.BotHp = bot.Hp;
-            view.PlayerHp = player.Hp;
-            view.BotStrength = bot.Strength;
-            view.BotArmor = bot.Armor;
-        }
-        private void FightControl()
-        {
-            player.SetBlock((Position)view.GetBlock);
-            player.GetHit((Position)bot.RandomHit, bot.Damage);
-            bot.SetBlock((Position)bot.RandomBlock);
-            bot.GetHit((Position)view.GetHit, player.Damage); 
-        }
+            controller.Base(view, player, bot);
+            controller.Fight(view, player, bot);
+            controller.View(view, player, bot);
+        }        
     }
 }
