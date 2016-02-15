@@ -10,7 +10,7 @@ namespace ISD_10
     public interface IPlayer
     {
         string Name { get; }
-        int Hp { get; }
+        int Hp { get; set; }
         int Strength { get; set; }
         int Armor { get; set; }
         int Rand { set; }
@@ -73,6 +73,7 @@ namespace ISD_10
         public int Hp
         {
             get { return hp; }
+            set { hp = value; }
         }
         public int Strength
         {

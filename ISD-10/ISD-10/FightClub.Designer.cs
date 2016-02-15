@@ -32,7 +32,7 @@
             this.lblPlayer = new System.Windows.Forms.Label();
             this.lblBot = new System.Windows.Forms.Label();
             this.pbPlayer = new System.Windows.Forms.ProgressBar();
-            this.bpBot = new System.Windows.Forms.ProgressBar();
+            this.pbBot = new System.Windows.Forms.ProgressBar();
             this.lblPlayerXp = new System.Windows.Forms.Label();
             this.lblBotXp = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -63,6 +63,8 @@
             this.lblStatPlayerArmor = new System.Windows.Forms.Label();
             this.lblStatBotStrength = new System.Windows.Forms.Label();
             this.lblStatBotArmor = new System.Windows.Forms.Label();
+            this.butNextBatl = new System.Windows.Forms.Button();
+            this.butRestart = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -94,14 +96,14 @@
             this.pbPlayer.TabIndex = 2;
             this.pbPlayer.Value = 100;
             // 
-            // bpBot
+            // pbBot
             // 
-            this.bpBot.Location = new System.Drawing.Point(325, 45);
-            this.bpBot.Name = "bpBot";
-            this.bpBot.Size = new System.Drawing.Size(225, 10);
-            this.bpBot.Step = 1;
-            this.bpBot.TabIndex = 3;
-            this.bpBot.Value = 100;
+            this.pbBot.Location = new System.Drawing.Point(325, 45);
+            this.pbBot.Name = "pbBot";
+            this.pbBot.Size = new System.Drawing.Size(225, 10);
+            this.pbBot.Step = 1;
+            this.pbBot.TabIndex = 3;
+            this.pbBot.Value = 100;
             // 
             // lblPlayerXp
             // 
@@ -368,7 +370,7 @@
             // lblStatBotStrength
             // 
             this.lblStatBotStrength.AutoSize = true;
-            this.lblStatBotStrength.Location = new System.Drawing.Point(392, 223);
+            this.lblStatBotStrength.Location = new System.Drawing.Point(388, 223);
             this.lblStatBotStrength.Name = "lblStatBotStrength";
             this.lblStatBotStrength.Size = new System.Drawing.Size(0, 13);
             this.lblStatBotStrength.TabIndex = 39;
@@ -377,17 +379,40 @@
             // lblStatBotArmor
             // 
             this.lblStatBotArmor.AutoSize = true;
-            this.lblStatBotArmor.Location = new System.Drawing.Point(392, 254);
+            this.lblStatBotArmor.Location = new System.Drawing.Point(388, 254);
             this.lblStatBotArmor.Name = "lblStatBotArmor";
             this.lblStatBotArmor.Size = new System.Drawing.Size(0, 13);
             this.lblStatBotArmor.TabIndex = 40;
             this.lblStatBotArmor.Visible = false;
+            // 
+            // butNextBatl
+            // 
+            this.butNextBatl.Enabled = false;
+            this.butNextBatl.Location = new System.Drawing.Point(252, 215);
+            this.butNextBatl.Name = "butNextBatl";
+            this.butNextBatl.Size = new System.Drawing.Size(75, 23);
+            this.butNextBatl.TabIndex = 42;
+            this.butNextBatl.Text = "След. раунд";
+            this.butNextBatl.UseVisualStyleBackColor = true;
+            this.butNextBatl.Click += new System.EventHandler(this.butNextBatl_Click);
+            // 
+            // butRestart
+            // 
+            this.butRestart.Location = new System.Drawing.Point(261, 33);
+            this.butRestart.Name = "butRestart";
+            this.butRestart.Size = new System.Drawing.Size(58, 23);
+            this.butRestart.TabIndex = 43;
+            this.butRestart.Text = "Рестарт";
+            this.butRestart.UseVisualStyleBackColor = true;
+            this.butRestart.Click += new System.EventHandler(this.butRestart_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.butRestart);
+            this.Controls.Add(this.butNextBatl);
             this.Controls.Add(this.lblStatBotArmor);
             this.Controls.Add(this.lblStatBotStrength);
             this.Controls.Add(this.lblStatPlayerArmor);
@@ -411,7 +436,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblBotXp);
             this.Controls.Add(this.lblPlayerXp);
-            this.Controls.Add(this.bpBot);
+            this.Controls.Add(this.pbBot);
             this.Controls.Add(this.pbPlayer);
             this.Controls.Add(this.lblBot);
             this.Controls.Add(this.lblPlayer);
@@ -431,7 +456,7 @@
         private System.Windows.Forms.Label lblPlayer;
         private System.Windows.Forms.Label lblBot;
         private System.Windows.Forms.ProgressBar pbPlayer;
-        private System.Windows.Forms.ProgressBar bpBot;
+        private System.Windows.Forms.ProgressBar pbBot;
         private System.Windows.Forms.Label lblPlayerXp;
         private System.Windows.Forms.Label lblBotXp;
         private System.Windows.Forms.Label label1;
@@ -462,6 +487,8 @@
         private System.Windows.Forms.Label lblStatPlayerArmor;
         private System.Windows.Forms.Label lblStatBotStrength;
         private System.Windows.Forms.Label lblStatBotArmor;
+        private System.Windows.Forms.Button butNextBatl;
+        private System.Windows.Forms.Button butRestart;
     }
 }
 

@@ -17,8 +17,8 @@ namespace ISD_10
         public void Base(IMainForm view, IPlayer player, IBot bot)
         {
             Random r = new Random();
-            bot.Rand = r.Next(10,21);
-            player.Rand = r.Next(10,21);
+            bot.Rand = r.Next(50,61);
+            player.Rand = r.Next(50,61);
             player.Strength = view.PlayerStrength;
             player.Armor = view.PlayerArmor;
         }

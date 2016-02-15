@@ -23,12 +23,20 @@ namespace ISD_10
         int PlayerArmor { get; }
         int BotStrength { set; }
         int BotArmor { set; }
+        int PBPlayerMax { set; get; }
+        int PBBotMax { set; get; }
+        int PBStrengthPlayerMax { get; set; }
+        int PBArmorPlayerMax { get; set; }
+        int PBStrengthBotMax { get; set; }
+        int PBArmorBotMax { get; set; }
         event EventHandler FightClick;
+        event EventHandler butNextBat;
     }
     public partial class MainForm : Form, IMainForm
     {
         Presenter present = null;
         public event EventHandler FightClick;
+        public event EventHandler butNextBat;
         int hit;
         int block;
         public MainForm()
@@ -57,7 +65,7 @@ namespace ISD_10
             set
             {
                 lblBotXp.Text = value.ToString();
-                bpBot.Value = value;
+                pbBot.Value = value;
             }
         }
         public int GetHit
@@ -80,28 +88,58 @@ namespace ISD_10
         {
             get { return pbArmorPlayer.Value / 10; }
         }
-        public int BotStrength 
+        public int BotStrength
         {
             set
-            {                
+            {
                 pbStrengthBot.Value = value * 10;
                 lblStatBotStrength.Text = (pbStrengthBot.Value / 10).ToString();
             }
         }
-        public int BotArmor 
+        public int BotArmor
         {
-            set 
-            { 
+            set
+            {
                 pbArmorBot.Value = value * 10;
                 lblStatBotArmor.Text = (pbArmorBot.Value / 10).ToString();
             }
         }
+        public int PBPlayerMax
+        {
+            get { return pbPlayer.Maximum; }
+            set { pbPlayer.Maximum = value; }
+        }
+        public int PBBotMax
+        {
+            get { return pbBot.Maximum; }
+            set { pbBot.Maximum = value; }
+        }
+        public int PBStrengthPlayerMax
+        {
+            get { return pbStrengthPlayer.Maximum; }
+            set { pbStrengthPlayer.Maximum = value; }
+        }
+        public int PBArmorPlayerMax
+        {
+            get { return pbArmorPlayer.Maximum; }
+            set { pbArmorPlayer.Maximum = value; }
+        }
+        public int PBStrengthBotMax
+        {
+            get { return pbStrengthBot.Maximum; }
+            set { pbStrengthBot.Maximum = value; }
+        }
+        public int PBArmorBotMax
+        {
+            get { return pbArmorBot.Maximum; }
+            set { pbArmorBot.Maximum = value; }
+        }
         private void butFight_Click(object sender, EventArgs e)
-        {            
-            lblStatPlayerStrength.Text = (pbStrengthPlayer.Value/10).ToString();
-            lblStatPlayerArmor.Text = (pbArmorPlayer.Value / 10).ToString(); 
+        {
+            lblStatPlayerStrength.Text = (pbStrengthPlayer.Value / 10).ToString();
+            lblStatPlayerArmor.Text = (pbArmorPlayer.Value / 10).ToString();
             VisibleControl();
-            CheckRadioButton();            
+            CheckRadioButton();
         }
         private void VisibleControl()
         {
@@ -124,25 +162,31 @@ namespace ISD_10
             if (rbHeadBlock.Checked == rbBodyBlock.Checked == rbLegsBlock.Checked &&
                 rbHeadFight.Checked == rbBodyFight.Checked == rbLegsFight.Checked)
             {
-                if (pbPlayer.Value != 0 && bpBot.Value != 0)
+                if (pbPlayer.Value != 0 && pbBot.Value != 0)
                 {
                     if (FightClick != null) { FightClick(this, EventArgs.Empty); }
                 }
             }
             rbHeadBlock.Checked = rbBodyBlock.Checked = rbLegsBlock.Checked = false;
-            rbHeadFight.Checked = rbBodyFight.Checked = rbLegsFight.Checked = false;           
+            rbHeadFight.Checked = rbBodyFight.Checked = rbLegsFight.Checked = false;
+            if (pbBot.Value == 0 || pbPlayer.Value == 0)
+            {
+                butNextBatl.Enabled = true;
+                pbStrengthBot.Value = 0;
+                pbArmorBot.Value = 0;
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
         }
         private void butStrengthPlayer_Click(object sender, EventArgs e)
         {
-            if (pbStrengthPlayer.Value < 100)
+            if (pbStrengthPlayer.Value < pbStrengthPlayer.Maximum)
             {
-                if (pbStrengthPlayer.Value + pbArmorPlayer.Value < 100)
+                if (pbStrengthPlayer.Value + pbArmorPlayer.Value < pbStrengthPlayer.Maximum)
                 {
                     pbStrengthPlayer.Value += 10;
-                    lblStat.Text = "У вас осталось " + (100 - (pbArmorPlayer.Value + pbStrengthPlayer.Value)) / 10 + " свободных статов";
+                    lblStat.Text = "У вас осталось " + (pbStrengthPlayer.Maximum - (pbArmorPlayer.Value + pbStrengthPlayer.Value)) / 10 + " свободных статов";
                 }
                 else
                 {
@@ -153,12 +197,12 @@ namespace ISD_10
         }
         private void butArmorPlayer_Click(object sender, EventArgs e)
         {
-            if (pbArmorPlayer.Value < 100)
+            if (pbArmorPlayer.Value < pbArmorPlayer.Maximum)
             {
-                if (pbStrengthPlayer.Value + pbArmorPlayer.Value < 100)
+                if (pbStrengthPlayer.Value + pbArmorPlayer.Value < pbArmorPlayer.Maximum)
                 {
                     pbArmorPlayer.Value += 10;
-                    lblStat.Text = "У вас осталось " + (100 - (pbArmorPlayer.Value + pbStrengthPlayer.Value)) / 10 + " свободных статов";
+                    lblStat.Text = "У вас осталось " + (pbArmorPlayer.Maximum - (pbArmorPlayer.Value + pbStrengthPlayer.Value)) / 10 + " свободных статов";
                 }
                 else
                 {
@@ -166,6 +210,23 @@ namespace ISD_10
                     pbArmorPlayer.Value += 10;
                 }
             }
+        }
+        private void butNextBatl_Click(object sender, EventArgs e)
+        {
+            if (butNextBat != null) { butNextBat(this, EventArgs.Empty); }
+            butNextBatl.Enabled = false;
+            lblStatPlayerStrength.Visible = false;
+            lblStatPlayerArmor.Visible = false;
+            lblStatBotStrength.Visible = false;
+            lblStatBotArmor.Visible = false;            
+            butArmorPlayer.Visible = true;
+            butStrengthPlayer.Visible = true;
+            lblStat.Visible = true;
+            lblStat.Text = "У вас осталось " + (pbStrengthPlayer.Maximum - (pbArmorPlayer.Value + pbStrengthPlayer.Value)) / 10 + " свободных статов";
+        }
+        private void butRestart_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }
