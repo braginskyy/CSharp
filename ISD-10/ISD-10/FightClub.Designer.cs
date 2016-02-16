@@ -265,8 +265,7 @@
             this.pbStrengthPlayer.Name = "pbStrengthPlayer";
             this.pbStrengthPlayer.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pbStrengthPlayer.Size = new System.Drawing.Size(145, 12);
-            this.pbStrengthPlayer.TabIndex = 22;
-            this.pbStrengthPlayer.Click += new System.EventHandler(this.button1_Click);
+            this.pbStrengthPlayer.TabIndex = 22;            
             // 
             // label3
             // 

@@ -8,26 +8,26 @@ namespace ISD_10
 {
     public interface IBot : IPlayer
     {
-        int RandomBlock { get; }
-        int RandomHit { get; }               
+        Position RandomBlock { get; }
+        Position RandomHit { get; }               
     }
     class Bot : Player, IBot
     {
-        Random r = new Random();        
+        Random rnd = new Random();        
         public Bot()
         {
             this.name = "Bot";
             this.hp = 100;
-            this.armor = r.Next(11);
+            this.armor = rnd.Next(11);
             this.strength = 10 - this.armor;
         } 
-        public int RandomBlock
+        public Position RandomBlock
         {
-            get { return r.Next(1, 4); }
+            get { return (Position)rnd.Next(1, 4); }
         }
-        public int RandomHit
+        public Position RandomHit
         {
-            get { return r.Next(1, 4); }
+            get { return (Position)rnd.Next(1, 4); }
         }
     }
 }

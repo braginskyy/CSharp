@@ -8,35 +8,32 @@ namespace ISD_10
 {
     public interface IGameController 
     {
-        void View(IMainForm view, IPlayer player, IBot bot);
-        void Fight(IMainForm view, IPlayer player, IBot bot);
-        void Base(IMainForm view, IPlayer player, IBot bot);
+        void Fight();
+        void BotRandomStat(int BonusStat);       
     }
     class GameController : IGameController 
     {
-        public void Base(IMainForm view, IPlayer player, IBot bot)
+        Random ran = new Random();
+        IPlayer player;
+        IBot bot;
+        public GameController(IPlayer player, IBot bot)
         {
-            Random r = new Random();
-            bot.Rand = r.Next(50,61);
-            player.Rand = r.Next(50,61);
-            player.Strength = view.PlayerStrength;
-            player.Armor = view.PlayerArmor;
+            this.player = player;
+            this.bot = bot;
         }
-        public void View(IMainForm view ,IPlayer player, IBot bot)
-        {
-            view.PlayerName = player.Name;
-            view.BotName = bot.Name;
-            view.BotHp = bot.Hp;
-            view.PlayerHp = player.Hp;
-            view.BotStrength = bot.Strength;
-            view.BotArmor = bot.Armor;
+        public void Fight()
+        {            
+            bot.Rand = ran.Next(50, 61);
+            player.Rand = ran.Next(50, 61);         
+            player.GetHit(bot.RandomHit, bot.Damage);
+            bot.SetBlock(bot.RandomBlock);
+            player.SetBlock(player.PlayerBlock);
+            bot.GetHit(player.PlayerHit, player.Damage);            
         }
-        public void Fight(IMainForm view, IPlayer player, IBot bot)
+        public void BotRandomStat(int BonusStat)
         {
-            player.SetBlock((Position)view.GetBlock);
-            player.GetHit((Position)bot.RandomHit, bot.Damage);
-            bot.SetBlock((Position)bot.RandomBlock);
-            bot.GetHit((Position)view.GetHit, player.Damage);
+            bot.Strength = ran.Next(BonusStat + 1);
+            bot.Armor = BonusStat - bot.Strength; 
         }
     }
 }

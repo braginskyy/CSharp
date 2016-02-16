@@ -58,7 +58,7 @@
     </Compile>
     <Compile Include="GameController.cs" />
     <Compile Include="IMessanger.cs" />
-    <Compile Include="Info.cs" />
+    <Compile Include="InfoEventArgs.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Presenter.cs" />
     <Compile Include="Program.cs" />

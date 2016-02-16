@@ -11,12 +11,14 @@ namespace ISD_10
     {
         string Name { get; }
         int Hp { get; set; }
+        Position PlayerBlock { get; set; }
+        Position PlayerHit { get; set; }
         int Strength { get; set; }
         int Armor { get; set; }
         int Rand { set; }
         int Damage { get; }
         int GetHit(Position p, int damage);
-        void SetBlock(Position b);
+        void SetBlock(Position p);
         event EventHandler<InfoEventArgs> Wound;
         event EventHandler<InfoEventArgs> Block;
         event EventHandler<InfoEventArgs> Death;
@@ -28,16 +30,22 @@ namespace ISD_10
         protected int hp = 100;
         protected int strength = 0;
         protected int armor = 0;
-        protected int block = 0;
-        public int GetHit(Position p, int damage)
+        protected Position block = Position.Legs;
+        protected Position hit = Position.Legs;
+        public void SetBlock(Position block)
         {
-            if (block != (int)p)
+            this.block = block;
+        }
+        public int GetHit(Position hit, int damage)
+        {
+            this.hit = hit;
+            if (block != hit)
             {
-                if (hp - (damage - armor) > 0)
+                if (hp - (damage - (armor/2)) > 0)
                 {
-                    if (damage - armor > 0)
+                    if (damage - (armor / 2) > 0)
                     {
-                        hp = hp - (damage - armor);
+                        hp = hp - (damage - (armor / 2));
                     }
                     if (Wound != null)
                     {
@@ -53,7 +61,7 @@ namespace ISD_10
                     }
                 }
             }
-            else if (block == (int)p)
+            else if (block == hit)
             {
                 if (Block != null)
                 {
@@ -61,10 +69,6 @@ namespace ISD_10
                 }
             }
             return hp;
-        }
-        public void SetBlock(Position b)
-        {
-            block = (int)b;
         }
         public string Name
         {
@@ -74,6 +78,16 @@ namespace ISD_10
         {
             get { return hp; }
             set { hp = value; }
+        }
+        public Position PlayerBlock
+        {
+            get { return block; }
+            set { block = value; }
+        }
+        public Position PlayerHit
+        {
+            get { return hit; }
+            set { hit = value; }
         }
         public int Strength
         {

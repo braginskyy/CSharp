@@ -8,20 +8,27 @@ namespace ISD_10
 {
     public interface IMessanger
     {
-        void Message(IMainForm view, IPlayer player, IBot bot);
+        void Message();
     }
     class Messanger : IMessanger
     {
-        IMainForm view;
-        public void Message(IMainForm view, IPlayer player, IBot bot)
+        IPlayer player;
+        IBot bot;
+        IMainForm view;        
+        public Messanger(IPlayer player, IBot bot, IMainForm view)
+        {
+            this.player = player;
+            this.bot = bot;
+            this.view = view;
+        }
+        public void Message()
         {
             player.Wound += player_Wound;
             player.Block += player_Block;
             player.Death += player_Death;
             bot.Wound += player_Wound;
             bot.Block += player_Block;
-            bot.Death += player_Death;
-            this.view = view;
+            bot.Death += player_Death;            
         }
         private void player_Wound(object sender, InfoEventArgs e)
         {
