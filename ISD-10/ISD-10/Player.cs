@@ -25,6 +25,14 @@ namespace ISD_10
     }
     class Player : IPlayer
     {
+        public Player()
+        {
+
+        }
+        public Player(string name)
+        {
+            this.name = name;
+        }
         protected int rand = 0;
         protected string name = "Player";
         protected int hp = 100;

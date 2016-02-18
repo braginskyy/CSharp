@@ -32,16 +32,16 @@ namespace ISD_10
         event EventHandler FightClick;        
     }
     public partial class MainForm : Form, IMainForm
-    {
+    {        
         Presenter present = null;
         public event EventHandler FightClick;               
         int BonusStat = 10;
         Position hit;
         Position block;
         public MainForm()
-        {
+        {            
             InitializeComponent();
-            present = new Presenter(this);
+            present = new Presenter(this);            
         }
         public string PlayerName
         {
@@ -175,7 +175,8 @@ namespace ISD_10
             }
         }
         private void butNextBatl_Click(object sender, EventArgs e)
-        {            
+        {
+            present.ReadWrite();
             if (PlayerHp == 0 && BotHp != 0)
             {
                 BonusStat += 10;

@@ -265,7 +265,7 @@
             this.pbStrengthPlayer.Name = "pbStrengthPlayer";
             this.pbStrengthPlayer.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pbStrengthPlayer.Size = new System.Drawing.Size(145, 12);
-            this.pbStrengthPlayer.TabIndex = 22;            
+            this.pbStrengthPlayer.TabIndex = 22;
             // 
             // label3
             // 
@@ -409,6 +409,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(584, 561);
             this.Controls.Add(this.butRestart);
             this.Controls.Add(this.butNextBatl);
@@ -439,6 +440,8 @@
             this.Controls.Add(this.pbPlayer);
             this.Controls.Add(this.lblBot);
             this.Controls.Add(this.lblPlayer);
+            this.MaximumSize = new System.Drawing.Size(600, 600);
+            this.MinimumSize = new System.Drawing.Size(600, 600);
             this.Name = "MainForm";
             this.Text = " Бойцовский клуб";
             this.groupBox1.ResumeLayout(false);
