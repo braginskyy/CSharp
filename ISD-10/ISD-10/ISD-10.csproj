@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Bot.cs" />
+    <Compile Include="Controller\Log.cs" />
     <Compile Include="UI\FightClub.cs">
       <SubType>Form</SubType>
     </Compile>

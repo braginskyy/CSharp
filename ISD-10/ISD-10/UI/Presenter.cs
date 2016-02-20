@@ -17,17 +17,19 @@ namespace ISD_10
         private readonly IGameController controller;
         private readonly IMessanger messange;
         private readonly IRating rating;
-        //int BonusStat = 10;
+        private readonly ILog log;
         public Presenter(IMainForm view)
         {
-            this.rating = new Rating();
-            rating.Start();
+            this.log = new Log(); 
+            this.rating = new Rating();            
+            rating.ShowTableStat(log.ReadFile());         
+            rating.StartWindow();            
             this.player = new Player(rating.NamePlayer);
             this.bot = new Bot();
             this.view = view;
             this.controller = new GameController(player, bot);
             this.messange = new Messanger(player, bot, view);
-            controller.BotRandomStat();
+            controller.SetBotStat();
             View();
             messange.Message();
             view.FightClick += view_FightClick;
@@ -35,9 +37,8 @@ namespace ISD_10
             view.PlayerStrengthAdd += view_PlayerStrengthAdd;
             view.PlayerArmorAdd += view_PlayerArmorAdd;
         }
-
         void view_PlayerArmorAdd(object sender, EventArgs e)
-        {            
+        {
             if (view.PBArmorPlayer < view.PBArmorPlayerMax)
             {
                 if (player.Bonus > 0)
@@ -63,9 +64,9 @@ namespace ISD_10
                 if (player.Bonus > 0)
                 {
                     player.Strength = player.Strength + 1;
-                    player.Bonus = player.Bonus-1;
+                    player.Bonus = player.Bonus - 1;
                     view.PBStrengthPlayer = player.Strength;
-                    view.LabelStat = "У вас осталось " + player.Bonus +" свободных статов";
+                    view.LabelStat = "У вас осталось " + player.Bonus + " свободных статов";
                 }
                 else
                 {
@@ -84,21 +85,21 @@ namespace ISD_10
             view.PBBotMax = bot.Hp;
             view.PBStrengthPlayerMax = player.Strength + player.Armor + player.Bonus;
             view.PBArmorPlayerMax = player.Strength + player.Armor + player.Bonus;
-            View();            
-            view.LabelStat = "У вас осталось " + player.Bonus + " свободных статов"; 
-            ReadWrite();
-                       
+            view.PBStrengthBotMax = bot.Strength + bot.Armor;
+            view.PBArmorBotMax = bot.Strength + bot.Armor;
+            View();
+            view.LabelStat = "У вас осталось " + player.Bonus + " свободных статов";
+            log.AddChampion(view.PlayerName, view.PBPlayerMax);
         }
         void view_FightClick(object sender, EventArgs e)
         {
-            controller.BotRandomStat();
             controller.Fight(view.Hit, view.Block);
             View();
+            if (bot.Hp <= 0)
+            {
+                log.AddChampion(view.PlayerName, view.PBPlayerMax);
+            }
         }
-       
-            
-           
-       
         public void View()
         {
             view.PlayerName = player.Name;
@@ -109,49 +110,6 @@ namespace ISD_10
             view.PBArmorPlayer = player.Armor;
             view.PBStrengthBot = bot.Strength;
             view.PBArmorBot = bot.Armor;
-        }
-        //public void BotRandomStat(int BonusStat)
-        //{
-        //    controller.BotRandomStat(BonusStat);
-        //    view.BotStrength = bot.Strength;
-        //    view.BotArmor = bot.Armor;
-        //}       
-        public void ReadWrite()
-        {
-            if (bot.Hp == 0 || player.Hp == 0)
-            {
-                FileInfo log = new FileInfo(@".\log.json");
-                Result[] table = new Result[10];
-                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(Result[]));
-                using (FileStream fs = new FileStream(@".\log.json", FileMode.OpenOrCreate))
-                {
-                    table = (Result[])jsonFormatter.ReadObject(fs);
-                }
-                int k = 0;                
-                for (int i = 0; i < table.Length; i++)
-                {
-                    if (table[i].Name == player.Name)
-                    {
-                        k = 1;
-                        if (table[i].Hp < view.PBPlayerMax)
-                        {
-                            table[i].Name = player.Name;
-                            table[i].Hp = view.PBPlayerMax; 
-                        }
-                    } 
-                }                
-                if (k==0) 
-                {
-                    table[9].Name = player.Name;
-                    table[9].Hp = view.PBPlayerMax;
-                }
-                log.Delete();
-                Array.Sort(table);
-                using (FileStream fs = new FileStream(@".\log.json", FileMode.OpenOrCreate))
-                {
-                    jsonFormatter.WriteObject(fs, table);
-                }
-            }
         }
     }
 }

@@ -16,22 +16,19 @@ namespace ISD_10
     public interface IRating
     {
         string NamePlayer { get; }
-        void Start();
+        void StartWindow();
+        void ShowTableStat(Result[] table);        
     }
     public partial class Rating : Form, IRating
-    {
-        string name;
-        string logFile = @".\log.json";
-        Result[] table = new Result[10];
-        DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(Result[]));
+    {        
+        string name;        
         public Rating()
-        {
+        {              
             InitializeComponent();
-            Result();
         }
-        public void Start()
-        {
-            ShowDialog();
+        public void StartWindow()
+        { 
+            ShowDialog();            
         }
         public string NamePlayer
         {
@@ -48,39 +45,13 @@ namespace ISD_10
         private void InsertNameTxt_Click(object sender, EventArgs e)
         {
             InsertNameTxt.Text = "";
-        }    
-        private void Result()
-        {
-            if (File.Exists(logFile))
-            {
-                ReadFile();
-            }
-            else
-            {
-                WriteFile();
-            }
-        }
-        public void WriteFile()
+        } 
+        public void ShowTableStat(Result[] table)
         {
             for (int i = 0; i < table.Length; i++)
             {
-                table[i] = new Result("Empty", 0);
-            }
-            using (FileStream fs = new FileStream(logFile, FileMode.OpenOrCreate))
-            {
-                jsonFormatter.WriteObject(fs, table);
-            }
-        }
-        public void ReadFile()
-        {
-            using (FileStream fs = new FileStream(logFile, FileMode.Open))
-            {
-                table = (Result[])jsonFormatter.ReadObject(fs);
-                for (int i = 0; i < table.Length; i++)
-                {
-                    resultDataGtid.Rows.Add(table[i].Name, table[i].Hp);
-                    resultDataGtid.Sort(resultDataGtid.Columns[1], ListSortDirection.Descending);
-                }
+                resultDataGtid.Rows.Add(table[i].Name, table[i].Hp);
+                resultDataGtid.Sort(resultDataGtid.Columns[1], ListSortDirection.Descending);
             }
         }
     }

@@ -10,9 +10,7 @@ namespace ISD_10
     public interface IPlayer
     {
         string Name { get; }
-        int Hp { get; set; }
-        //Position PlayerBlock { get; set; }
-        //Position PlayerHit { get; set; }
+        int Hp { get; set; }        
         int Strength { get; set; }
         int Armor { get; set; }
         int Rand { set; }
@@ -88,17 +86,7 @@ namespace ISD_10
         {
             get { return hp; }
             set { hp = value; }
-        }
-        public Position PlayerBlock
-        {
-            get { return block; }
-            set { block = value; }
-        }
-        public Position PlayerHit
-        {
-            get { return hit; }
-            set { hit = value; }
-        }
+        } 
         public int Strength
         {
             get { return strength; }

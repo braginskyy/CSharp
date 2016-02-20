@@ -12,7 +12,7 @@ namespace ISD_10
 {
     public interface IMainForm
     {
-        string PlayerName { set; }
+        string PlayerName { get; set; }
         int PlayerHp { get; set; }
         string BotName { set; }
         int BotHp { get; set; }
@@ -53,6 +53,7 @@ namespace ISD_10
         }
         public string PlayerName
         {
+            get { return lblPlayer.Text; }
             set { lblPlayer.Text = value; }
         }
         public int PlayerHp
