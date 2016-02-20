@@ -254,6 +254,7 @@
             // pbArmorPlayer
             // 
             this.pbArmorPlayer.Location = new System.Drawing.Point(30, 255);
+            this.pbArmorPlayer.Maximum = 10;
             this.pbArmorPlayer.Name = "pbArmorPlayer";
             this.pbArmorPlayer.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pbArmorPlayer.Size = new System.Drawing.Size(145, 12);
@@ -262,6 +263,7 @@
             // pbStrengthPlayer
             // 
             this.pbStrengthPlayer.Location = new System.Drawing.Point(30, 223);
+            this.pbStrengthPlayer.Maximum = 10;
             this.pbStrengthPlayer.Name = "pbStrengthPlayer";
             this.pbStrengthPlayer.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pbStrengthPlayer.Size = new System.Drawing.Size(145, 12);
@@ -306,6 +308,7 @@
             // pbStrengthBot
             // 
             this.pbStrengthBot.Location = new System.Drawing.Point(404, 223);
+            this.pbStrengthBot.Maximum = 10;
             this.pbStrengthBot.Name = "pbStrengthBot";
             this.pbStrengthBot.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pbStrengthBot.Size = new System.Drawing.Size(145, 12);
@@ -314,6 +317,7 @@
             // pbArmorBot
             // 
             this.pbArmorBot.Location = new System.Drawing.Point(404, 255);
+            this.pbArmorBot.Maximum = 10;
             this.pbArmorBot.Name = "pbArmorBot";
             this.pbArmorBot.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pbArmorBot.Size = new System.Drawing.Size(145, 12);

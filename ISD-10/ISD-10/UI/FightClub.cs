@@ -19,23 +19,31 @@ namespace ISD_10
         Position Hit { get; }
         Position Block { get; }
         string Log { set; }
-        int PlayerStrength { get; }
-        int PlayerArmor { get; }
+        string LabelStat { set; }      
         int BotStrength { set; }
         int BotArmor { set; }
         int PBPlayerMax { set; get; }
         int PBBotMax { set; get; }
+        int PBStrengthPlayer { get; set; }
+        int PBArmorPlayer { get; set; }
+        int PBStrengthBot { get; set; }
+        int PBArmorBot { get; set; }
         int PBStrengthPlayerMax { get; set; }
         int PBArmorPlayerMax { get; set; }
         int PBStrengthBotMax { get; set; }
         int PBArmorBotMax { get; set; }
-        event EventHandler FightClick;        
+        event EventHandler FightClick;
+        event EventHandler NextBatle;
+        event EventHandler PlayerStrengthAdd;
+        event EventHandler PlayerArmorAdd;
     }
     public partial class MainForm : Form, IMainForm
     {        
         Presenter present = null;
-        public event EventHandler FightClick;               
-        int BonusStat = 10;
+        public event EventHandler FightClick;
+        public event EventHandler NextBatle;
+        public event EventHandler PlayerStrengthAdd;
+        public event EventHandler PlayerArmorAdd;
         Position hit;
         Position block;
         public MainForm()
@@ -81,28 +89,24 @@ namespace ISD_10
         {
             set { txtLog.Text += value + Environment.NewLine; }
         }
-        public int PlayerStrength
+        public string LabelStat
         {
-            get { return pbStrengthPlayer.Value / 10; }
-        }
-        public int PlayerArmor
-        {
-            get { return pbArmorPlayer.Value / 10; }
+            set { lblStat.Text = value; }
         }
         public int BotStrength
         {
             set
             {
-                pbStrengthBot.Value = value * 10;
-                lblStatBotStrength.Text = (pbStrengthBot.Value / 10).ToString();
+                pbStrengthBot.Value = value;
+                lblStatBotStrength.Text = (pbStrengthBot.Value).ToString();
             }
         }
         public int BotArmor
         {
             set
             {
-                pbArmorBot.Value = value * 10;
-                lblStatBotArmor.Text = (pbArmorBot.Value / 10).ToString();
+                pbArmorBot.Value = value;
+                lblStatBotArmor.Text = (pbArmorBot.Value).ToString();
             }
         }
         public int PBPlayerMax
@@ -114,6 +118,26 @@ namespace ISD_10
         {
             get { return pbBot.Maximum; }
             set { pbBot.Maximum = value; }
+        }
+        public int PBStrengthPlayer
+        {
+            get { return pbStrengthPlayer.Value; }
+            set { pbStrengthPlayer.Value = value; }
+        }
+        public int PBArmorPlayer
+        {
+            get { return pbArmorPlayer.Value; }
+            set { pbArmorPlayer.Value = value; }
+        }
+        public int PBStrengthBot
+        {
+            get { return pbStrengthBot.Value; }
+            set { pbStrengthBot.Value = value; }
+        }
+        public int PBArmorBot
+        {
+            get { return pbArmorBot.Value; }
+            set { pbArmorBot.Value = value; }
         }
         public int PBStrengthPlayerMax
         {
@@ -144,71 +168,16 @@ namespace ISD_10
         }              
         private void butStrengthPlayer_Click(object sender, EventArgs e)
         {
-            if (pbStrengthPlayer.Value < pbStrengthPlayer.Maximum)
-            {
-                if (pbStrengthPlayer.Value + pbArmorPlayer.Value < pbStrengthPlayer.Maximum)
-                {
-                    pbStrengthPlayer.Value += 10;
-                    lblStat.Text = "У вас осталось " + (pbStrengthPlayer.Maximum - (pbArmorPlayer.Value + pbStrengthPlayer.Value)) / 10 + " свободных статов";
-                }
-                else
-                {
-                    pbArmorPlayer.Value -= 10;
-                    pbStrengthPlayer.Value += 10;
-                }
-            }
+            if (PlayerStrengthAdd != null) { PlayerStrengthAdd(this, EventArgs.Empty); }
         }
         private void butArmorPlayer_Click(object sender, EventArgs e)
         {
-            if (pbArmorPlayer.Value < pbArmorPlayer.Maximum)
-            {
-                if (pbStrengthPlayer.Value + pbArmorPlayer.Value < pbArmorPlayer.Maximum)
-                {
-                    pbArmorPlayer.Value += 10;
-                    lblStat.Text = "У вас осталось " + (pbArmorPlayer.Maximum - (pbArmorPlayer.Value + pbStrengthPlayer.Value)) / 10 + " свободных статов";
-                }
-                else
-                {
-                    pbStrengthPlayer.Value -= 10;
-                    pbArmorPlayer.Value += 10;
-                }
-            }
+            if (PlayerArmorAdd != null) { PlayerArmorAdd(this, EventArgs.Empty); }
         }
         private void butNextBatl_Click(object sender, EventArgs e)
         {
-            present.ReadWrite();
-            if (PlayerHp == 0 && BotHp != 0)
-            {
-                BonusStat += 10;
-                PBBotMax = PBBotMax + 20;
-                present.SetHp();
-                present.Setup();
-                present.View();
-                PBStrengthBotMax = PBStrengthBotMax + 100;
-                PBArmorBotMax = PBArmorBotMax + 100;
-                present.BotRandomStat(BonusStat);
-            }
-            if (BotHp == 0 && PlayerHp != 0)
-            {                
-                PBPlayerMax = PBPlayerMax + 10;
-                present.SetHp();
-                present.Setup();
-                present.View();
-                PBStrengthPlayerMax = PBStrengthPlayerMax + 50;
-                PBArmorPlayerMax = PBArmorPlayerMax + 50;
-                present.BotRandomStat(BonusStat);
-            }
-            if (PlayerHp == 0 && BotHp == 0)
-            {
-                PBPlayerMax = PBPlayerMax + 5;
-                PBBotMax = PBBotMax + 5;
-                present.SetHp();
-                present.Setup();
-                present.View();
-                present.BotRandomStat(BonusStat);
-            }            
+            if (NextBatle != null) { NextBatle(this, EventArgs.Empty); }
             UnVisibleControl();
-            lblStat.Text = "У вас осталось " + (pbStrengthPlayer.Maximum - (pbArmorPlayer.Value + pbStrengthPlayer.Value)) / 10 + " свободных статов";
         }
         private void butRestart_Click(object sender, EventArgs e)
         {

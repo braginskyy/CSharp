@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ISD_10 {
+namespace ISD_10.UI {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ISD_10 {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ISD_10.FightClub", typeof(FightClub).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ISD_10.UI.FightClub", typeof(FightClub).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

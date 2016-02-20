@@ -21,6 +21,9 @@ namespace ISD_10
     public partial class Rating : Form, IRating
     {
         string name;
+        string logFile = @".\log.json";
+        Result[] table = new Result[10];
+        DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(Result[]));
         public Rating()
         {
             InitializeComponent();
@@ -45,33 +48,38 @@ namespace ISD_10
         private void InsertNameTxt_Click(object sender, EventArgs e)
         {
             InsertNameTxt.Text = "";
-        }
+        }    
         private void Result()
         {
-            Result[] table = new Result[10];
-            DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(Result[]));
-            FileInfo log = new FileInfo(@".\log.json");
-            if (log != null)
+            if (File.Exists(logFile))
             {
-                using (FileStream fs = new FileStream(@".\log.json", FileMode.OpenOrCreate))
-                {
-                    table = (Result[])jsonFormatter.ReadObject(fs);
-                    for (int i = 0; i < table.Length; i++)
-                    {
-                        resultDataGtid.Rows.Add(table[i].Name, table[i].Hp);
-                        resultDataGtid.Sort(resultDataGtid.Columns[1], ListSortDirection.Descending);
-                    }
-                }
+                ReadFile();
             }
             else
             {
+                WriteFile();
+            }
+        }
+        public void WriteFile()
+        {
+            for (int i = 0; i < table.Length; i++)
+            {
+                table[i] = new Result("Empty", 0);
+            }
+            using (FileStream fs = new FileStream(logFile, FileMode.OpenOrCreate))
+            {
+                jsonFormatter.WriteObject(fs, table);
+            }
+        }
+        public void ReadFile()
+        {
+            using (FileStream fs = new FileStream(logFile, FileMode.Open))
+            {
+                table = (Result[])jsonFormatter.ReadObject(fs);
                 for (int i = 0; i < table.Length; i++)
                 {
-                    table[i] = new Result("Empty", 0);
-                }
-                using (FileStream fs = new FileStream(@".\log.json", FileMode.OpenOrCreate))
-                {
-                    jsonFormatter.WriteObject(fs, table);
+                    resultDataGtid.Rows.Add(table[i].Name, table[i].Hp);
+                    resultDataGtid.Sort(resultDataGtid.Columns[1], ListSortDirection.Descending);
                 }
             }
         }

@@ -47,33 +47,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bot.cs" />
-    <Compile Include="FightClub.cs">
+    <Compile Include="Controller\Bot.cs" />
+    <Compile Include="UI\FightClub.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FightClub.Designer.cs">
+    <Compile Include="UI\FightClub.Designer.cs">
       <DependentUpon>FightClub.cs</DependentUpon>
     </Compile>
-    <Compile Include="FightClub1.Designer.cs">
+    <Compile Include="UI\FightClub1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FightClub.resx</DependentUpon>
     </Compile>
-    <Compile Include="GameController.cs" />
-    <Compile Include="Messanger.cs" />
-    <Compile Include="InfoEventArgs.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Presenter.cs" />
+    <Compile Include="Controller\GameController.cs" />
+    <Compile Include="Controller\Messanger.cs" />
+    <Compile Include="Controller\InfoEventArgs.cs" />
+    <Compile Include="Controller\Player.cs" />
+    <Compile Include="UI\Presenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rating.cs">
+    <Compile Include="UI\Rating.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Rating.Designer.cs">
+    <Compile Include="UI\Rating.Designer.cs">
       <DependentUpon>Rating.cs</DependentUpon>
     </Compile>
-    <Compile Include="Result.cs" />
-    <EmbeddedResource Include="FightClub.resx">
+    <Compile Include="Controller\Result.cs" />
+    <EmbeddedResource Include="UI\FightClub.resx">
       <DependentUpon>FightClub.cs</DependentUpon>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FightClub1.Designer.cs</LastGenOutput>
@@ -87,7 +87,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Rating.resx">
+    <EmbeddedResource Include="UI\Rating.resx">
       <DependentUpon>Rating.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -103,12 +103,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Plus.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Plus_1.jpg" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

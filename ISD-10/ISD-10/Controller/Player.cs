@@ -11,12 +11,13 @@ namespace ISD_10
     {
         string Name { get; }
         int Hp { get; set; }
-        Position PlayerBlock { get; set; }
-        Position PlayerHit { get; set; }
+        //Position PlayerBlock { get; set; }
+        //Position PlayerHit { get; set; }
         int Strength { get; set; }
         int Armor { get; set; }
         int Rand { set; }
         int Damage { get; }
+        int Bonus { get; set; }
         int GetHit(Position p, int damage);
         void SetBlock(Position p);
         event EventHandler<InfoEventArgs> Wound;
@@ -38,6 +39,7 @@ namespace ISD_10
         protected int hp = 100;
         protected int strength = 0;
         protected int armor = 0;
+        protected int bonus = 10;
         protected Position block = Position.Legs;
         protected Position hit = Position.Legs;
         public void SetBlock(Position block)
@@ -114,6 +116,11 @@ namespace ISD_10
         public int Damage
         {
             get { return strength + rand; }
+        }
+        public int Bonus
+        {
+            get { return bonus; }
+            set { bonus = value; }
         }
         public event EventHandler<InfoEventArgs> Wound;
         public event EventHandler<InfoEventArgs> Block;
