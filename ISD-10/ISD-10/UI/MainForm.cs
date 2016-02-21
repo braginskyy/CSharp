@@ -31,7 +31,7 @@ namespace Combats
             get { return playerHpProgress.Value; }
             set
             {
-                lblPlayerXp.Text = value.ToString();
+                playerHpLbl.Text = value.ToString();
                 playerHpProgress.Value = value;
             }
         }
@@ -69,7 +69,7 @@ namespace Combats
             get { return botHpProgress.Value; }
             set
             {
-                lblBotXp.Text = value.ToString();
+                botHpLbl.Text = value.ToString();
                 botHpProgress.Value = value;
             }
         }
@@ -181,12 +181,24 @@ namespace Combats
                     if (Fight != null) { Fight(this, EventArgs.Empty); }
                 }
             }
-            blockHeadRadioBtn.Checked = blockBodyRadioBtn.Checked = blockLegsRadioBtn.Checked = false;
-            hitHeadRadioBtn.Checked = hitBodyRadioBtn.Checked = hitLegsRadioBtn.Checked = false;
+            autoHitCheckBox_CheckedChanged(this, EventArgs.Empty);
             if (botHpProgress.Value == 0 || playerHpProgress.Value == 0)
             {
                 nextBatleBtn.Enabled = true;                
             }
+        }
+        private void AutoHitcheckBox_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip t = new ToolTip();
+            t.SetToolTip(autoHitCheckBox, "Не сбрасывать удар.");
+        }
+        private void autoHitCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (autoHitCheckBox.Checked == false)
+            {
+                blockHeadRadioBtn.Checked = blockBodyRadioBtn.Checked = blockLegsRadioBtn.Checked = false;
+                hitHeadRadioBtn.Checked = hitBodyRadioBtn.Checked = hitLegsRadioBtn.Checked = false;
+            }            
         }        
     }
 

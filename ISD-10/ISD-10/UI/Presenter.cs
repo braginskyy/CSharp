@@ -23,7 +23,7 @@ namespace Combats
         {
             this.log = new Log(); 
             this.rating = new Score();            
-            rating.ShowTableStat(log.ReadFile());         
+            rating.ShowTableStat(log.ReadFile());            
             rating.StartWindow();            
             this.player = new Player(rating.NamePlayer);
             this.bot = new Bot();

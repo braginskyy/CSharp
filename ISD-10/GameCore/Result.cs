@@ -14,11 +14,11 @@ namespace GameCore
         [DataMember]
         public string Name { get; set; }
         [DataMember]
-        public int Hp { get; set; }
+        public int Hp { get; set; }        
         public Result(string name, int hp)
         {
             Name = name;
-            Hp = hp;
+            Hp = hp;            
         }
         public int CompareTo(Result obj)
         {

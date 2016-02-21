@@ -33,8 +33,8 @@
             this.botNameLbl = new System.Windows.Forms.Label();
             this.playerHpProgress = new System.Windows.Forms.ProgressBar();
             this.botHpProgress = new System.Windows.Forms.ProgressBar();
-            this.lblPlayerXp = new System.Windows.Forms.Label();
-            this.lblBotXp = new System.Windows.Forms.Label();
+            this.playerHpLbl = new System.Windows.Forms.Label();
+            this.botHpLbl = new System.Windows.Forms.Label();
             this.blockLbl = new System.Windows.Forms.Label();
             this.hitLbl = new System.Windows.Forms.Label();
             this.blockBodyRadioBtn = new System.Windows.Forms.RadioButton();
@@ -65,6 +65,7 @@
             this.botArmorLbl = new System.Windows.Forms.Label();
             this.nextBatleBtn = new System.Windows.Forms.Button();
             this.restartBtn = new System.Windows.Forms.Button();
+            this.autoHitCheckBox = new System.Windows.Forms.CheckBox();
             this.blockGroupBox.SuspendLayout();
             this.hitGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -105,21 +106,21 @@
             this.botHpProgress.TabIndex = 3;
             this.botHpProgress.Value = 100;
             // 
-            // lblPlayerXp
+            // playerHpLbl
             // 
-            this.lblPlayerXp.AutoSize = true;
-            this.lblPlayerXp.Location = new System.Drawing.Point(71, 26);
-            this.lblPlayerXp.Name = "lblPlayerXp";
-            this.lblPlayerXp.Size = new System.Drawing.Size(0, 13);
-            this.lblPlayerXp.TabIndex = 4;
+            this.playerHpLbl.AutoSize = true;
+            this.playerHpLbl.Location = new System.Drawing.Point(88, 26);
+            this.playerHpLbl.Name = "playerHpLbl";
+            this.playerHpLbl.Size = new System.Drawing.Size(0, 13);
+            this.playerHpLbl.TabIndex = 4;
             // 
-            // lblBotXp
+            // botHpLbl
             // 
-            this.lblBotXp.AutoSize = true;
-            this.lblBotXp.Location = new System.Drawing.Point(358, 26);
-            this.lblBotXp.Name = "lblBotXp";
-            this.lblBotXp.Size = new System.Drawing.Size(0, 13);
-            this.lblBotXp.TabIndex = 5;
+            this.botHpLbl.AutoSize = true;
+            this.botHpLbl.Location = new System.Drawing.Point(358, 26);
+            this.botHpLbl.Name = "botHpLbl";
+            this.botHpLbl.Size = new System.Drawing.Size(0, 13);
+            this.botHpLbl.TabIndex = 5;
             // 
             // blockLbl
             // 
@@ -408,12 +409,24 @@
             this.restartBtn.UseVisualStyleBackColor = true;
             this.restartBtn.Click += new System.EventHandler(this.RestartBtn_Click);
             // 
+            // autoHitCheckBox
+            // 
+            this.autoHitCheckBox.AutoSize = true;
+            this.autoHitCheckBox.Location = new System.Drawing.Point(283, 179);
+            this.autoHitCheckBox.Name = "autoHitCheckBox";
+            this.autoHitCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.autoHitCheckBox.TabIndex = 44;
+            this.autoHitCheckBox.UseVisualStyleBackColor = true;
+            this.autoHitCheckBox.CheckedChanged += new System.EventHandler(this.autoHitCheckBox_CheckedChanged);
+            this.autoHitCheckBox.MouseHover += new System.EventHandler(this.AutoHitcheckBox_MouseHover);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.autoHitCheckBox);
             this.Controls.Add(this.restartBtn);
             this.Controls.Add(this.nextBatleBtn);
             this.Controls.Add(this.botArmorLbl);
@@ -437,8 +450,8 @@
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.hitLbl);
             this.Controls.Add(this.blockLbl);
-            this.Controls.Add(this.lblBotXp);
-            this.Controls.Add(this.lblPlayerXp);
+            this.Controls.Add(this.botHpLbl);
+            this.Controls.Add(this.playerHpLbl);
             this.Controls.Add(this.botHpProgress);
             this.Controls.Add(this.playerHpProgress);
             this.Controls.Add(this.botNameLbl);
@@ -462,8 +475,8 @@
         private System.Windows.Forms.Label botNameLbl;
         private System.Windows.Forms.ProgressBar playerHpProgress;
         private System.Windows.Forms.ProgressBar botHpProgress;
-        private System.Windows.Forms.Label lblPlayerXp;
-        private System.Windows.Forms.Label lblBotXp;
+        private System.Windows.Forms.Label playerHpLbl;
+        private System.Windows.Forms.Label botHpLbl;
         private System.Windows.Forms.Label blockLbl;
         private System.Windows.Forms.Label hitLbl;
         private System.Windows.Forms.RadioButton blockBodyRadioBtn;
@@ -494,6 +507,7 @@
         private System.Windows.Forms.Label botArmorLbl;
         private System.Windows.Forms.Button nextBatleBtn;
         private System.Windows.Forms.Button restartBtn;
+        private System.Windows.Forms.CheckBox autoHitCheckBox;
     }
 }
 

@@ -8,11 +8,11 @@ using System.Runtime.Serialization;
 using System.IO;
 
 namespace GameCore
-{   
+{
     public class Log : ILog
     {
         string logFile = @".\log.json";
-        Result[] table = new Result[10];
+        Result[] table = new Result[11];
         DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(Result[]));
         public void WriteFile()
         {
@@ -51,14 +51,14 @@ namespace GameCore
                     if (table[i].Hp < hp)
                     {
                         table[i].Name = name;
-                        table[i].Hp = hp;
+                        table[i].Hp = hp;                        
                     }
                 }
             }
             if (k == 0)
             {
-                table[9].Name = name;
-                table[9].Hp = hp;
+                table[10].Name = name;
+                table[10].Hp = hp;                
             }
             File.Delete(logFile);
             Array.Sort(table);
