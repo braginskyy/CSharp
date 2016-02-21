@@ -10,15 +10,10 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using GameCore;
 
-namespace ISD_10
-{
-    public interface IScore
-    {
-        string NamePlayer { get; }
-        void StartWindow();
-        void ShowTableStat(Result[] table);        
-    }
+namespace Combats
+{    
     public partial class Score : Form, IScore
     {        
         string name;        

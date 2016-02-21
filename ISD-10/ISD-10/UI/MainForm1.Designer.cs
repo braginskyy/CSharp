@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ISD_10.UI {
+namespace Combats.UI {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace ISD_10.UI {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class FightClub {
+    public class MainForm {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal FightClub() {
+        internal MainForm() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace ISD_10.UI {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ISD_10.UI.FightClub", typeof(FightClub).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Combats.UI.MainForm", typeof(MainForm).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

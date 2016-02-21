@@ -1,4 +1,4 @@
-﻿namespace ISD_10
+﻿namespace Combats
 {
     partial class Score
     {

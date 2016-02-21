@@ -1,26 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization.Json;
+using System.Runtime.Serialization;
+using System.IO;
 
-namespace ISD_10
-{
-    public interface ILog
-    {
-        void WriteFile();
-        Result[] ReadFile();
-        void AddChampion(string name, int hp);
-    }
-    class Log : ILog
+namespace GameCore
+{   
+    public class Log : ILog
     {
         string logFile = @".\log.json";
         Result[] table = new Result[10];
-        DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(Result[]));       
+        DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(Result[]));
         public void WriteFile()
-        {            
+        {
             using (FileStream fs = new FileStream(logFile, FileMode.OpenOrCreate))
             {
                 jsonFormatter.WriteObject(fs, table);
@@ -35,7 +30,7 @@ namespace ISD_10
                     return table = (Result[])jsonFormatter.ReadObject(fs);
                 }
             }
-            else 
+            else
             {
                 for (int i = 0; i < table.Length; i++)
                 {
@@ -45,8 +40,8 @@ namespace ISD_10
             }
             return table;
         }
-        public void AddChampion(string name, int hp) 
-        {           
+        public void AddChampion(string name, int hp)
+        {
             int k = 0;
             for (int i = 0; i < table.Length; i++)
             {

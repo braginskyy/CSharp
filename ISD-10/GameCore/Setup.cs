@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ISD_10
+namespace GameCore
 {
     static class Setup
     {

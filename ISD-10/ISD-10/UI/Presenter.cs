@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using GameCore;
 
-namespace ISD_10
+namespace Combats
 {
     public class Presenter
     {
@@ -31,8 +32,8 @@ namespace ISD_10
             this.messange = new Messanger(player, bot, view);
             view.LabelStat = view.LabelStat = "У вас осталось " + player.Bonus + " свободных статов";
             controller.SetBotStat();
-            View();
             messange.Message();
+            View();            
             view.Fight += view_Fight;
             view.NextBatle += view_NextBatle;
             view.PlayerStrengthAdd += view_PlayerStrengthAdd;
@@ -94,7 +95,7 @@ namespace ISD_10
         }
         void view_Fight(object sender, EventArgs e)
         {
-            controller.Fight(view.Hit, view.Block);
+            controller.Fight(view.Hit, view.Block);            
             View();
             if (bot.Hp <= 0)
             {

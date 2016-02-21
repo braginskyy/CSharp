@@ -7,7 +7,7 @@
     <ProjectGuid>{5B636D9E-D7C7-4F1E-A005-6B671DD5BE2A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ISD_10</RootNamespace>
+    <RootNamespace>Combats</RootNamespace>
     <AssemblyName>ISD-10</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -47,38 +47,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\Bot.cs" />
-    <Compile Include="Controller\Log.cs" />
-    <Compile Include="Controller\Setup.cs" />
-    <Compile Include="UI\FightClub.cs">
+    <Compile Include="interfaces\IMainForm.cs" />
+    <Compile Include="interfaces\IMessanger.cs" />
+    <Compile Include="interfaces\IScore.cs" />
+    <Compile Include="Messanger.cs" />
+    <Compile Include="UI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FightClub.Designer.cs">
-      <DependentUpon>FightClub.cs</DependentUpon>
+    <Compile Include="UI\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FightClub1.Designer.cs">
+    <Compile Include="UI\MainForm1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FightClub.resx</DependentUpon>
+      <DependentUpon>MainForm.resx</DependentUpon>
     </Compile>
-    <Compile Include="Controller\GameController.cs" />
-    <Compile Include="Controller\Messanger.cs" />
-    <Compile Include="Controller\InfoEventArgs.cs" />
-    <Compile Include="Controller\Player.cs" />
     <Compile Include="UI\Presenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\Rating.cs">
+    <Compile Include="UI\Score.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Rating.Designer.cs">
-      <DependentUpon>Rating.cs</DependentUpon>
+    <Compile Include="UI\Score.Designer.cs">
+      <DependentUpon>Score.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\Score.cs" />
-    <EmbeddedResource Include="UI\FightClub.resx">
-      <DependentUpon>FightClub.cs</DependentUpon>
+    <EmbeddedResource Include="UI\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>FightClub1.Designer.cs</LastGenOutput>
+      <LastGenOutput>MainForm1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -88,9 +84,10 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\Rating.resx">
-      <DependentUpon>Rating.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Score.resx">
+      <DependentUpon>Score.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -105,7 +102,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GameCore\GameCore.csproj">
+      <Project>{7aad7bfb-5f2e-4817-8840-2e0b5a3189f9}</Project>
+      <Name>GameCore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

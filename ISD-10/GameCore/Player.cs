@@ -4,25 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ISD_10
+namespace GameCore
 {
-    public enum Position { Head = 1, Body, Legs }
-    public interface IPlayer
-    {
-        string Name { get; }
-        int Hp { get; set; }        
-        int Strength { get; set; }
-        int Armor { get; set; }
-        int Rand { set; }
-        int Damage { get; }
-        int Bonus { get; set; }
-        int GetHit(Position p, int damage);
-        void SetBlock(Position p);
-        event EventHandler<InfoEventArgs> Wound;
-        event EventHandler<InfoEventArgs> Block;
-        event EventHandler<InfoEventArgs> Death;
-    }
-    class Player : IPlayer
+    public enum Position { Head = 1, Body, Legs }   
+    public class Player : IPlayer
     {
         public Player()
         {
@@ -49,7 +34,7 @@ namespace ISD_10
             this.hit = hit;
             if (block != hit)
             {
-                if (hp - (damage - (armor/2)) > 0)
+                if (hp - (damage - (armor / 2)) > 0)
                 {
                     if (damage - (armor / 2) > 0)
                     {
@@ -86,7 +71,7 @@ namespace ISD_10
         {
             get { return hp; }
             set { hp = value; }
-        } 
+        }
         public int Strength
         {
             get { return strength; }

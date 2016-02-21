@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameCore;
 
-namespace ISD_10
-{
-    public interface IMessanger
-    {
-        void Message();
-    }
-    class Messanger : IMessanger
+namespace Combats
+{    
+    public class Messanger : IMessanger
     {
         IPlayer player;
         IBot bot;
-        IMainForm view;
+        IMainForm view;        
         public Messanger(IPlayer player, IBot bot, IMainForm view)
         {
             this.player = player;
@@ -36,6 +33,7 @@ namespace ISD_10
         }
         private void player_Block(object sender, InfoEventArgs e)
         {
+
             view.Log = "Игрок " + e.Name.ToUpper() + " заблокировал удар ";
         }
         private void player_Death(object sender, InfoEventArgs e)

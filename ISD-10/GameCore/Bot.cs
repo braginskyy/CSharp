@@ -4,23 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ISD_10
-{
-    public interface IBot : IPlayer
+namespace GameCore
+{    
+    public class Bot : Player, IBot
     {
-        Position RandomBlock { get; }
-        Position RandomHit { get; }               
-    }
-    class Bot : Player, IBot
-    {
-        Random rnd = new Random();        
+        Random rnd = new Random();
         public Bot()
         {
             this.name = "Bot";
             this.hp = 100;
             this.armor = rnd.Next(11);
             this.strength = 10 - this.armor;
-        } 
+        }
         public Position RandomBlock
         {
             get { return (Position)rnd.Next(1, 4); }
