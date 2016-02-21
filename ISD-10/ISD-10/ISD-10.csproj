@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Controller\Bot.cs" />
     <Compile Include="Controller\Log.cs" />
+    <Compile Include="Controller\Setup.cs" />
     <Compile Include="UI\FightClub.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,7 +74,7 @@
     <Compile Include="UI\Rating.Designer.cs">
       <DependentUpon>Rating.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\Result.cs" />
+    <Compile Include="Controller\Score.cs" />
     <EmbeddedResource Include="UI\FightClub.resx">
       <DependentUpon>FightClub.cs</DependentUpon>
       <Generator>PublicResXFileCodeGenerator</Generator>

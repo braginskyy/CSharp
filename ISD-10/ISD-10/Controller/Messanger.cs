@@ -14,7 +14,7 @@ namespace ISD_10
     {
         IPlayer player;
         IBot bot;
-        IMainForm view;        
+        IMainForm view;
         public Messanger(IPlayer player, IBot bot, IMainForm view)
         {
             this.player = player;
@@ -28,7 +28,7 @@ namespace ISD_10
             player.Death += player_Death;
             bot.Wound += player_Wound;
             bot.Block += player_Block;
-            bot.Death += player_Death;            
+            bot.Death += player_Death;
         }
         private void player_Wound(object sender, InfoEventArgs e)
         {
@@ -40,7 +40,8 @@ namespace ISD_10
         }
         private void player_Death(object sender, InfoEventArgs e)
         {
-            view.Log = "Игрок " + e.Name.ToUpper() + " повержен " + e.Hp + "хп.";
-        }       
+            view.Log = "Игрок " + e.Name.ToUpper() + " получил урон " + e.Damage + " хп. " + " Осталось " + e.Hp + " хп. ";
+            view.Log = "Игрок " + e.Name.ToUpper() + " повержен ";
+        }
     }
 }

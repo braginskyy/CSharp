@@ -1,6 +1,6 @@
 ﻿namespace ISD_10
 {
-    partial class Rating
+    partial class Score
     {
         /// <summary>
         /// Required designer variable.

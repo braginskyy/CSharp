@@ -13,15 +13,20 @@ namespace ISD_10
         void Fight(Position Hit, Position Block);
         void SetBotStat();
         void SetHp(int PlayerMaxProsress, int BotMaxProgress);
-        void NextBatle();        
+        void NextBatle();
+        void PlayerBonussSub();
+        void PlayerStrengthAdd();
+        void PlayerStrengthSub();
+        void PlayerArmorAdd();
+        void PlayerArmorSub();
     }
     class GameController : IGameController 
     {
         Random ran = new Random();
         IPlayer player;
         IBot bot;
-        int PlayerMaxHp = 100;
-        int BotMaxHp = 100;        
+        int PlayerMaxHp = Setup.BaseHp;
+        int BotMaxHp = Setup.BaseHp;        
         public GameController(IPlayer player, IBot bot)
         {
             this.player = player;
@@ -29,20 +34,20 @@ namespace ISD_10
         }
         public void Fight(Position Hit, Position Block)
         {            
-            bot.Rand = ran.Next(50, 61);
-            player.Rand = ran.Next(150, 161);         
+            bot.Rand = ran.Next(Setup.MinHit, Setup.MaxHit);
+            player.Rand = ran.Next(Setup.MinHit, Setup.MaxHit);         
             player.GetHit(bot.RandomHit, bot.Damage);
             bot.SetBlock(bot.RandomBlock);
             player.SetBlock(Block);
             bot.GetHit(Hit, player.Damage);            
         }
         public void SetBotStat()
-        {
+        {            
             bot.Strength = ran.Next(bot.Bonus+1);
             bot.Armor = bot.Bonus - bot.Strength;
         }
         public void SetHp(int PlayerMaxProsress, int BotMaxProgress)
-        {
+        {            
             PlayerMaxHp = PlayerMaxProsress;
             BotMaxHp = BotMaxProgress;
         }
@@ -51,21 +56,41 @@ namespace ISD_10
             if (player.Hp == 0 && bot.Hp != 0)
             {
                 player.Hp = PlayerMaxHp;
-                bot.Hp = BotMaxHp + 20;
-                bot.Bonus += 10;
+                bot.Hp = BotMaxHp + Setup.BonusHp*2;
+                bot.Bonus += Setup.BonusStat*2;
             }
             if (bot.Hp == 0 && player.Hp != 0)
             {
-                player.Hp = PlayerMaxHp + 10;
+                player.Hp = PlayerMaxHp + Setup.BonusHp;
                 bot.Hp = BotMaxHp;
-                player.Bonus += 5;               
+                player.Bonus += Setup.BonusStat;               
             }
             if (player.Hp == 0 && bot.Hp == 0)
             {
-                player.Hp = PlayerMaxHp + 5;
-                bot.Hp = BotMaxHp + 5;                
+                player.Hp = PlayerMaxHp + Setup.BonusHp/2;
+                bot.Hp = BotMaxHp + Setup.BonusHp / 2;                
             }
             SetBotStat();
-        } 
+        }
+        public void PlayerBonussSub()
+        {
+            player.Bonus -= 1;
+        }
+        public void PlayerStrengthAdd()
+        {
+            player.Strength += 1;
+        }
+        public void PlayerStrengthSub()
+        {
+            player.Strength -=1;
+        }
+        public void PlayerArmorAdd()
+        {
+            player.Armor += 1;
+        }
+        public void PlayerArmorSub()
+        {
+            player.Armor -= 1;
+        }
     }
 }

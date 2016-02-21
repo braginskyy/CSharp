@@ -34,10 +34,10 @@ namespace ISD_10
         }
         protected int rand = 0;
         protected string name = "Player";
-        protected int hp = 100;
+        protected int hp = Setup.BaseHp;
         protected int strength = 0;
         protected int armor = 0;
-        protected int bonus = 10;
+        protected int bonus = Setup.BonusStat;
         protected Position block = Position.Legs;
         protected Position hit = Position.Legs;
         public void SetBlock(Position block)

@@ -16,12 +16,12 @@ namespace ISD_10
         private readonly IMainForm view;
         private readonly IGameController controller;
         private readonly IMessanger messange;
-        private readonly IRating rating;
+        private readonly IScore rating;
         private readonly ILog log;
         public Presenter(IMainForm view)
         {
             this.log = new Log(); 
-            this.rating = new Rating();            
+            this.rating = new Score();            
             rating.ShowTableStat(log.ReadFile());         
             rating.StartWindow();            
             this.player = new Player(rating.NamePlayer);
@@ -29,75 +29,76 @@ namespace ISD_10
             this.view = view;
             this.controller = new GameController(player, bot);
             this.messange = new Messanger(player, bot, view);
+            view.LabelStat = view.LabelStat = "У вас осталось " + player.Bonus + " свободных статов";
             controller.SetBotStat();
             View();
             messange.Message();
-            view.FightClick += view_FightClick;
+            view.Fight += view_Fight;
             view.NextBatle += view_NextBatle;
             view.PlayerStrengthAdd += view_PlayerStrengthAdd;
             view.PlayerArmorAdd += view_PlayerArmorAdd;
         }
         void view_PlayerArmorAdd(object sender, EventArgs e)
         {
-            if (view.PBArmorPlayer < view.PBArmorPlayerMax)
+            if (view.PlayerArmorProgress < view.PlayerArmorMaxProgress)
             {
                 if (player.Bonus > 0)
                 {
-                    player.Armor = player.Armor + 1;
-                    player.Bonus = player.Bonus - 1;
-                    view.PBArmorPlayer = player.Armor;
+                    controller.PlayerArmorAdd();
+                    controller.PlayerBonussSub();
+                    view.PlayerArmorProgress = player.Armor;
                     view.LabelStat = "У вас осталось " + player.Bonus + " свободных статов";
                 }
                 else
                 {
-                    player.Strength = player.Strength - 1;
-                    player.Armor = player.Armor + 1;
-                    view.PBStrengthPlayer = player.Strength;
-                    view.PBArmorPlayer = player.Armor;
+                    controller.PlayerStrengthSub();
+                    controller.PlayerArmorAdd();                   
+                    view.PlayerStrengthProgress = player.Strength;
+                    view.PlayerArmorProgress = player.Armor;
                 }
             }
         }
         void view_PlayerStrengthAdd(object sender, EventArgs e)
         {
-            if (view.PBStrengthPlayer < view.PBStrengthPlayerMax)
+            if (view.PlayerStrengthProgress < view.PlayerStrengthMaxProgress)
             {
                 if (player.Bonus > 0)
                 {
-                    player.Strength = player.Strength + 1;
-                    player.Bonus = player.Bonus - 1;
-                    view.PBStrengthPlayer = player.Strength;
+                    controller.PlayerStrengthAdd();
+                    controller.PlayerBonussSub();                    
+                    view.PlayerStrengthProgress = player.Strength;
                     view.LabelStat = "У вас осталось " + player.Bonus + " свободных статов";
                 }
                 else
                 {
-                    player.Armor = player.Armor - 1;
-                    player.Strength = player.Strength + 1;
-                    view.PBStrengthPlayer = player.Strength;
-                    view.PBArmorPlayer = player.Armor;
+                    controller.PlayerArmorSub();
+                    controller.PlayerStrengthAdd();                    
+                    view.PlayerStrengthProgress = player.Strength;
+                    view.PlayerArmorProgress = player.Armor;
                 }
             }
         }
         void view_NextBatle(object sender, EventArgs e)
         {
-            controller.SetHp(view.PBPlayerMax, view.PBBotMax);
+            controller.SetHp(view.PlayerHpMaxProgress, view.BotHpMaxProgress);
             controller.NextBatle();
-            view.PBPlayerMax = player.Hp;
-            view.PBBotMax = bot.Hp;
-            view.PBStrengthPlayerMax = player.Strength + player.Armor + player.Bonus;
-            view.PBArmorPlayerMax = player.Strength + player.Armor + player.Bonus;
-            view.PBStrengthBotMax = bot.Strength + bot.Armor;
-            view.PBArmorBotMax = bot.Strength + bot.Armor;
+            view.PlayerHpMaxProgress = player.Hp;
+            view.BotHpMaxProgress = bot.Hp;
+            view.PlayerStrengthMaxProgress = player.Strength + player.Armor + player.Bonus;
+            view.PlayerArmorMaxProgress = player.Strength + player.Armor + player.Bonus;
+            view.BotStrengthMaxProgress = bot.Strength + bot.Armor;
+            view.BotArmorMaxProgress = bot.Strength + bot.Armor;
             View();
             view.LabelStat = "У вас осталось " + player.Bonus + " свободных статов";
-            log.AddChampion(view.PlayerName, view.PBPlayerMax);
+            log.AddChampion(view.PlayerName, view.PlayerHpMaxProgress);
         }
-        void view_FightClick(object sender, EventArgs e)
+        void view_Fight(object sender, EventArgs e)
         {
             controller.Fight(view.Hit, view.Block);
             View();
             if (bot.Hp <= 0)
             {
-                log.AddChampion(view.PlayerName, view.PBPlayerMax);
+                log.AddChampion(view.PlayerName, view.PlayerHpMaxProgress);
             }
         }
         public void View()
@@ -106,10 +107,10 @@ namespace ISD_10
             view.BotName = bot.Name;
             view.PlayerHp = player.Hp;
             view.BotHp = bot.Hp;
-            view.PBStrengthPlayer = player.Strength;
-            view.PBArmorPlayer = player.Armor;
-            view.PBStrengthBot = bot.Strength;
-            view.PBArmorBot = bot.Armor;
+            view.PlayerStrengthProgress = player.Strength;
+            view.PlayerArmorProgress = player.Armor;
+            view.BotStrengthProgress = bot.Strength;
+            view.BotArmorProgress = bot.Armor;
         }
     }
 }

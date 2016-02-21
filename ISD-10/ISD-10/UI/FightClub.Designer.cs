@@ -29,81 +29,81 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lblPlayer = new System.Windows.Forms.Label();
-            this.lblBot = new System.Windows.Forms.Label();
-            this.pbPlayer = new System.Windows.Forms.ProgressBar();
-            this.pbBot = new System.Windows.Forms.ProgressBar();
+            this.playerNameLbl = new System.Windows.Forms.Label();
+            this.botNameLbl = new System.Windows.Forms.Label();
+            this.playerHpProgress = new System.Windows.Forms.ProgressBar();
+            this.botHpProgress = new System.Windows.Forms.ProgressBar();
             this.lblPlayerXp = new System.Windows.Forms.Label();
             this.lblBotXp = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.rbBodyBlock = new System.Windows.Forms.RadioButton();
-            this.rbLegsBlock = new System.Windows.Forms.RadioButton();
-            this.rbHeadBlock = new System.Windows.Forms.RadioButton();
-            this.rbHeadFight = new System.Windows.Forms.RadioButton();
-            this.rbLegsFight = new System.Windows.Forms.RadioButton();
-            this.rbBodyFight = new System.Windows.Forms.RadioButton();
+            this.blockLbl = new System.Windows.Forms.Label();
+            this.hitLbl = new System.Windows.Forms.Label();
+            this.blockBodyRadioBtn = new System.Windows.Forms.RadioButton();
+            this.blockLegsRadioBtn = new System.Windows.Forms.RadioButton();
+            this.blockHeadRadioBtn = new System.Windows.Forms.RadioButton();
+            this.hitHeadRadioBtn = new System.Windows.Forms.RadioButton();
+            this.hitLegsRadioBtn = new System.Windows.Forms.RadioButton();
+            this.hitBodyRadioBtn = new System.Windows.Forms.RadioButton();
             this.txtLog = new System.Windows.Forms.TextBox();
-            this.butFight = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.fightBtn = new System.Windows.Forms.Button();
+            this.blockGroupBox = new System.Windows.Forms.GroupBox();
+            this.hitGroupBox = new System.Windows.Forms.GroupBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.pbArmorPlayer = new System.Windows.Forms.ProgressBar();
-            this.pbStrengthPlayer = new System.Windows.Forms.ProgressBar();
+            this.playerArmorProgress = new System.Windows.Forms.ProgressBar();
+            this.playerStrengthProgress = new System.Windows.Forms.ProgressBar();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.pbStrengthBot = new System.Windows.Forms.ProgressBar();
-            this.pbArmorBot = new System.Windows.Forms.ProgressBar();
-            this.butArmorPlayer = new System.Windows.Forms.Button();
-            this.butStrengthPlayer = new System.Windows.Forms.Button();
-            this.lblStat = new System.Windows.Forms.Label();
-            this.lblStatPlayerStrength = new System.Windows.Forms.Label();
-            this.lblStatPlayerArmor = new System.Windows.Forms.Label();
-            this.lblStatBotStrength = new System.Windows.Forms.Label();
-            this.lblStatBotArmor = new System.Windows.Forms.Label();
-            this.butNextBatl = new System.Windows.Forms.Button();
-            this.butRestart = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.botStrengthProgress = new System.Windows.Forms.ProgressBar();
+            this.botArmorProgress = new System.Windows.Forms.ProgressBar();
+            this.playerArmorBtn = new System.Windows.Forms.Button();
+            this.playerStrengthBtn = new System.Windows.Forms.Button();
+            this.bonusStatLbl = new System.Windows.Forms.Label();
+            this.playerStrengthLbl = new System.Windows.Forms.Label();
+            this.playerArmorLbl = new System.Windows.Forms.Label();
+            this.botStrengthLbl = new System.Windows.Forms.Label();
+            this.botArmorLbl = new System.Windows.Forms.Label();
+            this.nextBatleBtn = new System.Windows.Forms.Button();
+            this.restartBtn = new System.Windows.Forms.Button();
+            this.blockGroupBox.SuspendLayout();
+            this.hitGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblPlayer
+            // playerNameLbl
             // 
-            this.lblPlayer.AutoSize = true;
-            this.lblPlayer.Location = new System.Drawing.Point(27, 26);
-            this.lblPlayer.Name = "lblPlayer";
-            this.lblPlayer.Size = new System.Drawing.Size(38, 13);
-            this.lblPlayer.TabIndex = 0;
-            this.lblPlayer.Text = "Игрок";
+            this.playerNameLbl.AutoSize = true;
+            this.playerNameLbl.Location = new System.Drawing.Point(27, 26);
+            this.playerNameLbl.Name = "playerNameLbl";
+            this.playerNameLbl.Size = new System.Drawing.Size(38, 13);
+            this.playerNameLbl.TabIndex = 0;
+            this.playerNameLbl.Text = "Игрок";
             // 
-            // lblBot
+            // botNameLbl
             // 
-            this.lblBot.AutoSize = true;
-            this.lblBot.Location = new System.Drawing.Point(327, 26);
-            this.lblBot.Name = "lblBot";
-            this.lblBot.Size = new System.Drawing.Size(25, 13);
-            this.lblBot.TabIndex = 1;
-            this.lblBot.Text = "Бот";
+            this.botNameLbl.AutoSize = true;
+            this.botNameLbl.Location = new System.Drawing.Point(327, 26);
+            this.botNameLbl.Name = "botNameLbl";
+            this.botNameLbl.Size = new System.Drawing.Size(25, 13);
+            this.botNameLbl.TabIndex = 1;
+            this.botNameLbl.Text = "Бот";
             // 
-            // pbPlayer
+            // playerHpProgress
             // 
-            this.pbPlayer.Location = new System.Drawing.Point(30, 45);
-            this.pbPlayer.Name = "pbPlayer";
-            this.pbPlayer.Size = new System.Drawing.Size(225, 10);
-            this.pbPlayer.Step = 1;
-            this.pbPlayer.TabIndex = 2;
-            this.pbPlayer.Value = 100;
+            this.playerHpProgress.Location = new System.Drawing.Point(30, 45);
+            this.playerHpProgress.Name = "playerHpProgress";
+            this.playerHpProgress.Size = new System.Drawing.Size(225, 10);
+            this.playerHpProgress.Step = 1;
+            this.playerHpProgress.TabIndex = 2;
+            this.playerHpProgress.Value = 100;
             // 
-            // pbBot
+            // botHpProgress
             // 
-            this.pbBot.Location = new System.Drawing.Point(325, 45);
-            this.pbBot.Name = "pbBot";
-            this.pbBot.Size = new System.Drawing.Size(225, 10);
-            this.pbBot.Step = 1;
-            this.pbBot.TabIndex = 3;
-            this.pbBot.Value = 100;
+            this.botHpProgress.Location = new System.Drawing.Point(325, 45);
+            this.botHpProgress.Name = "botHpProgress";
+            this.botHpProgress.Size = new System.Drawing.Size(225, 10);
+            this.botHpProgress.Step = 1;
+            this.botHpProgress.TabIndex = 3;
+            this.botHpProgress.Value = 100;
             // 
             // lblPlayerXp
             // 
@@ -121,88 +121,88 @@
             this.lblBotXp.Size = new System.Drawing.Size(0, 13);
             this.lblBotXp.TabIndex = 5;
             // 
-            // label1
+            // blockLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(223, 73);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Блок";
+            this.blockLbl.AutoSize = true;
+            this.blockLbl.Location = new System.Drawing.Point(223, 73);
+            this.blockLbl.Name = "blockLbl";
+            this.blockLbl.Size = new System.Drawing.Size(32, 13);
+            this.blockLbl.TabIndex = 7;
+            this.blockLbl.Text = "Блок";
             // 
-            // label2
+            // hitLbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(322, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Удар";
+            this.hitLbl.AutoSize = true;
+            this.hitLbl.Location = new System.Drawing.Point(322, 73);
+            this.hitLbl.Name = "hitLbl";
+            this.hitLbl.Size = new System.Drawing.Size(33, 13);
+            this.hitLbl.TabIndex = 8;
+            this.hitLbl.Text = "Удар";
             // 
-            // rbBodyBlock
+            // blockBodyRadioBtn
             // 
-            this.rbBodyBlock.AutoSize = true;
-            this.rbBodyBlock.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbBodyBlock.Location = new System.Drawing.Point(18, 44);
-            this.rbBodyBlock.Name = "rbBodyBlock";
-            this.rbBodyBlock.Size = new System.Drawing.Size(55, 17);
-            this.rbBodyBlock.TabIndex = 9;
-            this.rbBodyBlock.Text = "Корус";
-            this.rbBodyBlock.UseVisualStyleBackColor = true;
+            this.blockBodyRadioBtn.AutoSize = true;
+            this.blockBodyRadioBtn.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.blockBodyRadioBtn.Location = new System.Drawing.Point(18, 44);
+            this.blockBodyRadioBtn.Name = "blockBodyRadioBtn";
+            this.blockBodyRadioBtn.Size = new System.Drawing.Size(55, 17);
+            this.blockBodyRadioBtn.TabIndex = 9;
+            this.blockBodyRadioBtn.Text = "Корус";
+            this.blockBodyRadioBtn.UseVisualStyleBackColor = true;
             // 
-            // rbLegsBlock
+            // blockLegsRadioBtn
             // 
-            this.rbLegsBlock.AutoSize = true;
-            this.rbLegsBlock.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbLegsBlock.Location = new System.Drawing.Point(23, 70);
-            this.rbLegsBlock.Name = "rbLegsBlock";
-            this.rbLegsBlock.Size = new System.Drawing.Size(50, 17);
-            this.rbLegsBlock.TabIndex = 10;
-            this.rbLegsBlock.Text = "Ноги";
-            this.rbLegsBlock.UseVisualStyleBackColor = true;
+            this.blockLegsRadioBtn.AutoSize = true;
+            this.blockLegsRadioBtn.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.blockLegsRadioBtn.Location = new System.Drawing.Point(23, 70);
+            this.blockLegsRadioBtn.Name = "blockLegsRadioBtn";
+            this.blockLegsRadioBtn.Size = new System.Drawing.Size(50, 17);
+            this.blockLegsRadioBtn.TabIndex = 10;
+            this.blockLegsRadioBtn.Text = "Ноги";
+            this.blockLegsRadioBtn.UseVisualStyleBackColor = true;
             // 
-            // rbHeadBlock
+            // blockHeadRadioBtn
             // 
-            this.rbHeadBlock.AutoSize = true;
-            this.rbHeadBlock.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbHeadBlock.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbHeadBlock.Location = new System.Drawing.Point(12, 16);
-            this.rbHeadBlock.Name = "rbHeadBlock";
-            this.rbHeadBlock.Size = new System.Drawing.Size(61, 17);
-            this.rbHeadBlock.TabIndex = 11;
-            this.rbHeadBlock.Text = "Голова";
-            this.rbHeadBlock.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbHeadBlock.UseVisualStyleBackColor = true;
+            this.blockHeadRadioBtn.AutoSize = true;
+            this.blockHeadRadioBtn.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.blockHeadRadioBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.blockHeadRadioBtn.Location = new System.Drawing.Point(12, 16);
+            this.blockHeadRadioBtn.Name = "blockHeadRadioBtn";
+            this.blockHeadRadioBtn.Size = new System.Drawing.Size(61, 17);
+            this.blockHeadRadioBtn.TabIndex = 11;
+            this.blockHeadRadioBtn.Text = "Голова";
+            this.blockHeadRadioBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.blockHeadRadioBtn.UseVisualStyleBackColor = true;
             // 
-            // rbHeadFight
+            // hitHeadRadioBtn
             // 
-            this.rbHeadFight.AutoSize = true;
-            this.rbHeadFight.Location = new System.Drawing.Point(13, 16);
-            this.rbHeadFight.Name = "rbHeadFight";
-            this.rbHeadFight.Size = new System.Drawing.Size(61, 17);
-            this.rbHeadFight.TabIndex = 14;
-            this.rbHeadFight.Text = "Голова";
-            this.rbHeadFight.UseVisualStyleBackColor = true;
+            this.hitHeadRadioBtn.AutoSize = true;
+            this.hitHeadRadioBtn.Location = new System.Drawing.Point(13, 16);
+            this.hitHeadRadioBtn.Name = "hitHeadRadioBtn";
+            this.hitHeadRadioBtn.Size = new System.Drawing.Size(61, 17);
+            this.hitHeadRadioBtn.TabIndex = 14;
+            this.hitHeadRadioBtn.Text = "Голова";
+            this.hitHeadRadioBtn.UseVisualStyleBackColor = true;
             // 
-            // rbLegsFight
+            // hitLegsRadioBtn
             // 
-            this.rbLegsFight.AutoSize = true;
-            this.rbLegsFight.Location = new System.Drawing.Point(13, 70);
-            this.rbLegsFight.Name = "rbLegsFight";
-            this.rbLegsFight.Size = new System.Drawing.Size(50, 17);
-            this.rbLegsFight.TabIndex = 13;
-            this.rbLegsFight.Text = "Ноги";
-            this.rbLegsFight.UseVisualStyleBackColor = true;
+            this.hitLegsRadioBtn.AutoSize = true;
+            this.hitLegsRadioBtn.Location = new System.Drawing.Point(13, 70);
+            this.hitLegsRadioBtn.Name = "hitLegsRadioBtn";
+            this.hitLegsRadioBtn.Size = new System.Drawing.Size(50, 17);
+            this.hitLegsRadioBtn.TabIndex = 13;
+            this.hitLegsRadioBtn.Text = "Ноги";
+            this.hitLegsRadioBtn.UseVisualStyleBackColor = true;
             // 
-            // rbBodyFight
+            // hitBodyRadioBtn
             // 
-            this.rbBodyFight.AutoSize = true;
-            this.rbBodyFight.Location = new System.Drawing.Point(13, 44);
-            this.rbBodyFight.Name = "rbBodyFight";
-            this.rbBodyFight.Size = new System.Drawing.Size(61, 17);
-            this.rbBodyFight.TabIndex = 12;
-            this.rbBodyFight.Text = "Корпус";
-            this.rbBodyFight.UseVisualStyleBackColor = true;
+            this.hitBodyRadioBtn.AutoSize = true;
+            this.hitBodyRadioBtn.Location = new System.Drawing.Point(13, 44);
+            this.hitBodyRadioBtn.Name = "hitBodyRadioBtn";
+            this.hitBodyRadioBtn.Size = new System.Drawing.Size(61, 17);
+            this.hitBodyRadioBtn.TabIndex = 12;
+            this.hitBodyRadioBtn.Text = "Корпус";
+            this.hitBodyRadioBtn.UseVisualStyleBackColor = true;
             // 
             // txtLog
             // 
@@ -213,37 +213,37 @@
             this.txtLog.Size = new System.Drawing.Size(519, 256);
             this.txtLog.TabIndex = 15;
             // 
-            // butFight
+            // fightBtn
             // 
-            this.butFight.Location = new System.Drawing.Point(252, 245);
-            this.butFight.Name = "butFight";
-            this.butFight.Size = new System.Drawing.Size(75, 23);
-            this.butFight.TabIndex = 16;
-            this.butFight.Text = "Бой";
-            this.butFight.UseVisualStyleBackColor = true;
-            this.butFight.Click += new System.EventHandler(this.butFight_Click);
+            this.fightBtn.Location = new System.Drawing.Point(252, 245);
+            this.fightBtn.Name = "fightBtn";
+            this.fightBtn.Size = new System.Drawing.Size(75, 23);
+            this.fightBtn.TabIndex = 16;
+            this.fightBtn.Text = "Бой";
+            this.fightBtn.UseVisualStyleBackColor = true;
+            this.fightBtn.Click += new System.EventHandler(this.FightBtn_Click);
             // 
-            // groupBox1
+            // blockGroupBox
             // 
-            this.groupBox1.Controls.Add(this.rbHeadBlock);
-            this.groupBox1.Controls.Add(this.rbLegsBlock);
-            this.groupBox1.Controls.Add(this.rbBodyBlock);
-            this.groupBox1.Location = new System.Drawing.Point(168, 89);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(87, 105);
-            this.groupBox1.TabIndex = 17;
-            this.groupBox1.TabStop = false;
+            this.blockGroupBox.Controls.Add(this.blockHeadRadioBtn);
+            this.blockGroupBox.Controls.Add(this.blockLegsRadioBtn);
+            this.blockGroupBox.Controls.Add(this.blockBodyRadioBtn);
+            this.blockGroupBox.Location = new System.Drawing.Point(168, 89);
+            this.blockGroupBox.Name = "blockGroupBox";
+            this.blockGroupBox.Size = new System.Drawing.Size(87, 105);
+            this.blockGroupBox.TabIndex = 17;
+            this.blockGroupBox.TabStop = false;
             // 
-            // groupBox2
+            // hitGroupBox
             // 
-            this.groupBox2.Controls.Add(this.rbHeadFight);
-            this.groupBox2.Controls.Add(this.rbLegsFight);
-            this.groupBox2.Controls.Add(this.rbBodyFight);
-            this.groupBox2.Location = new System.Drawing.Point(325, 89);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(88, 105);
-            this.groupBox2.TabIndex = 18;
-            this.groupBox2.TabStop = false;
+            this.hitGroupBox.Controls.Add(this.hitHeadRadioBtn);
+            this.hitGroupBox.Controls.Add(this.hitLegsRadioBtn);
+            this.hitGroupBox.Controls.Add(this.hitBodyRadioBtn);
+            this.hitGroupBox.Location = new System.Drawing.Point(325, 89);
+            this.hitGroupBox.Name = "hitGroupBox";
+            this.hitGroupBox.Size = new System.Drawing.Size(88, 105);
+            this.hitGroupBox.TabIndex = 18;
+            this.hitGroupBox.TabStop = false;
             // 
             // imageList1
             // 
@@ -251,23 +251,23 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // pbArmorPlayer
+            // playerArmorProgress
             // 
-            this.pbArmorPlayer.Location = new System.Drawing.Point(30, 255);
-            this.pbArmorPlayer.Maximum = 10;
-            this.pbArmorPlayer.Name = "pbArmorPlayer";
-            this.pbArmorPlayer.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pbArmorPlayer.Size = new System.Drawing.Size(145, 12);
-            this.pbArmorPlayer.TabIndex = 21;
+            this.playerArmorProgress.Location = new System.Drawing.Point(30, 255);
+            this.playerArmorProgress.Maximum = 5;
+            this.playerArmorProgress.Name = "playerArmorProgress";
+            this.playerArmorProgress.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.playerArmorProgress.Size = new System.Drawing.Size(145, 12);
+            this.playerArmorProgress.TabIndex = 21;
             // 
-            // pbStrengthPlayer
+            // playerStrengthProgress
             // 
-            this.pbStrengthPlayer.Location = new System.Drawing.Point(30, 223);
-            this.pbStrengthPlayer.Maximum = 10;
-            this.pbStrengthPlayer.Name = "pbStrengthPlayer";
-            this.pbStrengthPlayer.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pbStrengthPlayer.Size = new System.Drawing.Size(145, 12);
-            this.pbStrengthPlayer.TabIndex = 22;
+            this.playerStrengthProgress.Location = new System.Drawing.Point(30, 223);
+            this.playerStrengthProgress.Maximum = 5;
+            this.playerStrengthProgress.Name = "playerStrengthProgress";
+            this.playerStrengthProgress.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.playerStrengthProgress.Size = new System.Drawing.Size(145, 12);
+            this.playerStrengthProgress.TabIndex = 22;
             // 
             // label3
             // 
@@ -305,109 +305,108 @@
             this.label6.TabIndex = 30;
             this.label6.Text = "Атака";
             // 
-            // pbStrengthBot
+            // botStrengthProgress
             // 
-            this.pbStrengthBot.Location = new System.Drawing.Point(404, 223);
-            this.pbStrengthBot.Maximum = 10;
-            this.pbStrengthBot.Name = "pbStrengthBot";
-            this.pbStrengthBot.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pbStrengthBot.Size = new System.Drawing.Size(145, 12);
-            this.pbStrengthBot.TabIndex = 29;
+            this.botStrengthProgress.Location = new System.Drawing.Point(404, 223);
+            this.botStrengthProgress.Maximum = 5;
+            this.botStrengthProgress.Name = "botStrengthProgress";
+            this.botStrengthProgress.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.botStrengthProgress.Size = new System.Drawing.Size(145, 12);
+            this.botStrengthProgress.TabIndex = 29;
             // 
-            // pbArmorBot
+            // botArmorProgress
             // 
-            this.pbArmorBot.Location = new System.Drawing.Point(404, 255);
-            this.pbArmorBot.Maximum = 10;
-            this.pbArmorBot.Name = "pbArmorBot";
-            this.pbArmorBot.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pbArmorBot.Size = new System.Drawing.Size(145, 12);
-            this.pbArmorBot.TabIndex = 28;
+            this.botArmorProgress.Location = new System.Drawing.Point(404, 255);
+            this.botArmorProgress.Maximum = 5;
+            this.botArmorProgress.Name = "botArmorProgress";
+            this.botArmorProgress.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.botArmorProgress.Size = new System.Drawing.Size(145, 12);
+            this.botArmorProgress.TabIndex = 28;
             // 
-            // butArmorPlayer
+            // playerArmorBtn
             // 
-            this.butArmorPlayer.Location = new System.Drawing.Point(186, 248);
-            this.butArmorPlayer.Name = "butArmorPlayer";
-            this.butArmorPlayer.Size = new System.Drawing.Size(28, 20);
-            this.butArmorPlayer.TabIndex = 35;
-            this.butArmorPlayer.Text = "+1";
-            this.butArmorPlayer.UseVisualStyleBackColor = true;
-            this.butArmorPlayer.Click += new System.EventHandler(this.butArmorPlayer_Click);
+            this.playerArmorBtn.Location = new System.Drawing.Point(186, 248);
+            this.playerArmorBtn.Name = "playerArmorBtn";
+            this.playerArmorBtn.Size = new System.Drawing.Size(28, 20);
+            this.playerArmorBtn.TabIndex = 35;
+            this.playerArmorBtn.Text = "+1";
+            this.playerArmorBtn.UseVisualStyleBackColor = true;
+            this.playerArmorBtn.Click += new System.EventHandler(this.PlayerArmorBtn_Click);
             // 
-            // butStrengthPlayer
+            // playerStrengthBtn
             // 
-            this.butStrengthPlayer.Location = new System.Drawing.Point(186, 216);
-            this.butStrengthPlayer.Name = "butStrengthPlayer";
-            this.butStrengthPlayer.Size = new System.Drawing.Size(28, 20);
-            this.butStrengthPlayer.TabIndex = 34;
-            this.butStrengthPlayer.Text = "+1";
-            this.butStrengthPlayer.UseVisualStyleBackColor = true;
-            this.butStrengthPlayer.Click += new System.EventHandler(this.butStrengthPlayer_Click);
+            this.playerStrengthBtn.Location = new System.Drawing.Point(186, 216);
+            this.playerStrengthBtn.Name = "playerStrengthBtn";
+            this.playerStrengthBtn.Size = new System.Drawing.Size(28, 20);
+            this.playerStrengthBtn.TabIndex = 34;
+            this.playerStrengthBtn.Text = "+1";
+            this.playerStrengthBtn.UseVisualStyleBackColor = true;
+            this.playerStrengthBtn.Click += new System.EventHandler(this.PlayerStrengthBtn_Click);
             // 
-            // lblStat
+            // bonusStatLbl
             // 
-            this.lblStat.AutoSize = true;
-            this.lblStat.Location = new System.Drawing.Point(192, 197);
-            this.lblStat.Name = "lblStat";
-            this.lblStat.Size = new System.Drawing.Size(196, 13);
-            this.lblStat.TabIndex = 36;
-            this.lblStat.Text = "У вас осталось 10 свободных статов";
+            this.bonusStatLbl.AutoSize = true;
+            this.bonusStatLbl.Location = new System.Drawing.Point(192, 197);
+            this.bonusStatLbl.Name = "bonusStatLbl";
+            this.bonusStatLbl.Size = new System.Drawing.Size(0, 13);
+            this.bonusStatLbl.TabIndex = 36;
             // 
-            // lblStatPlayerStrength
+            // playerStrengthLbl
             // 
-            this.lblStatPlayerStrength.AutoSize = true;
-            this.lblStatPlayerStrength.Location = new System.Drawing.Point(181, 222);
-            this.lblStatPlayerStrength.Name = "lblStatPlayerStrength";
-            this.lblStatPlayerStrength.Size = new System.Drawing.Size(0, 13);
-            this.lblStatPlayerStrength.TabIndex = 37;
-            this.lblStatPlayerStrength.Visible = false;
+            this.playerStrengthLbl.AutoSize = true;
+            this.playerStrengthLbl.Location = new System.Drawing.Point(181, 222);
+            this.playerStrengthLbl.Name = "playerStrengthLbl";
+            this.playerStrengthLbl.Size = new System.Drawing.Size(0, 13);
+            this.playerStrengthLbl.TabIndex = 37;
+            this.playerStrengthLbl.Visible = false;
             // 
-            // lblStatPlayerArmor
+            // playerArmorLbl
             // 
-            this.lblStatPlayerArmor.AutoSize = true;
-            this.lblStatPlayerArmor.Location = new System.Drawing.Point(181, 254);
-            this.lblStatPlayerArmor.Name = "lblStatPlayerArmor";
-            this.lblStatPlayerArmor.Size = new System.Drawing.Size(0, 13);
-            this.lblStatPlayerArmor.TabIndex = 38;
-            this.lblStatPlayerArmor.Visible = false;
+            this.playerArmorLbl.AutoSize = true;
+            this.playerArmorLbl.Location = new System.Drawing.Point(181, 254);
+            this.playerArmorLbl.Name = "playerArmorLbl";
+            this.playerArmorLbl.Size = new System.Drawing.Size(0, 13);
+            this.playerArmorLbl.TabIndex = 38;
+            this.playerArmorLbl.Visible = false;
             // 
-            // lblStatBotStrength
+            // botStrengthLbl
             // 
-            this.lblStatBotStrength.AutoSize = true;
-            this.lblStatBotStrength.Location = new System.Drawing.Point(388, 223);
-            this.lblStatBotStrength.Name = "lblStatBotStrength";
-            this.lblStatBotStrength.Size = new System.Drawing.Size(0, 13);
-            this.lblStatBotStrength.TabIndex = 39;
-            this.lblStatBotStrength.Visible = false;
+            this.botStrengthLbl.AutoSize = true;
+            this.botStrengthLbl.Location = new System.Drawing.Point(388, 223);
+            this.botStrengthLbl.Name = "botStrengthLbl";
+            this.botStrengthLbl.Size = new System.Drawing.Size(0, 13);
+            this.botStrengthLbl.TabIndex = 39;
+            this.botStrengthLbl.Visible = false;
             // 
-            // lblStatBotArmor
+            // botArmorLbl
             // 
-            this.lblStatBotArmor.AutoSize = true;
-            this.lblStatBotArmor.Location = new System.Drawing.Point(388, 254);
-            this.lblStatBotArmor.Name = "lblStatBotArmor";
-            this.lblStatBotArmor.Size = new System.Drawing.Size(0, 13);
-            this.lblStatBotArmor.TabIndex = 40;
-            this.lblStatBotArmor.Visible = false;
+            this.botArmorLbl.AutoSize = true;
+            this.botArmorLbl.Location = new System.Drawing.Point(388, 254);
+            this.botArmorLbl.Name = "botArmorLbl";
+            this.botArmorLbl.Size = new System.Drawing.Size(0, 13);
+            this.botArmorLbl.TabIndex = 40;
+            this.botArmorLbl.Visible = false;
             // 
-            // butNextBatl
+            // nextBatleBtn
             // 
-            this.butNextBatl.Enabled = false;
-            this.butNextBatl.Location = new System.Drawing.Point(252, 215);
-            this.butNextBatl.Name = "butNextBatl";
-            this.butNextBatl.Size = new System.Drawing.Size(75, 23);
-            this.butNextBatl.TabIndex = 42;
-            this.butNextBatl.Text = "След. раунд";
-            this.butNextBatl.UseVisualStyleBackColor = true;
-            this.butNextBatl.Click += new System.EventHandler(this.butNextBatl_Click);
+            this.nextBatleBtn.Enabled = false;
+            this.nextBatleBtn.Location = new System.Drawing.Point(252, 215);
+            this.nextBatleBtn.Name = "nextBatleBtn";
+            this.nextBatleBtn.Size = new System.Drawing.Size(75, 23);
+            this.nextBatleBtn.TabIndex = 42;
+            this.nextBatleBtn.Text = "След. раунд";
+            this.nextBatleBtn.UseVisualStyleBackColor = true;
+            this.nextBatleBtn.Click += new System.EventHandler(this.NextBatleBtn_Click);
             // 
-            // butRestart
+            // restartBtn
             // 
-            this.butRestart.Location = new System.Drawing.Point(261, 33);
-            this.butRestart.Name = "butRestart";
-            this.butRestart.Size = new System.Drawing.Size(58, 23);
-            this.butRestart.TabIndex = 43;
-            this.butRestart.Text = "Рестарт";
-            this.butRestart.UseVisualStyleBackColor = true;
-            this.butRestart.Click += new System.EventHandler(this.butRestart_Click);
+            this.restartBtn.Location = new System.Drawing.Point(261, 33);
+            this.restartBtn.Name = "restartBtn";
+            this.restartBtn.Size = new System.Drawing.Size(58, 23);
+            this.restartBtn.TabIndex = 43;
+            this.restartBtn.Text = "Рестарт";
+            this.restartBtn.UseVisualStyleBackColor = true;
+            this.restartBtn.Click += new System.EventHandler(this.RestartBtn_Click);
             // 
             // MainForm
             // 
@@ -415,43 +414,43 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(584, 561);
-            this.Controls.Add(this.butRestart);
-            this.Controls.Add(this.butNextBatl);
-            this.Controls.Add(this.lblStatBotArmor);
-            this.Controls.Add(this.lblStatBotStrength);
-            this.Controls.Add(this.lblStatPlayerArmor);
-            this.Controls.Add(this.lblStatPlayerStrength);
-            this.Controls.Add(this.lblStat);
-            this.Controls.Add(this.butArmorPlayer);
-            this.Controls.Add(this.butStrengthPlayer);
+            this.Controls.Add(this.restartBtn);
+            this.Controls.Add(this.nextBatleBtn);
+            this.Controls.Add(this.botArmorLbl);
+            this.Controls.Add(this.botStrengthLbl);
+            this.Controls.Add(this.playerArmorLbl);
+            this.Controls.Add(this.playerStrengthLbl);
+            this.Controls.Add(this.bonusStatLbl);
+            this.Controls.Add(this.playerArmorBtn);
+            this.Controls.Add(this.playerStrengthBtn);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.pbStrengthBot);
-            this.Controls.Add(this.pbArmorBot);
+            this.Controls.Add(this.botStrengthProgress);
+            this.Controls.Add(this.botArmorProgress);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.pbStrengthPlayer);
-            this.Controls.Add(this.pbArmorPlayer);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.butFight);
+            this.Controls.Add(this.playerStrengthProgress);
+            this.Controls.Add(this.playerArmorProgress);
+            this.Controls.Add(this.hitGroupBox);
+            this.Controls.Add(this.blockGroupBox);
+            this.Controls.Add(this.fightBtn);
             this.Controls.Add(this.txtLog);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.hitLbl);
+            this.Controls.Add(this.blockLbl);
             this.Controls.Add(this.lblBotXp);
             this.Controls.Add(this.lblPlayerXp);
-            this.Controls.Add(this.pbBot);
-            this.Controls.Add(this.pbPlayer);
-            this.Controls.Add(this.lblBot);
-            this.Controls.Add(this.lblPlayer);
+            this.Controls.Add(this.botHpProgress);
+            this.Controls.Add(this.playerHpProgress);
+            this.Controls.Add(this.botNameLbl);
+            this.Controls.Add(this.playerNameLbl);
             this.MaximumSize = new System.Drawing.Size(600, 600);
             this.MinimumSize = new System.Drawing.Size(600, 600);
             this.Name = "MainForm";
             this.Text = " Бойцовский клуб";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.blockGroupBox.ResumeLayout(false);
+            this.blockGroupBox.PerformLayout();
+            this.hitGroupBox.ResumeLayout(false);
+            this.hitGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -459,42 +458,42 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblPlayer;
-        private System.Windows.Forms.Label lblBot;
-        private System.Windows.Forms.ProgressBar pbPlayer;
-        private System.Windows.Forms.ProgressBar pbBot;
+        private System.Windows.Forms.Label playerNameLbl;
+        private System.Windows.Forms.Label botNameLbl;
+        private System.Windows.Forms.ProgressBar playerHpProgress;
+        private System.Windows.Forms.ProgressBar botHpProgress;
         private System.Windows.Forms.Label lblPlayerXp;
         private System.Windows.Forms.Label lblBotXp;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton rbBodyBlock;
-        private System.Windows.Forms.RadioButton rbLegsBlock;
-        private System.Windows.Forms.RadioButton rbHeadBlock;
-        private System.Windows.Forms.RadioButton rbHeadFight;
-        private System.Windows.Forms.RadioButton rbLegsFight;
-        private System.Windows.Forms.RadioButton rbBodyFight;
+        private System.Windows.Forms.Label blockLbl;
+        private System.Windows.Forms.Label hitLbl;
+        private System.Windows.Forms.RadioButton blockBodyRadioBtn;
+        private System.Windows.Forms.RadioButton blockLegsRadioBtn;
+        private System.Windows.Forms.RadioButton blockHeadRadioBtn;
+        private System.Windows.Forms.RadioButton hitHeadRadioBtn;
+        private System.Windows.Forms.RadioButton hitLegsRadioBtn;
+        private System.Windows.Forms.RadioButton hitBodyRadioBtn;
         private System.Windows.Forms.TextBox txtLog;
-        private System.Windows.Forms.Button butFight;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button fightBtn;
+        private System.Windows.Forms.GroupBox blockGroupBox;
+        private System.Windows.Forms.GroupBox hitGroupBox;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.ProgressBar pbArmorPlayer;
-        private System.Windows.Forms.ProgressBar pbStrengthPlayer;
+        private System.Windows.Forms.ProgressBar playerArmorProgress;
+        private System.Windows.Forms.ProgressBar playerStrengthProgress;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ProgressBar pbStrengthBot;
-        private System.Windows.Forms.ProgressBar pbArmorBot;
-        private System.Windows.Forms.Button butArmorPlayer;
-        private System.Windows.Forms.Button butStrengthPlayer;
-        private System.Windows.Forms.Label lblStat;
-        private System.Windows.Forms.Label lblStatPlayerStrength;
-        private System.Windows.Forms.Label lblStatPlayerArmor;
-        private System.Windows.Forms.Label lblStatBotStrength;
-        private System.Windows.Forms.Label lblStatBotArmor;
-        private System.Windows.Forms.Button butNextBatl;
-        private System.Windows.Forms.Button butRestart;
+        private System.Windows.Forms.ProgressBar botStrengthProgress;
+        private System.Windows.Forms.ProgressBar botArmorProgress;
+        private System.Windows.Forms.Button playerArmorBtn;
+        private System.Windows.Forms.Button playerStrengthBtn;
+        private System.Windows.Forms.Label bonusStatLbl;
+        private System.Windows.Forms.Label playerStrengthLbl;
+        private System.Windows.Forms.Label playerArmorLbl;
+        private System.Windows.Forms.Label botStrengthLbl;
+        private System.Windows.Forms.Label botArmorLbl;
+        private System.Windows.Forms.Button nextBatleBtn;
+        private System.Windows.Forms.Button restartBtn;
     }
 }
 

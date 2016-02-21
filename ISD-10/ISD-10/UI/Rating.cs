@@ -13,16 +13,16 @@ using System.Runtime.Serialization.Json;
 
 namespace ISD_10
 {
-    public interface IRating
+    public interface IScore
     {
         string NamePlayer { get; }
         void StartWindow();
         void ShowTableStat(Result[] table);        
     }
-    public partial class Rating : Form, IRating
+    public partial class Score : Form, IScore
     {        
         string name;        
-        public Rating()
+        public Score()
         {              
             InitializeComponent();
         }
