@@ -16,13 +16,15 @@ namespace Combats
 {
     public partial class Score : Form, IScore
     {
+        ScorePresenter present = null;
+        public event EventHandler Loader;        
         string name;
         public Score()
-        {
+        {                        
             InitializeComponent();
-            rulesBox.Text += "Победа: игрок получает + 5 статов + 10 хп" + Environment.NewLine;
-            rulesBox.Text += "Ничья: игрок и бот получают + 5 хп" + Environment.NewLine;
-            rulesBox.Text += "Поражение: бот получает + 10 статов + 20 хп" + Environment.NewLine;
+            present = new ScorePresenter(this);
+            StreamReader sr = new StreamReader(@".\rules.txt", Encoding.Default);  
+            rulesBox.Text = sr.ReadToEnd();            
         }
         public void StartWindow()
         {
@@ -50,6 +52,22 @@ namespace Combats
             {
                 resultDataGtid.Rows.Add(i + 1, table[i].Name, table[i].Hp);
                 resultDataGtid.Sort(resultDataGtid.Columns[2], ListSortDirection.Descending);
+            }
+        }
+        private void loadBtn_Click(object sender, EventArgs e)
+        {
+            name = insertNameTxt.Text;
+            if (insertNameTxt.Text != "Введите ваше имя" && insertNameTxt.Text != "")
+            {
+                this.Hide();
+            }
+            if (Loader != null) { Loader(this, EventArgs.Empty); }
+        }
+        private void insertNameTxt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                StartBtn_Click(this, EventArgs.Empty); 
             }
         }
     }

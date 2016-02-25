@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.insertNameTxt = new System.Windows.Forms.TextBox();
             this.startBtn = new System.Windows.Forms.Button();
             this.resultDataGtid = new System.Windows.Forms.DataGridView();
@@ -35,23 +36,25 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rulesBox = new System.Windows.Forms.TextBox();
+            this.loadBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGtid)).BeginInit();
             this.SuspendLayout();
             // 
             // insertNameTxt
             // 
-            this.insertNameTxt.Location = new System.Drawing.Point(12, 259);
+            this.insertNameTxt.Location = new System.Drawing.Point(12, 254);
             this.insertNameTxt.Name = "insertNameTxt";
-            this.insertNameTxt.Size = new System.Drawing.Size(468, 20);
+            this.insertNameTxt.Size = new System.Drawing.Size(303, 20);
             this.insertNameTxt.TabIndex = 0;
             this.insertNameTxt.Text = "Введите ваше имя";
             this.insertNameTxt.Click += new System.EventHandler(this.InsertNameTxt_Click);
+            this.insertNameTxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.insertNameTxt_KeyDown);
             // 
             // startBtn
             // 
-            this.startBtn.Location = new System.Drawing.Point(497, 257);
+            this.startBtn.Location = new System.Drawing.Point(332, 254);
             this.startBtn.Name = "startBtn";
-            this.startBtn.Size = new System.Drawing.Size(75, 23);
+            this.startBtn.Size = new System.Drawing.Size(66, 23);
             this.startBtn.TabIndex = 1;
             this.startBtn.Text = "В бой";
             this.startBtn.UseVisualStyleBackColor = true;
@@ -68,13 +71,21 @@
             this.Column1,
             this.Column2,
             this.Column3});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.resultDataGtid.DefaultCellStyle = dataGridViewCellStyle1;
             this.resultDataGtid.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.resultDataGtid.Location = new System.Drawing.Point(12, 16);
             this.resultDataGtid.Name = "resultDataGtid";
             this.resultDataGtid.RowHeadersVisible = false;
             this.resultDataGtid.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.resultDataGtid.Size = new System.Drawing.Size(303, 222);
-            this.resultDataGtid.TabIndex = 2;
+            this.resultDataGtid.TabIndex = 4;
             // 
             // Column1
             // 
@@ -103,11 +114,22 @@
             this.rulesBox.Size = new System.Drawing.Size(240, 222);
             this.rulesBox.TabIndex = 3;
             // 
+            // loadBtn
+            // 
+            this.loadBtn.Location = new System.Drawing.Point(413, 254);
+            this.loadBtn.Name = "loadBtn";
+            this.loadBtn.Size = new System.Drawing.Size(159, 23);
+            this.loadBtn.TabIndex = 2;
+            this.loadBtn.Text = "Загрузить сохраненный бой";
+            this.loadBtn.UseVisualStyleBackColor = true;
+            this.loadBtn.Click += new System.EventHandler(this.loadBtn_Click);
+            // 
             // Score
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 291);
+            this.Controls.Add(this.loadBtn);
             this.Controls.Add(this.rulesBox);
             this.Controls.Add(this.resultDataGtid);
             this.Controls.Add(this.startBtn);
@@ -133,5 +155,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.TextBox rulesBox;
+        private System.Windows.Forms.Button loadBtn;
     }
 }

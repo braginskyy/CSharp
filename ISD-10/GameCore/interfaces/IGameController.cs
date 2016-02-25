@@ -9,9 +9,9 @@ namespace GameCore
     public interface IGameController
     {
         void Fight(Position Hit, Position Block);
-        void SetBotStat();
-        void SetHp(int PlayerMaxProsress, int BotMaxProgress);
+        void SetBotStat();       
         void NextBatle();
+        void LoadPlayer(List<Character> table);
         void PlayerBonussSub();
         void PlayerStrengthAdd();
         void PlayerStrengthSub();

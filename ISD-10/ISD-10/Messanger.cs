@@ -11,7 +11,8 @@ namespace Combats
     {
         IPlayer player;
         IBot bot;
-        IMainForm view;        
+        IMainForm view;
+        StringBuilder str = new StringBuilder();
         public Messanger(IPlayer player, IBot bot, IMainForm view)
         {
             this.player = player;
@@ -29,17 +30,40 @@ namespace Combats
         }
         private void player_Wound(object sender, InfoEventArgs e)
         {
-            view.Log = "Игрок " + e.Name.ToUpper() + " получил урон " + e.Damage + " хп. " + " Осталось " + e.Hp + " хп. ";
+            str.Append("Игрок ");
+            str.Append(e.Name.ToUpper());
+            str.Append(" получил урон ");
+            str.Append(e.Damage);
+            str.Append(" хп. ");
+            str.Append(" Осталось ");
+            str.Append(e.Hp);
+            str.Append(" хп. ");
+            view.Log = str.ToString();
+            str.Clear();
         }
         private void player_Block(object sender, InfoEventArgs e)
         {
-
-            view.Log = "Игрок " + e.Name.ToUpper() + " заблокировал удар ";
+            str.Append("Игрок ");
+            str.Append(e.Name.ToUpper());
+            str.Append(" заблокировал удар ");
+            view.Log = str.ToString();
+            str.Clear();
         }
         private void player_Death(object sender, InfoEventArgs e)
         {
-            view.Log = "Игрок " + e.Name.ToUpper() + " получил урон " + e.Damage + " хп. " + " Осталось " + e.Hp + " хп. ";
-            view.Log = "Игрок " + e.Name.ToUpper() + " повержен ";
+            str.Append("Игрок ");
+            str.Append(e.Name.ToUpper());
+            str.Append(" получил урон ");
+            str.Append(e.Damage);
+            str.Append(" хп. ");
+            str.Append(" Осталось ");
+            str.Append(e.Hp);
+            str.AppendLine(" хп. ");
+            str.Append("Игрок ");
+            str.Append(e.Name.ToUpper());
+            str.Append(" повержен ");
+            view.Log = str.ToString();
+            str.Clear();
         }
     }
 }

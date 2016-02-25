@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameCore
 {
-    public enum Position { Head = 1, Body, Legs }   
+    public enum Position { Head = 1, Body, Legs }
     public class Player : IPlayer
     {
         public Player()
@@ -20,6 +20,7 @@ namespace GameCore
         protected int rand = 0;
         protected string name = "Player";
         protected int hp = Setup.BaseHp;
+        protected int maxHp = Setup.BaseHp;
         protected int strength = 0;
         protected int armor = 0;
         protected int bonus = Setup.BonusStat;
@@ -42,7 +43,7 @@ namespace GameCore
                     }
                     if (Wound != null)
                     {
-                        Wound(this, new InfoEventArgs(damage - armor, hp, name));
+                        Wound(this, new InfoEventArgs(damage - armor / 2, hp, name));
                     }
                 }
                 else
@@ -66,11 +67,17 @@ namespace GameCore
         public string Name
         {
             get { return name; }
+            set { name = value; }
         }
         public int Hp
         {
             get { return hp; }
             set { hp = value; }
+        }
+        public int MaxHp
+        {
+            get { return maxHp; }
+            set { maxHp = value; }
         }
         public int Strength
         {

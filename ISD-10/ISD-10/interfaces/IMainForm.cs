@@ -26,10 +26,11 @@ namespace Combats
         Position Hit { get; }
         Position Block { get; }
         string Log { set; }
-        string LabelStat { set; }
+        string LabelStat { set; }        
         event EventHandler Fight;
         event EventHandler NextBatle;
         event EventHandler PlayerStrengthAdd;
         event EventHandler PlayerArmorAdd;
+        event EventHandler Save;
     }
 }

@@ -12,7 +12,7 @@ namespace GameCore
     public class Log : ILog
     {
         string logFile = @".\log.json";
-        Result[] table = new Result[11];
+        Result[] table = new Result[11];        
         DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(Result[]));
         public void WriteFile()
         {

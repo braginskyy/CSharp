@@ -10,16 +10,16 @@ using System.Windows.Forms;
 using GameCore;
 
 namespace Combats
-{   
+{
     public partial class MainForm : Form, IMainForm
-    {        
-        Presenter present = null;        
+    {
+        MainPresenter present = null;       
         Position hit = Position.Legs;
         Position block = Position.Legs;
         public MainForm()
         {            
-            InitializeComponent();
-            present = new Presenter(this);
+            InitializeComponent();           
+            present = new MainPresenter(this); 
         }
         public string PlayerName
         {
@@ -27,7 +27,7 @@ namespace Combats
             set { playerNameLbl.Text = value; }
         }
         public int PlayerHp
-        {
+        {           
             get { return playerHpProgress.Value; }
             set
             {
@@ -117,7 +117,8 @@ namespace Combats
         public event EventHandler Fight;
         public event EventHandler NextBatle;
         public event EventHandler PlayerStrengthAdd;
-        public event EventHandler PlayerArmorAdd; 
+        public event EventHandler PlayerArmorAdd;
+        public event EventHandler Save;
         private void FightBtn_Click(object sender, EventArgs e)
         {
             playerStrengthLbl.Text = playerStrengthProgress.Value.ToString();
@@ -126,7 +127,7 @@ namespace Combats
             botArmorLbl.Text = (botArmorProgress.Value).ToString();
             VisibleControl();
             CheckRadioButton();
-        }              
+        }
         private void PlayerStrengthBtn_Click(object sender, EventArgs e)
         {
             if (PlayerStrengthAdd != null) { PlayerStrengthAdd(this, EventArgs.Empty); }
@@ -143,7 +144,7 @@ namespace Combats
         private void RestartBtn_Click(object sender, EventArgs e)
         {
             Application.Restart();
-        } 
+        }
         private void VisibleControl()
         {
             playerStrengthBtn.Visible = false;
@@ -164,7 +165,7 @@ namespace Combats
             playerArmorBtn.Visible = true;
             playerStrengthBtn.Visible = true;
             bonusStatLbl.Visible = true;
-        }       
+        }
         private void CheckRadioButton()
         {
             if (blockHeadRadioBtn.Checked) { block = Position.Head; }
@@ -184,7 +185,7 @@ namespace Combats
             autoHitCheckBox_CheckedChanged(this, EventArgs.Empty);
             if (botHpProgress.Value == 0 || playerHpProgress.Value == 0)
             {
-                nextBatleBtn.Enabled = true;                
+                nextBatleBtn.Enabled = true;
             }
         }
         private void AutoHitcheckBox_MouseHover(object sender, EventArgs e)
@@ -198,8 +199,17 @@ namespace Combats
             {
                 blockHeadRadioBtn.Checked = blockBodyRadioBtn.Checked = blockLegsRadioBtn.Checked = false;
                 hitHeadRadioBtn.Checked = hitBodyRadioBtn.Checked = hitLegsRadioBtn.Checked = false;
-            }            
+            }
+        }
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            if (Save != null) { Save(this, EventArgs.Empty); }
+            MessageBox.Show("Бой успешно сохранен.");            
+        }
+        private void txtLog_TextChanged(object sender, EventArgs e)
+        {
+            txtLog.SelectionStart = txtLog.Text.Length;            
+            txtLog.ScrollToCaret();
         }        
     }
-
 }

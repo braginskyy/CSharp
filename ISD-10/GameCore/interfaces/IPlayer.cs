@@ -8,8 +8,9 @@ namespace GameCore
 {
     public interface IPlayer
     {
-        string Name { get; }
+        string Name { get; set; }
         int Hp { get; set; }
+        int MaxHp { get; set; }
         int Strength { get; set; }
         int Armor { get; set; }
         int Rand { set; }
