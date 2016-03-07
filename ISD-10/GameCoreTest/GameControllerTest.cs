@@ -54,35 +54,45 @@ namespace GameCoreTest
         public void PlayerBonussSub_Substraction_One()
         {
             int bonus = player.Bonus;
+
             controller.PlayerBonussSub();
+
             Assert.AreEqual(player.Bonus, bonus - 1);
         }
         [Test]
         public void PlayerStrengthAdd_Adding_One()
         {
             int strength = player.Strength;
+
             controller.PlayerStrengthAdd();
+
             Assert.AreEqual(player.Strength, strength + 1);
         }
         [Test]
         public void PlayerStrengthSub_Substraction_One()
         {
             int strength = player.Strength;
+
             controller.PlayerStrengthSub();
+
             Assert.AreEqual(player.Strength, strength - 1);
         }
         [Test]
         public void PlayerArmorAdd_Adding_One()
         {
             int armor = player.Armor;
+
             controller.PlayerArmorAdd();
+
             Assert.AreEqual(player.Armor, armor + 1);
         }
         [Test]
         public void PlayerArmorSub_Substraction_One()
         {
             int armor = player.Armor;
+
             controller.PlayerArmorSub();
+
             Assert.AreEqual(player.Armor, armor - 1);
         }
         #region LoadPlayer
@@ -266,5 +276,12 @@ namespace GameCoreTest
             Assert.That(bot.Bonus, Is.EqualTo(bonus));
         } 
         #endregion
-    }
+        [Test]
+        public void SetBotStat_RandomSet_BotStrengthBotArmor()
+        {
+            controller.SetBotStat();
+
+            Assert.That(bot.Bonus, Is.EqualTo(bot.Strength + bot.Armor));
+        }
+    }    
 }
