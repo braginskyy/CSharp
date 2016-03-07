@@ -16,15 +16,13 @@ namespace Combats
 {
     public partial class Score : Form, IScore
     {
-        ScorePresenter present = null;
-        public event EventHandler Loader;        
+        ScorePresenter present = null;               
         string name;
+        bool loadStatus;
         public Score()
-        {                        
+        {                 
             InitializeComponent();
             present = new ScorePresenter(this);
-            StreamReader sr = new StreamReader(@".\rules.txt", Encoding.Default);  
-            rulesBox.Text = sr.ReadToEnd();            
         }
         public void StartWindow()
         {
@@ -33,6 +31,11 @@ namespace Combats
         public string NamePlayer
         {
             get { return name; }
+        }
+        public bool LoadStatus
+        {
+            get { return loadStatus; }
+            set { loadStatus = value; } 
         }
         private void StartBtn_Click(object sender, EventArgs e)
         {
@@ -56,12 +59,12 @@ namespace Combats
         }
         private void loadBtn_Click(object sender, EventArgs e)
         {
+            loadStatus = true;
             name = insertNameTxt.Text;
             if (insertNameTxt.Text != "Введите ваше имя" && insertNameTxt.Text != "")
             {
                 this.Hide();
             }
-            if (Loader != null) { Loader(this, EventArgs.Empty); }
         }
         private void insertNameTxt_KeyDown(object sender, KeyEventArgs e)
         {

@@ -20,7 +20,7 @@ namespace Combats
         private readonly IScore score;
         private readonly ILog log;
         private readonly ISaver save;
-        private readonly ILoader load;
+        private readonly ILoader load;        
         public MainPresenter(IMainForm view)
         {
             this.log = new Log();            
@@ -34,12 +34,16 @@ namespace Combats
             this.view = view;            
             this.controller = new GameController(player, bot);
             this.messange = new Messanger(player, bot, view);
-            if (LoadStatus.Status == true)
+            if (score.LoadStatus == true)
             {
                 controller.LoadPlayer(load.LoadPlayer(score.NamePlayer));
                 RefreshProgress();
             }
-            view.LabelStat = view.LabelStat = "У вас осталось " + player.Bonus + " свободных статов";
+            StringBuilder str = new StringBuilder();
+            str.Append("У вас осталось ");
+            str.Append(player.Bonus);
+            str.Append(" свободных статов");
+            view.LabelStat = str.ToString();
             controller.SetBotStat();
             messange.Message();
             View();
@@ -62,7 +66,11 @@ namespace Combats
                     controller.PlayerArmorAdd();
                     controller.PlayerBonussSub();
                     view.PlayerArmorProgress = player.Armor;
-                    view.LabelStat = "У вас осталось " + player.Bonus + " свободных статов";
+                    StringBuilder str = new StringBuilder();
+                    str.Append("У вас осталось ");
+                    str.Append(player.Bonus);
+                    str.Append(" свободных статов");
+                    view.LabelStat = str.ToString();
                 }
                 else
                 {
@@ -82,7 +90,11 @@ namespace Combats
                     controller.PlayerStrengthAdd();
                     controller.PlayerBonussSub();
                     view.PlayerStrengthProgress = player.Strength;
-                    view.LabelStat = "У вас осталось " + player.Bonus + " свободных статов";
+                    StringBuilder str = new StringBuilder();
+                    str.Append("У вас осталось ");
+                    str.Append(player.Bonus);
+                    str.Append(" свободных статов");
+                    view.LabelStat = str.ToString();
                 }
                 else
                 {

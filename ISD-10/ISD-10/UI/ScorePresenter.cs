@@ -19,12 +19,7 @@ namespace Combats
             this.log = new Log();
             this.load = new Loader();
             this.controller = new GameController();
-            score.ShowTableStat(log.ReadFile());
-            score.Loader += score_Loader;           
-        }
-        void score_Loader(object sender, EventArgs e)
-        {
-            LoadStatus.Status = true;          
-        }        
+            score.ShowTableStat(log.ReadFile());                       
+        }             
     }
 }

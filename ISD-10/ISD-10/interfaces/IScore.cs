@@ -10,8 +10,8 @@ namespace Combats
     public interface IScore
     {
         string NamePlayer { get; }
+        bool LoadStatus { get; set; }
         void ShowTableStat(Result[] table);
-        void StartWindow();
-        event EventHandler Loader;
+        void StartWindow();       
     }
 }
