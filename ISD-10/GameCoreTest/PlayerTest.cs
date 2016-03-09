@@ -10,94 +10,46 @@ namespace GameCoreTest
 {
     [TestFixture]
     public class PlayerTest
-    {
-        IPlayer player;
-        const int Hp = 100;
-        const int MaxDamage = 10000;
-        [SetUp]
-        public void Init()
-        {
-            player = new Player();
-        }
-        //[Test]
-        //public void GetHit_BlockEqualHit_SubstractionHp()
-        //{
-        //    for (int damage = -MaxDamage; damage <= MaxDamage; damage++)
-        //    {
-        //        for (Position p = Position.Legs; p <= Position.Head; p++)
-        //        {
-        //            player.SetBlock(p);
-        //            Position position = p;
+    {           
+        [TestFixture]
+        public class GetHit
+        {            
+            IPlayer player;
+            const int Hp = 100;
+            [SetUp]
+            public void Init()
+            {
+                player = new Player();
+                player.Hp = 100;
+                player.Armor = 10;
+            }
+            [Test]
+            public void GetHit_BlockEqualHit_SubstractionHp()
+            {
+                for (int damage = 0; damage <= 10000; damage++)
+                {
+                    player.SetBlock(Position.Legs);
+                    Position position = Position.Legs;
 
-        //            player.GetHit(position, damage);
+                    player.GetHit(position, damage);
 
-        //            Assert.That(player.Hp, Is.EqualTo(Hp));
-        //        }
-        //    }            
-        //}
-        //[Test]
-        //public void GetHit_BlockNotEqualHit_SubstractionHp()
-        //{
-        //    for (int damage = -MaxDamage; damage <= MaxDamage; damage++)
-        //    {
-        //        for (Position pBlock = Position.Legs; pBlock <= Position.Head; pBlock++)
-        //        {
-        //            for (Position pHit = Position.Legs; pHit <= Position.Head; pHit++)
-        //            {
-        //                player.SetBlock(pBlock);
-        //                Position position = pHit;
-        //                player.Hp = Hp;
+                    Assert.That(player.Hp, Is.EqualTo(Hp));
+                }
+            }
+            [Test]
+            public void GetHit_BlockNotEqualHit_SubstractionHp()
+            {
+                for (int damage = 0; damage <= 10000; damage++)
+                {
+                    player.SetBlock(Position.Legs);
+                    Position position = Position.Head;
+                    player.Hp = 100;
 
-        //                player.GetHit(position, damage);
+                    player.GetHit(position, damage);
 
-        //                Assert.That(player.Hp, Is.EqualTo(Hp - (damage - player.Armor / 2)).Or.EqualTo(0));
-        //            }
-        //        }
-        //    }
-        //}
-        [Test]
-        public void GetHit_BlockEqualHitDamageMin_SubstractionHp()
-        {
-            player.SetBlock(Position.Legs);
-            int damage = 0;
-            Position position = Position.Legs;
-
-            player.GetHit(position, damage);
-
-            Assert.That(player.Hp, Is.EqualTo(Hp));
-        }
-        [Test]
-        public void GetHit_BlockEqualHitDamageMax_SubstractionHp()
-        {
-            player.SetBlock(Position.Legs);
-            int damage = int.MaxValue;
-            Position position = Position.Legs;
-
-            player.GetHit(position, damage);
-
-            Assert.That(player.Hp, Is.EqualTo(Hp));
-        }
-        [Test]
-        public void GetHit_BlockNotEqualHitDamageMin_SubstractionHp()
-        {
-            player.SetBlock(Position.Legs);
-            int damage = 0;
-            Position position = Position.Head;
-
-            player.GetHit(position, damage);
-
-            Assert.That(player.Hp, Is.EqualTo(Hp));
-        }
-        [Test]
-        public void GetHit_BlockNotEqualHitDamageMax_SubstractionHp()
-        {
-            player.SetBlock(Position.Legs);
-            int damage = int.MaxValue;
-            Position position = Position.Head;
-
-            player.GetHit(position, damage);
-
-            Assert.That(player.Hp, Is.EqualTo(Hp - (damage - player.Armor / 2)).Or.EqualTo(0));
-        }
+                    Assert.That(player.Hp, Is.EqualTo(Hp - (damage - player.Armor / 2)).Or.EqualTo(player.Hp).Or.EqualTo(0));
+                }
+            }
+        } 
     }
 }
