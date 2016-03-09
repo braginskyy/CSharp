@@ -16,6 +16,8 @@ namespace GameCoreTest
         {            
             IPlayer player;
             const int Hp = 100;
+            const int damageMin = -10000;
+            const int damageMax = 10000;
             [SetUp]
             public void Init()
             {
@@ -26,7 +28,7 @@ namespace GameCoreTest
             [Test]
             public void GetHit_BlockEqualHit_SubstractionHp()
             {
-                for (int damage = 0; damage <= 10000; damage++)
+                for (int damage = damageMin; damage <= damageMax; damage++)
                 {
                     player.SetBlock(Position.Legs);
                     Position position = Position.Legs;
@@ -39,7 +41,7 @@ namespace GameCoreTest
             [Test]
             public void GetHit_BlockNotEqualHit_SubstractionHp()
             {
-                for (int damage = 0; damage <= 10000; damage++)
+                for (int damage = damageMin; damage <= damageMax; damage++)
                 {
                     player.SetBlock(Position.Legs);
                     Position position = Position.Head;
