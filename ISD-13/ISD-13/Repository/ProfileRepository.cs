@@ -1,17 +1,16 @@
 ﻿using ISD_13.Data;
-using ISD_13.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using ISD_13.Repository.Interfaces;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ISD_13.Repository
 {
-    public class HitLogRepository : Repository<HitLog>, IHitLogRepository
+    class ProfileRepository : Repository<Profile>, IProfileRepository
     {
-        public HitLogRepository(Context db)
+        public ProfileRepository(Context db)
             : base(db)
         {
         }

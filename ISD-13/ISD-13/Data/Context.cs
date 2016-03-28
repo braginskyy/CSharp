@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace ISD_13.Data
 {
-    class Context : DbContext
+    public class Context : DbContext
     {
-        public DbSet<Player> Player { get; set; }
-        public DbSet<Combat> Combat { get; set; }
-        public DbSet<HitLog> HitLog { get; set; }
-        public DbSet<Transaction> Transaction { get; set; }
+        public DbSet<Player> Players { get; set; }
+        public DbSet<Combat> Combats { get; set; }
+        public DbSet<HitLog> HitLogs { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ISD_13.Data;
 using ISD_13.Repository.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -9,51 +10,31 @@ using System.Threading.Tasks;
 
 namespace ISD_13.Repository
 {
-    class TransactionRepository : ITransactionRepository
+    public class TransactionRepository : Repository<Transaction>, ITransactionRepository
     {
-        private Context db;
-        public TransactionRepository()
+        public TransactionRepository(Context db)
+            : base(db)
         {
-            this.db = new Context();
         }
-        public IEnumerable<Transaction> TopTenBySum()
+        public IEnumerable TopTenUsersBySum()
         {
-            var query = GetList().OrderBy(t => t.Sum).Take(10).ToList();
+            var query = db.Transactions.Join(db.Players, t => t.Player.Id, p => p.Id, (t, p) => new
+                {
+                    Login = p.Login,
+                    Password = p.Password,
+                    Email = p.EMail,
+                    EMailValid = p.EMailValid,
+                    Profile = p.Profile,
+                    Id = p.Id,
+                    Sum = t.Sum
+
+                }).OrderByDescending(t => t.Sum).Take(10).ToList();
             return query;
         }
-
-        public IEnumerable<Transaction> GetList()
+        public IEnumerable<Transaction> FindAllTransactionByUserId(int id)
         {
-            return db.Transaction;
-        }
-
-        public Transaction Get(int id)
-        {
-            return db.Transaction.Find(id);
-        }
-
-        public void Create(Transaction transaction)
-        {
-            db.Transaction.Add(transaction);
-        }
-
-        public void Update(Transaction transaction)
-        {
-            db.Entry(transaction).State = EntityState.Modified;
-        }
-
-        public void Delate(int id)
-        {
-            Transaction transaction = db.Transaction.Find(id);
-            if (transaction != null)
-            {
-                db.Transaction.Remove(transaction);
-            }
-        }
-
-        public void Save()
-        {
-            db.SaveChanges();
+            var query = db.Transactions.Where(t => t.Player.Id == id).ToList();
+            return query;
         }
     }
 }

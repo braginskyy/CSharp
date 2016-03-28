@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ISD_13.Repository.Interfaces
 {
-    interface IPlayerRepository : IRepository<Player>
+    public interface IPlayerRepository : IRepository<Player>
     {
         IEnumerable<Player> FindRegisteredUsersByDate(DateTime date);
         IEnumerable<Player> FindUsersByValidEmail();

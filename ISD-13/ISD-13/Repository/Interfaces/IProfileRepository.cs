@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ISD_13.Repository.Interfaces
 {
-    public interface IHitLogRepository : IRepository<HitLog>
+    public interface IProfileRepository : IRepository<Profile>
     {
     }
 }

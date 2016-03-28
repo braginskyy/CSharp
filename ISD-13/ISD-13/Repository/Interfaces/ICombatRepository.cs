@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ISD_13.Repository.Interfaces
 {
-    interface ICombatRepository : IRepository<Combat>
+    public interface ICombatRepository : IRepository<Combat>
     {
     }
 }
