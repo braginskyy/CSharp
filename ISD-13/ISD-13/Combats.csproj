@@ -58,6 +58,27 @@
     <Compile Include="Data\Profile.cs" />
     <Compile Include="Data\Transaction.cs" />
     <Compile Include="Interfaces\IMainForm.cs" />
+    <Compile Include="Migrations\201603281241249_Init.cs" />
+    <Compile Include="Migrations\201603281241249_Init.Designer.cs">
+      <DependentUpon>201603281241249_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603281357273_New.cs" />
+    <Compile Include="Migrations\201603281357273_New.Designer.cs">
+      <DependentUpon>201603281357273_New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603281444090_New1.cs" />
+    <Compile Include="Migrations\201603281444090_New1.Designer.cs">
+      <DependentUpon>201603281444090_New1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603281508021_New2.cs" />
+    <Compile Include="Migrations\201603281508021_New2.Designer.cs">
+      <DependentUpon>201603281508021_New2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603281545233_Ne3.cs" />
+    <Compile Include="Migrations\201603281545233_Ne3.Designer.cs">
+      <DependentUpon>201603281545233_Ne3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\Interfaces\IProfileRepository.cs" />
     <Compile Include="Repository\Interfaces\IUnitOfWork.cs" />
     <Compile Include="MainForm.cs">
@@ -94,6 +115,21 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603281241249_Init.resx">
+      <DependentUpon>201603281241249_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603281357273_New.resx">
+      <DependentUpon>201603281357273_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603281444090_New1.resx">
+      <DependentUpon>201603281444090_New1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603281508021_New2.resx">
+      <DependentUpon>201603281508021_New2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603281545233_Ne3.resx">
+      <DependentUpon>201603281545233_Ne3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -104,7 +140,30 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ISD_13.Data.Combat.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Data.HitLog.datasource" />
     <None Include="Properties\DataSources\ISD_13.Data.Player.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Data.Transaction.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Interfaces.IMainForm.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.Configuration.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.Init.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.Init1.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.Init2.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Migrations.InitialCreate.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.CombatRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.HitLogRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.Interfaces.ICombatRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.Interfaces.IHitLogRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.Interfaces.IPlayerRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.Interfaces.IProfileRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.Interfaces.ITransactionRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.Interfaces.IUnitOfWork.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.PlayerRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.ProfileRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.TransactionRepository.datasource" />
+    <None Include="Properties\DataSources\ISD_13.Repository.UnitOfWork.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

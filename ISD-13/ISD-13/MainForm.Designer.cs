@@ -30,27 +30,41 @@
         {
             this.components = new System.ComponentModel.Container();
             this.PlayerDGV = new System.Windows.Forms.DataGridView();
+            this.TopTenUsersBySumBtn = new System.Windows.Forms.Button();
+            this.ValidEMailBtn = new System.Windows.Forms.Button();
+            this.ResetBtn = new System.Windows.Forms.Button();
+            this.TransactionDGV = new System.Windows.Forms.DataGridView();
+            this.CombatDGV = new System.Windows.Forms.DataGridView();
+            this.HitDGV = new System.Windows.Forms.DataGridView();
+            this.hitValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.partDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hitLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eMailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eMailValidDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.playersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this._ISD_13_Data_ContextDataSet1 = new ISD_13._ISD_13_Data_ContextDataSet1();
-            this.TopTenUsersBySumBtn = new System.Windows.Forms.Button();
-            this.ValidEMailBtn = new System.Windows.Forms.Button();
-            this.ResetBtn = new System.Windows.Forms.Button();
-            this.TransactionDGV = new System.Windows.Forms.DataGridView();
-            this.sumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.playersTableAdapter = new ISD_13._ISD_13_Data_ContextDataSet1TableAdapters.PlayersTableAdapter();
-            this.transactionsTableAdapter = new ISD_13._ISD_13_Data_ContextDataSet1TableAdapters.TransactionsTableAdapter();
+            this.playerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.combatBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.combatTypePVPDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.secondPlayerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.winnerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.experienceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerDGV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._ISD_13_Data_ContextDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionDGV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CombatDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HitDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hitLogBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.combatBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // PlayerDGV
@@ -63,53 +77,12 @@
             this.passwordDataGridViewTextBoxColumn,
             this.eMailDataGridViewTextBoxColumn,
             this.eMailValidDataGridViewCheckBoxColumn});
-            this.PlayerDGV.DataSource = this.playersBindingSource;
+            this.PlayerDGV.DataSource = this.playerBindingSource;
             this.PlayerDGV.Location = new System.Drawing.Point(12, 12);
             this.PlayerDGV.Name = "PlayerDGV";
             this.PlayerDGV.Size = new System.Drawing.Size(563, 355);
             this.PlayerDGV.TabIndex = 2;
             this.PlayerDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlayerDGV_CellClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // loginDataGridViewTextBoxColumn
-            // 
-            this.loginDataGridViewTextBoxColumn.DataPropertyName = "Login";
-            this.loginDataGridViewTextBoxColumn.HeaderText = "Login";
-            this.loginDataGridViewTextBoxColumn.Name = "loginDataGridViewTextBoxColumn";
-            // 
-            // passwordDataGridViewTextBoxColumn
-            // 
-            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
-            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
-            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            // 
-            // eMailDataGridViewTextBoxColumn
-            // 
-            this.eMailDataGridViewTextBoxColumn.DataPropertyName = "EMail";
-            this.eMailDataGridViewTextBoxColumn.HeaderText = "EMail";
-            this.eMailDataGridViewTextBoxColumn.Name = "eMailDataGridViewTextBoxColumn";
-            // 
-            // eMailValidDataGridViewCheckBoxColumn
-            // 
-            this.eMailValidDataGridViewCheckBoxColumn.DataPropertyName = "EMailValid";
-            this.eMailValidDataGridViewCheckBoxColumn.HeaderText = "EMailValid";
-            this.eMailValidDataGridViewCheckBoxColumn.Name = "eMailValidDataGridViewCheckBoxColumn";
-            // 
-            // playersBindingSource
-            // 
-            this.playersBindingSource.DataMember = "Players";
-            this.playersBindingSource.DataSource = this._ISD_13_Data_ContextDataSet1;
-            // 
-            // _ISD_13_Data_ContextDataSet1
-            // 
-            this._ISD_13_Data_ContextDataSet1.DataSetName = "_ISD_13_Data_ContextDataSet1";
-            this._ISD_13_Data_ContextDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // TopTenUsersBySumBtn
             // 
@@ -148,11 +121,72 @@
             this.TransactionDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sumDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn3});
-            this.TransactionDGV.DataSource = this.transactionsBindingSource;
-            this.TransactionDGV.Location = new System.Drawing.Point(595, 12);
+            this.TransactionDGV.DataSource = this.transactionBindingSource;
+            this.TransactionDGV.Location = new System.Drawing.Point(598, 280);
             this.TransactionDGV.Name = "TransactionDGV";
             this.TransactionDGV.Size = new System.Drawing.Size(272, 87);
             this.TransactionDGV.TabIndex = 6;
+            // 
+            // CombatDGV
+            // 
+            this.CombatDGV.AutoGenerateColumns = false;
+            this.CombatDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CombatDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.combatTypePVPDataGridViewCheckBoxColumn,
+            this.secondPlayerDataGridViewTextBoxColumn,
+            this.winnerDataGridViewTextBoxColumn,
+            this.experienceDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn4});
+            this.CombatDGV.DataSource = this.combatBindingSource;
+            this.CombatDGV.Location = new System.Drawing.Point(598, 12);
+            this.CombatDGV.Name = "CombatDGV";
+            this.CombatDGV.Size = new System.Drawing.Size(629, 150);
+            this.CombatDGV.TabIndex = 7;
+            this.CombatDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CombatDGV_CellClick);
+            // 
+            // HitDGV
+            // 
+            this.HitDGV.AutoGenerateColumns = false;
+            this.HitDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HitDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.hitValueDataGridViewTextBoxColumn,
+            this.partDataGridViewTextBoxColumn,
+            this.resultDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn5});
+            this.HitDGV.DataSource = this.hitLogBindingSource;
+            this.HitDGV.Location = new System.Drawing.Point(598, 168);
+            this.HitDGV.Name = "HitDGV";
+            this.HitDGV.Size = new System.Drawing.Size(467, 79);
+            this.HitDGV.TabIndex = 8;
+            // 
+            // hitValueDataGridViewTextBoxColumn
+            // 
+            this.hitValueDataGridViewTextBoxColumn.DataPropertyName = "HitValue";
+            this.hitValueDataGridViewTextBoxColumn.HeaderText = "HitValue";
+            this.hitValueDataGridViewTextBoxColumn.Name = "hitValueDataGridViewTextBoxColumn";
+            // 
+            // partDataGridViewTextBoxColumn
+            // 
+            this.partDataGridViewTextBoxColumn.DataPropertyName = "Part";
+            this.partDataGridViewTextBoxColumn.HeaderText = "Part";
+            this.partDataGridViewTextBoxColumn.Name = "partDataGridViewTextBoxColumn";
+            // 
+            // resultDataGridViewTextBoxColumn
+            // 
+            this.resultDataGridViewTextBoxColumn.DataPropertyName = "Result";
+            this.resultDataGridViewTextBoxColumn.HeaderText = "Result";
+            this.resultDataGridViewTextBoxColumn.Name = "resultDataGridViewTextBoxColumn";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Date";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // hitLogBindingSource
+            // 
+            this.hitLogBindingSource.DataSource = typeof(ISD_13.Data.HitLog);
             // 
             // sumDataGridViewTextBoxColumn
             // 
@@ -166,24 +200,91 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "Date";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
-            // transactionsBindingSource
+            // transactionBindingSource
             // 
-            this.transactionsBindingSource.DataMember = "Transactions";
-            this.transactionsBindingSource.DataSource = this._ISD_13_Data_ContextDataSet1;
+            this.transactionBindingSource.DataSource = typeof(ISD_13.Data.Transaction);
             // 
-            // playersTableAdapter
+            // dataGridViewTextBoxColumn1
             // 
-            this.playersTableAdapter.ClearBeforeFill = true;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // transactionsTableAdapter
+            // loginDataGridViewTextBoxColumn
             // 
-            this.transactionsTableAdapter.ClearBeforeFill = true;
+            this.loginDataGridViewTextBoxColumn.DataPropertyName = "Login";
+            this.loginDataGridViewTextBoxColumn.HeaderText = "Login";
+            this.loginDataGridViewTextBoxColumn.Name = "loginDataGridViewTextBoxColumn";
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            // 
+            // eMailDataGridViewTextBoxColumn
+            // 
+            this.eMailDataGridViewTextBoxColumn.DataPropertyName = "EMail";
+            this.eMailDataGridViewTextBoxColumn.HeaderText = "EMail";
+            this.eMailDataGridViewTextBoxColumn.Name = "eMailDataGridViewTextBoxColumn";
+            // 
+            // eMailValidDataGridViewCheckBoxColumn
+            // 
+            this.eMailValidDataGridViewCheckBoxColumn.DataPropertyName = "EMailValid";
+            this.eMailValidDataGridViewCheckBoxColumn.HeaderText = "EMailValid";
+            this.eMailValidDataGridViewCheckBoxColumn.Name = "eMailValidDataGridViewCheckBoxColumn";
+            // 
+            // playerBindingSource
+            // 
+            this.playerBindingSource.DataSource = typeof(ISD_13.Data.Player);
+            // 
+            // combatBindingSource
+            // 
+            this.combatBindingSource.DataSource = typeof(ISD_13.Data.Combat);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // combatTypePVPDataGridViewCheckBoxColumn
+            // 
+            this.combatTypePVPDataGridViewCheckBoxColumn.DataPropertyName = "CombatTypePVP";
+            this.combatTypePVPDataGridViewCheckBoxColumn.HeaderText = "CombatTypePVP";
+            this.combatTypePVPDataGridViewCheckBoxColumn.Name = "combatTypePVPDataGridViewCheckBoxColumn";
+            // 
+            // secondPlayerDataGridViewTextBoxColumn
+            // 
+            this.secondPlayerDataGridViewTextBoxColumn.DataPropertyName = "SecondPlayer";
+            this.secondPlayerDataGridViewTextBoxColumn.HeaderText = "SecondPlayer";
+            this.secondPlayerDataGridViewTextBoxColumn.Name = "secondPlayerDataGridViewTextBoxColumn";
+            // 
+            // winnerDataGridViewTextBoxColumn
+            // 
+            this.winnerDataGridViewTextBoxColumn.DataPropertyName = "Winner";
+            this.winnerDataGridViewTextBoxColumn.HeaderText = "Winner";
+            this.winnerDataGridViewTextBoxColumn.Name = "winnerDataGridViewTextBoxColumn";
+            // 
+            // experienceDataGridViewTextBoxColumn
+            // 
+            this.experienceDataGridViewTextBoxColumn.DataPropertyName = "Experience";
+            this.experienceDataGridViewTextBoxColumn.HeaderText = "Experience";
+            this.experienceDataGridViewTextBoxColumn.Name = "experienceDataGridViewTextBoxColumn";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Date";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1239, 405);
+            this.Controls.Add(this.HitDGV);
+            this.Controls.Add(this.CombatDGV);
             this.Controls.Add(this.TransactionDGV);
             this.Controls.Add(this.ResetBtn);
             this.Controls.Add(this.ValidEMailBtn);
@@ -193,10 +294,13 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PlayerDGV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._ISD_13_Data_ContextDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionDGV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CombatDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HitDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hitLogBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.combatBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -210,18 +314,29 @@
         private System.Windows.Forms.Button ValidEMailBtn;
         private System.Windows.Forms.Button ResetBtn;
         private System.Windows.Forms.DataGridView TransactionDGV;
-        private _ISD_13_Data_ContextDataSet1 _ISD_13_Data_ContextDataSet1;
-        private System.Windows.Forms.BindingSource playersBindingSource;
-        private _ISD_13_Data_ContextDataSet1TableAdapters.PlayersTableAdapter playersTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn loginDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn eMailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn eMailValidDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.BindingSource transactionsBindingSource;
-        private _ISD_13_Data_ContextDataSet1TableAdapters.TransactionsTableAdapter transactionsTableAdapter;
+        private System.Windows.Forms.BindingSource playerBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn sumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.BindingSource transactionBindingSource;
+        private System.Windows.Forms.DataGridView CombatDGV;
+        private System.Windows.Forms.DataGridView HitDGV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hitValueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn partDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.BindingSource hitLogBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn combatTypePVPDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn secondPlayerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn winnerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn experienceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.BindingSource combatBindingSource;
 
     }
 }

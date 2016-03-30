@@ -9,5 +9,6 @@ namespace ISD_13.Repository.Interfaces
 {
     public interface IHitLogRepository : IRepository<HitLog>
     {
-    }
+        IEnumerable<HitLog> FindHitsByUserId(int id);
+    }   
 }

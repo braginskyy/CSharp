@@ -17,6 +17,10 @@ namespace ISD_13.Data
         [Column(TypeName = "datetime2")]
         public DateTime Date { get; set; }
         public List<Transaction> Transactions { get; set; }
-        public List<Combat> Combats { get; set; }
+        public ICollection<Combat> Combats { get; set; }
+        public Profile()
+        {
+            Combats = new List<Combat>();
+        }
     }
 }

@@ -22,6 +22,18 @@ namespace ISD_13
             view.TopTenUsersBySum += view_TopTenUsersBySum;
             view.ValidEMail += view_ValidEMail;
             view.LoadTransaction += view_LoadTransaction;
+            view.LoadCombat += view_LoadCombat;
+            view.LoadHit += view_LoadHit;
+        }
+
+        void view_LoadHit(object sender, EventArgs e)
+        {
+            view.HitTable = unitOfWork.HitLog.FindHitsByUserId(view.CurrentCombatId) ;           
+        }
+
+        void view_LoadCombat(object sender, EventArgs e)
+        {
+            view.CombatTable = unitOfWork.Combat.FindCombatsByUserId(view.CurrentUserId);
         }
 
         void view_LoadTransaction(object sender, EventArgs e)
@@ -41,10 +53,7 @@ namespace ISD_13
 
         void view_LoadTable(object sender, EventArgs e)
         {
-            view.MainTable = unitOfWork.Player.GetAll().ToList();
-            //var player1 = new Player() { Login = "TestPlayer1", EMail = "testPlayer1@mail.ru", EMailValid = true, Date = 222 };
-            //unitOfWork.Player.Create(player1);
-            //unitOfWork.Save();
+            view.MainTable = unitOfWork.Player.GetAll().ToList();           
         }
     }
 }

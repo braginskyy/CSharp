@@ -16,5 +16,6 @@ namespace ISD_13.Data
         public int Result { get; set; }
         [Column(TypeName = "datetime2")]
         public DateTime Date { get; set; }
+        public Combat Combat { get; set; }
     }
 }

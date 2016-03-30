@@ -17,8 +17,11 @@ namespace ISD_13
         public event EventHandler TopTenUsersBySum;
         public event EventHandler ValidEMail;
         public event EventHandler LoadTransaction;
+        public event EventHandler LoadCombat;
+        public event EventHandler LoadHit;
         public MainPresenter presenter;
-        public int currentUserId;
+        private int currentUserId;
+        private int currentCombatId;
         public MainForm()
         {
             InitializeComponent();
@@ -28,6 +31,10 @@ namespace ISD_13
         {
             get { return currentUserId; }
         }
+        public int CurrentCombatId
+        {
+            get { return currentCombatId; }
+        }
         public object MainTable 
         {
             set { PlayerDGV.DataSource = value; } 
@@ -35,6 +42,14 @@ namespace ISD_13
         public object TransactionTable
         {
             set { TransactionDGV.DataSource = value; }
+        }
+        public object CombatTable
+        {
+            set { CombatDGV.DataSource = value; }
+        }
+        public object HitTable
+        {
+            set { HitDGV.DataSource = value; }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -55,21 +70,29 @@ namespace ISD_13
         private void ResetBtn_Click(object sender, EventArgs e)
         {
             if (LoadTable != null) { LoadTable(this, EventArgs.Empty); }
-        }
-
-        private void PlayerDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        }        
+        
+        private void PlayerDGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+            if (e.RowIndex != -1)
+            {
+                currentUserId = (int)PlayerDGV[0, e.RowIndex].Value; 
+            } 
+            LoadDetail();
         }
         public void LoadDetail()
         {
             if (LoadTransaction != null) { LoadTransaction(this, EventArgs.Empty); }
+            if (LoadCombat != null) { LoadCombat(this, EventArgs.Empty); }            
         }
 
-        private void PlayerDGV_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void CombatDGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            currentUserId = (int)PlayerDGV[0, e.RowIndex].Value;
-            LoadDetail();
-        }            
+            if (e.RowIndex != -1)
+            {
+                currentCombatId = (int)CombatDGV[0, e.RowIndex].Value; 
+            }            
+            if (LoadHit != null) { LoadHit(this, EventArgs.Empty); }
+        }        
     }
 }

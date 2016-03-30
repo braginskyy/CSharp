@@ -13,7 +13,11 @@ namespace ISD_13.Interfaces
         event EventHandler ValidEMail;
         event EventHandler LoadTransaction;
         int CurrentUserId { get; }
+        int CurrentCombatId { get; }
         object MainTable { set; }
         object TransactionTable { set; }
+        object CombatTable { set; }
+        object HitTable { set; }
+
     }
 }

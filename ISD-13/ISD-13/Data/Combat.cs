@@ -18,5 +18,10 @@ namespace ISD_13.Data
         public List<HitLog> CombatLog { get; set; }
         [Column(TypeName = "datetime2")]
         public DateTime Date { get; set; }
+        public ICollection<Profile> Profiles { get; set; }
+        public Combat()
+        {
+            Profiles = new List<Profile>();
+        }
     }
 }

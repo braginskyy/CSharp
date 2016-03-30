@@ -15,5 +15,10 @@ namespace ISD_13.Repository
             : base(db)
         {
         }
+        public IEnumerable<Combat> FindCombatsByUserId(int id)
+        {
+            var query = db.Combats.Where(c => (c.FirstPlayer.Id == id) || (c.SecondPlayer.Id == id)).ToList();           
+            return query; 
+        }
     }
 }
