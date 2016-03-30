@@ -78,6 +78,10 @@
     <Compile Include="Migrations\201603281545233_Ne3.Designer.cs">
       <DependentUpon>201603281545233_Ne3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603301659544_NewField.cs" />
+    <Compile Include="Migrations\201603301659544_NewField.Designer.cs">
+      <DependentUpon>201603301659544_NewField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\Interfaces\IProfileRepository.cs" />
     <Compile Include="Repository\Interfaces\IUnitOfWork.cs" />
@@ -129,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603281545233_Ne3.resx">
       <DependentUpon>201603281545233_Ne3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603301659544_NewField.resx">
+      <DependentUpon>201603301659544_NewField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

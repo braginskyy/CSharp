@@ -24,6 +24,14 @@ namespace ISD_13
             view.LoadTransaction += view_LoadTransaction;
             view.LoadCombat += view_LoadCombat;
             view.LoadHit += view_LoadHit;
+            view.UpdateTransactionTable += view_UpdateTransactionTable;
+        }
+
+        void view_UpdateTransactionTable(object sender, EventArgs e)
+        {
+            //var transaction = unitOfWork.Transaction.Get(view.EditCell);
+            //transaction.Sum = (int)view.TransactionTable;
+            //unitOfWork.Transaction.Update();
         }
 
         void view_LoadHit(object sender, EventArgs e)

@@ -12,12 +12,15 @@ namespace ISD_13.Interfaces
         event EventHandler TopTenUsersBySum;
         event EventHandler ValidEMail;
         event EventHandler LoadTransaction;
+        event EventHandler LoadCombat;
+        event EventHandler LoadHit;
+        event EventHandler UpdateTransactionTable;
         int CurrentUserId { get; }
         int CurrentCombatId { get; }
+        int EditCell { get; }
         object MainTable { set; }
-        object TransactionTable { set; }
+        object TransactionTable { get; set; }
         object CombatTable { set; }
         object HitTable { set; }
-
     }
 }

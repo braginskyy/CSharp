@@ -19,9 +19,12 @@ namespace ISD_13
         public event EventHandler LoadTransaction;
         public event EventHandler LoadCombat;
         public event EventHandler LoadHit;
-        public MainPresenter presenter;
+        public event EventHandler UpdateTransactionTable;
+        public MainPresenter presenter;        
         private int currentUserId;
         private int currentCombatId;
+        private int editCellRow;
+        private int editCellColumn;
         public MainForm()
         {
             InitializeComponent();
@@ -35,12 +38,17 @@ namespace ISD_13
         {
             get { return currentCombatId; }
         }
+        public int EditCell
+        {
+            get { return editCellRow; }
+        }
         public object MainTable 
         {
             set { PlayerDGV.DataSource = value; } 
         }
         public object TransactionTable
         {
+            get { return TransactionDGV.Rows[editCellRow].Cells[editCellColumn].Value ; }
             set { TransactionDGV.DataSource = value; }
         }
         public object CombatTable
@@ -93,6 +101,17 @@ namespace ISD_13
                 currentCombatId = (int)CombatDGV[0, e.RowIndex].Value; 
             }            
             if (LoadHit != null) { LoadHit(this, EventArgs.Empty); }
+        }
+
+        private void TransactionDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {            
+            if (UpdateTransactionTable != null) { UpdateTransactionTable(this, EventArgs.Empty); }
+        }
+
+        private void TransactionDGV_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            editCellRow = (int)TransactionDGV[0, e.RowIndex].Value;
+            editCellColumn = e.ColumnIndex;
         }        
     }
 }
