@@ -20,6 +20,7 @@ namespace ISD_13
         public event EventHandler LoadCombat;
         public event EventHandler LoadHit;
         public event EventHandler UpdateTransactionTable;
+        public event EventHandler SavePlayer;
         public MainPresenter presenter;        
         private int currentUserId;
         private int currentCombatId;
@@ -28,7 +29,7 @@ namespace ISD_13
         public MainForm()
         {
             InitializeComponent();
-            presenter = new MainPresenter(this);
+            presenter = new MainPresenter(this);            
         }
         public int CurrentUserId
         {
@@ -61,7 +62,7 @@ namespace ISD_13
         }
 
         private void MainForm_Load(object sender, EventArgs e)
-        {           
+        {            
             if (LoadTable != null) { LoadTable(this, EventArgs.Empty); }
         }
 
@@ -112,6 +113,11 @@ namespace ISD_13
         {
             editCellRow = (int)TransactionDGV[0, e.RowIndex].Value;
             editCellColumn = e.ColumnIndex;
+        }
+
+        private void SaveBtn_Click(object sender, EventArgs e)
+        {
+            if (SavePlayer != null) { SavePlayer(this, EventArgs.Empty); }
         }        
     }
 }

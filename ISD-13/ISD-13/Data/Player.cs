@@ -14,7 +14,14 @@ namespace ISD_13.Data
         public string Login { get; set; }
         public string Password { get; set; }
         public string EMail { get; set; }        
-        public bool EMailValid { get; set; }        
-        public  Profile Profile { get; set; }
+        public bool EMailValid { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime Date { get; set; }
+        public List<Transaction> Transactions { get; set; }
+        public ICollection<Combat> Combats { get; set; }
+        public Player()
+        {
+            Combats = new List<Combat>();
+        }        
     }
 }

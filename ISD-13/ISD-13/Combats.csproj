@@ -55,35 +55,21 @@
     <Compile Include="Data\Context.cs" />
     <Compile Include="Data\HitLog.cs" />
     <Compile Include="Data\Player.cs" />
-    <Compile Include="Data\Profile.cs" />
     <Compile Include="Data\Transaction.cs" />
     <Compile Include="Interfaces\IMainForm.cs" />
-    <Compile Include="Migrations\201603281241249_Init.cs" />
-    <Compile Include="Migrations\201603281241249_Init.Designer.cs">
-      <DependentUpon>201603281241249_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201604012020153_New.cs" />
+    <Compile Include="Migrations\201604012020153_New.Designer.cs">
+      <DependentUpon>201604012020153_New.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603281357273_New.cs" />
-    <Compile Include="Migrations\201603281357273_New.Designer.cs">
-      <DependentUpon>201603281357273_New.cs</DependentUpon>
+    <Compile Include="Migrations\201604012024447_New1.cs" />
+    <Compile Include="Migrations\201604012024447_New1.Designer.cs">
+      <DependentUpon>201604012024447_New1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603281444090_New1.cs" />
-    <Compile Include="Migrations\201603281444090_New1.Designer.cs">
-      <DependentUpon>201603281444090_New1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603281508021_New2.cs" />
-    <Compile Include="Migrations\201603281508021_New2.Designer.cs">
-      <DependentUpon>201603281508021_New2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603281545233_Ne3.cs" />
-    <Compile Include="Migrations\201603281545233_Ne3.Designer.cs">
-      <DependentUpon>201603281545233_Ne3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603301659544_NewField.cs" />
-    <Compile Include="Migrations\201603301659544_NewField.Designer.cs">
-      <DependentUpon>201603301659544_NewField.cs</DependentUpon>
+    <Compile Include="Migrations\201604031831485_SaveUpdates.cs" />
+    <Compile Include="Migrations\201604031831485_SaveUpdates.Designer.cs">
+      <DependentUpon>201604031831485_SaveUpdates.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Repository\Interfaces\IProfileRepository.cs" />
     <Compile Include="Repository\Interfaces\IUnitOfWork.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -102,7 +88,6 @@
     <Compile Include="Repository\Interfaces\IRepository.cs" />
     <Compile Include="Repository\Interfaces\ITransactionRepository.cs" />
     <Compile Include="Repository\PlayerRepository.cs" />
-    <Compile Include="Repository\ProfileRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\TransactionRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
@@ -119,23 +104,14 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603281241249_Init.resx">
-      <DependentUpon>201603281241249_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604012020153_New.resx">
+      <DependentUpon>201604012020153_New.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603281357273_New.resx">
-      <DependentUpon>201603281357273_New.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604012024447_New1.resx">
+      <DependentUpon>201604012024447_New1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603281444090_New1.resx">
-      <DependentUpon>201603281444090_New1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603281508021_New2.resx">
-      <DependentUpon>201603281508021_New2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603281545233_Ne3.resx">
-      <DependentUpon>201603281545233_Ne3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603301659544_NewField.resx">
-      <DependentUpon>201603301659544_NewField.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604031831485_SaveUpdates.resx">
+      <DependentUpon>201604031831485_SaveUpdates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

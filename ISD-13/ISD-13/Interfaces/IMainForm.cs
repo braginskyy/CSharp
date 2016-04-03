@@ -15,6 +15,7 @@ namespace ISD_13.Interfaces
         event EventHandler LoadCombat;
         event EventHandler LoadHit;
         event EventHandler UpdateTransactionTable;
+        event EventHandler SavePlayer;
         int CurrentUserId { get; }
         int CurrentCombatId { get; }
         int EditCell { get; }

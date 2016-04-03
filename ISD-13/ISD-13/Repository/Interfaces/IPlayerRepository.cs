@@ -11,5 +11,6 @@ namespace ISD_13.Repository.Interfaces
     {
         IEnumerable<Player> FindRegisteredUsersByDate(DateTime date);
         IEnumerable<Player> FindUsersByValidEmail();
+        void SaveUpdates(List<Player> playerList);
     }
 }

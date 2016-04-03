@@ -7,13 +7,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ISD_13
 {
     public class MainPresenter
     {
         private readonly IMainForm view;
-        private readonly IUnitOfWork unitOfWork;        
+        private readonly IUnitOfWork unitOfWork;  
+        private List<Player> playerList;
+        private BindingSource playerBindingSource = new BindingSource();        
         public MainPresenter(MainForm view)
         {
             this.view = view;
@@ -25,6 +28,13 @@ namespace ISD_13
             view.LoadCombat += view_LoadCombat;
             view.LoadHit += view_LoadHit;
             view.UpdateTransactionTable += view_UpdateTransactionTable;
+            view.SavePlayer += view_SavePlayer;
+        }
+
+        void view_SavePlayer(object sender, EventArgs e)
+        {            
+            
+            unitOfWork.Player.SaveUpdates(playerList);
         }
 
         void view_UpdateTransactionTable(object sender, EventArgs e)
@@ -56,12 +66,14 @@ namespace ISD_13
 
         void view_TopTenUsersBySum(object sender, EventArgs e)
         {           
-            view.MainTable = unitOfWork.Transaction.TopTenUsersBySum();           
+            //view.MainTable = unitOfWork.Transaction.TopTenUsersBySum();           
         }
 
         void view_LoadTable(object sender, EventArgs e)
-        {
-            view.MainTable = unitOfWork.Player.GetAll().ToList();           
+        {            
+            playerList = unitOfWork.Player.GetAll().ToList();
+            playerBindingSource.DataSource = playerList;
+            view.MainTable = playerBindingSource;
         }
     }
 }

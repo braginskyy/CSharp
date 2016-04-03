@@ -12,7 +12,6 @@ namespace ISD_13.Data
         public DbSet<Player> Players { get; set; }
         public DbSet<Combat> Combats { get; set; }
         public DbSet<HitLog> HitLogs { get; set; }
-        public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<Profile> Profiles { get; set; }        
+        public DbSet<Transaction> Transactions { get; set; }         
     }
 }

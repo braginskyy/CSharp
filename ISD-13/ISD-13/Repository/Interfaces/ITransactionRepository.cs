@@ -10,7 +10,7 @@ namespace ISD_13.Repository.Interfaces
 {
     public interface ITransactionRepository : IRepository<Transaction>
     {
-        IEnumerable TopTenUsersBySum();
+        //IEnumerable TopTenUsersBySum();
         IEnumerable<Transaction> FindAllTransactionByUserId(int id);
     }
 }
