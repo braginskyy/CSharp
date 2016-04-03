@@ -8,20 +8,10 @@ namespace ISD_13.Interfaces
 {
     public interface IMainForm
     {
-        event EventHandler LoadTable;
-        event EventHandler TopTenUsersBySum;
-        event EventHandler ValidEMail;
-        event EventHandler LoadTransaction;
-        event EventHandler LoadCombat;
-        event EventHandler LoadHit;
-        event EventHandler UpdateTransactionTable;
+        event EventHandler LoadPlayerTables;
         event EventHandler SavePlayer;
-        int CurrentUserId { get; }
-        int CurrentCombatId { get; }
-        int EditCell { get; }
-        object MainTable { set; }
-        object TransactionTable { get; set; }
-        object CombatTable { set; }
-        object HitTable { set; }
+        object PlayerTable { set; }
+        bool ValidEmailCBStatus { get; }
+        bool TopTenUsersBySumCBStatus { get; }
     }
 }

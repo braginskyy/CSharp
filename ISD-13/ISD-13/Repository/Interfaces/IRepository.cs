@@ -12,6 +12,6 @@ namespace ISD_13.Repository.Interfaces
         T Get(int id);
         void Create(T item);
         void Update(T item);
-        void Delate(int id);       
+        void Delete(int id);       
     }
 }

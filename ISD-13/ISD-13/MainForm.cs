@@ -13,111 +13,45 @@ namespace ISD_13
 {
     public partial class MainForm : Form , IMainForm
     {
-        public event EventHandler LoadTable;
-        public event EventHandler TopTenUsersBySum;
-        public event EventHandler ValidEMail;
-        public event EventHandler LoadTransaction;
-        public event EventHandler LoadCombat;
-        public event EventHandler LoadHit;
-        public event EventHandler UpdateTransactionTable;
-        public event EventHandler SavePlayer;
-        public MainPresenter presenter;        
-        private int currentUserId;
-        private int currentCombatId;
-        private int editCellRow;
-        private int editCellColumn;
+        public event EventHandler LoadPlayerTables;
+        public event EventHandler SavePlayer;        
+        public MainPresenter presenter;
         public MainForm()
         {
             InitializeComponent();
             presenter = new MainPresenter(this);            
         }
-        public int CurrentUserId
+        public object PlayerTable
         {
-            get { return currentUserId; }
+            set { PlayerDGV.DataSource = value; }
         }
-        public int CurrentCombatId
+        public bool ValidEmailCBStatus
         {
-            get { return currentCombatId; }
+            get { return ValidEmailCB.Checked; }
         }
-        public int EditCell
+        public bool TopTenUsersBySumCBStatus
         {
-            get { return editCellRow; }
-        }
-        public object MainTable 
-        {
-            set { PlayerDGV.DataSource = value; } 
-        }
-        public object TransactionTable
-        {
-            get { return TransactionDGV.Rows[editCellRow].Cells[editCellColumn].Value ; }
-            set { TransactionDGV.DataSource = value; }
-        }
-        public object CombatTable
-        {
-            set { CombatDGV.DataSource = value; }
-        }
-        public object HitTable
-        {
-            set { HitDGV.DataSource = value; }
+            get { return TopTenUsersBySumCB.Checked; }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {            
-            if (LoadTable != null) { LoadTable(this, EventArgs.Empty); }
-        }
-
-        private void TopTenUsersBySumBtn_Click(object sender, EventArgs e)
-        {
-            if (TopTenUsersBySum != null) { TopTenUsersBySum(this, EventArgs.Empty); }
-        }
-
-        private void ValidEMailBtn_Click(object sender, EventArgs e)
-        {
-            if (ValidEMail != null) { ValidEMail(this, EventArgs.Empty); }
-        }
-
-        private void ResetBtn_Click(object sender, EventArgs e)
-        {
-            if (LoadTable != null) { LoadTable(this, EventArgs.Empty); }
-        }        
-        
-        private void PlayerDGV_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                currentUserId = (int)PlayerDGV[0, e.RowIndex].Value; 
-            } 
-            LoadDetail();
-        }
-        public void LoadDetail()
-        {
-            if (LoadTransaction != null) { LoadTransaction(this, EventArgs.Empty); }
-            if (LoadCombat != null) { LoadCombat(this, EventArgs.Empty); }            
-        }
-
-        private void CombatDGV_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                currentCombatId = (int)CombatDGV[0, e.RowIndex].Value; 
-            }            
-            if (LoadHit != null) { LoadHit(this, EventArgs.Empty); }
-        }
-
-        private void TransactionDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
-        {            
-            if (UpdateTransactionTable != null) { UpdateTransactionTable(this, EventArgs.Empty); }
-        }
-
-        private void TransactionDGV_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            editCellRow = (int)TransactionDGV[0, e.RowIndex].Value;
-            editCellColumn = e.ColumnIndex;
-        }
-
+            if (LoadPlayerTables != null) { LoadPlayerTables(this, EventArgs.Empty); }
+        } 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             if (SavePlayer != null) { SavePlayer(this, EventArgs.Empty); }
-        }        
+            if (LoadPlayerTables != null) { LoadPlayerTables(this, EventArgs.Empty); }            
+        }
+
+        private void ValidEmailCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (LoadPlayerTables != null) { LoadPlayerTables(this, EventArgs.Empty); } 
+        }
+
+        private void TopTenUsersBySumCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (LoadPlayerTables != null) { LoadPlayerTables(this, EventArgs.Empty); }
+        }
     }
 }

@@ -16,23 +16,7 @@ namespace ISD_13.Repository
             : base(db)
         {
         }
-        //public IEnumerable TopTenUsersBySum()
-        //{
-        //    var query = db.Transactions.Join(db.Players, t => t.Player.Id, p => p.Id, (t, p) => new
-        //        {
-        //            Id = p.Id,
-        //            Login = p.Login,
-        //            Password = p.Password,
-        //            Email = p.EMail,
-        //            EMailValid = p.EMailValid, 
-        //            //Date = p.Date,
-        //            Transactions = p.Transactions,
-        //            Combats = p.Combats,                    
-        //            Sum = t.Sum
-
-        //        }).OrderByDescending(t => t.Sum).Take(10).ToList();
-        //    return query;
-        //}
+       
         public IEnumerable<Transaction> FindAllTransactionByUserId(int id)
         {
             var query = db.Transactions.Where(t => t.Player.Id == id).ToList();

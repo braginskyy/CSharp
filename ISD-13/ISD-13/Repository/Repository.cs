@@ -28,23 +28,20 @@ namespace ISD_13.Repository
 
         public void Create(T item)
         {
-            db.Set<T>().Add(item);
-            db.SaveChanges();
+            db.Set<T>().Add(item);            
         }
 
         public void Update(T item)
         {
-            db.Entry(item).State = EntityState.Modified;
-            db.SaveChanges();
+            db.Entry(item).State = EntityState.Modified;            
         }
 
-        public void Delate(int id)
+        public void Delete(int id)
         {
             T item = db.Set<T>().Find(id);
             if (item != null)
             {
-                db.Set<T>().Remove(item);
-                db.SaveChanges();
+                db.Set<T>().Remove(item);                
             }
         }
     }
