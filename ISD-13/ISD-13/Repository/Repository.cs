@@ -44,5 +44,30 @@ namespace ISD_13.Repository
                 db.Set<T>().Remove(item);                
             }
         }
+        //public void SaveEdit(List<T> list)
+        //{
+        //    foreach (T p in list)
+        //    {
+        //        if (GetAll().Any(x => x.Id == p.Id))
+        //        {
+        //            Update(p);
+
+        //        }
+        //        else
+        //        {
+        //            Create(p);
+        //        }
+        //    }
+        //    Delete(list);
+        //}
+
+        //public void Delete(List<T> list)
+        //{
+        //    var query = GetAll().Except(list);
+        //    foreach (var p in query)
+        //    {
+        //        Delete(p.Id);
+        //    }
+        //}
     }
 }

@@ -15,11 +15,21 @@ namespace ISD_13
     {
         public event EventHandler LoadAllTables;        
         public event EventHandler SaveInfo;
+        public event EventHandler FindPlayerInfo;
         public MainPresenter presenter;
         public MainForm()
         {
             InitializeComponent();
             presenter = new MainPresenter(this);
+        }
+        public string CurrentPlayerName
+        {
+            get { return CurrentPlayerTxt.Text; }
+            set { CurrentPlayerTxt.Text = value; }
+        }
+        public int CurrentPlayerId
+        {
+            get { return (int)PlayerDGV[0, PlayerDGV.CurrentCellAddress.Y].Value; }            
         }
         public int CurrentTabIndex
         {
@@ -45,11 +55,7 @@ namespace ISD_13
         {
             get { return ValidEmailCB.Checked; }
         }
-        public bool TopTenUsersBySumCBStatus
-        {
-            get { return TopTenUsersBySumCB.Checked; }
-        }
-
+        
         private void MainForm_Load(object sender, EventArgs e)
         {
             if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }            
@@ -64,9 +70,9 @@ namespace ISD_13
             if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
         }
 
-        private void TopTenUsersBySumCB_CheckedChanged(object sender, EventArgs e)
+        private void PlayerDGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
+            if (FindPlayerInfo != null) { FindPlayerInfo(this, EventArgs.Empty); }           
         }
     }
 }

@@ -29,7 +29,12 @@ namespace ISD_13
             this.unitOfWork = new UnitOfWork();
             view.LoadAllTables += view_LoadAllTables;
             view.SaveInfo += SaveInfo;
+            view.FindPlayerInfo += view_FindPlayerInfo;
+        }
 
+        void view_FindPlayerInfo(object sender, EventArgs e)
+        {
+            view.CurrentPlayerName = unitOfWork.Player.Get(view.CurrentPlayerId).Login;
         }
 
         void SaveInfo(object sender, EventArgs e)
@@ -52,10 +57,16 @@ namespace ISD_13
                     }
                 case 2:
                     {
+                        unitOfWork.Combat.SaveEdit(combatList);
+                        unitOfWork.Save();
+                        LoadCombatTable();
                         break;
                     }
                 case 3:
                     {
+                        unitOfWork.HitLog.SaveEdit(hitLogList);
+                        unitOfWork.Save();
+                        LoadHitLogTable();
                         break;
                     }
                 default:
@@ -65,27 +76,6 @@ namespace ISD_13
             }
         }
 
-        //void view_UpdateTransactionTable(object sender, EventArgs e)
-        //{
-        //    var transaction = unitOfWork.Transaction.Get(view.EditCell);
-        //    transaction.Sum = (int)view.TransactionTable;
-        //    unitOfWork.Transaction.Update();
-        //}
-
-        //void view_LoadHit(object sender, EventArgs e)
-        //{
-        //    view.HitTable = unitOfWork.HitLog.FindHitsByUserId(view.CurrentCombatId) ;           
-        //}
-
-        //void view_LoadCombat(object sender, EventArgs e)
-        //{
-        //    view.CombatTable = unitOfWork.Combat.FindCombatsByUserId(view.CurrentUserId);
-        //}
-
-        //void view_LoadTransaction(object sender, EventArgs e)
-        //{
-        //    view.TransactionTable = unitOfWork.Transaction.FindAllTransactionByUserId(view.CurrentUserId);
-        //}
         void view_LoadAllTables(object sender, EventArgs e)
         {
             LoadPlayerTable();
@@ -101,9 +91,17 @@ namespace ISD_13
         }
         public void LoadCombatTable()
         {
-            combatList = unitOfWork.Combat.GetAll().ToList();
+            if (view.CurrentPlayerName == "")
+            {
+                combatList = unitOfWork.Combat.GetAll().ToList();                
+            }
+            else
+            {
+                combatList = unitOfWork.Combat.FindCombatsByUserId(view.CurrentPlayerId); 
+            }
             combatBindingSource.DataSource = combatList;
             view.CombatTable = combatBindingSource;
+           
         }
         public void LoadHitLogTable()
         {
@@ -114,8 +112,10 @@ namespace ISD_13
         public void LoadPlayerTable()
         {
             playerList = unitOfWork.Player.GetAll().ToList();
-            if (view.ValidEmailCBStatus) { playerList = unitOfWork.Player.FindUsersByValidEmail().ToList(); }
-            //if (view.TopTenUsersBySumCBStatus) { playerList = unitOfWork.Player.TopTenUsersBySum().ToList(); }
+            if (view.ValidEmailCBStatus) 
+            { 
+                playerList = unitOfWork.Player.FindUsersByValidEmail().ToList(); 
+            }           
             playerBindingSource.DataSource = playerList;
             view.PlayerTable = playerBindingSource;
         }

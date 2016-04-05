@@ -10,12 +10,14 @@ namespace ISD_13.Interfaces
     {
         event EventHandler LoadAllTables;       
         event EventHandler SaveInfo;
+        event EventHandler FindPlayerInfo;
+        string CurrentPlayerName { get;  set; }
+        int CurrentPlayerId { get; }
         int CurrentTabIndex { get; }
         object PlayerTable { set; }
         object TransactionTable { set; }
         object CombatTable { set; }
         object HitLogTable { set; }
-        bool ValidEmailCBStatus { get; }
-        bool TopTenUsersBySumCBStatus { get; }
+        bool ValidEmailCBStatus { get; }        
     }
 }

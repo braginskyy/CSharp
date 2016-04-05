@@ -15,10 +15,35 @@ namespace ISD_13.Repository
             : base(db)
         {
         }
-        public IEnumerable<Combat> FindCombatsByUserId(int id)
+        public List<Combat> FindCombatsByUserId(int id)
         {
             var query = db.Combats.Where(c => (c.FirstPlayer.Id == id) || (c.SecondPlayer.Id == id)).ToList();           
             return query; 
+        }
+        public void SaveEdit(List<Combat> combatList)
+        {
+            foreach (Combat p in combatList)
+            {
+                if (GetAll().Any(x => x.Id == p.Id))
+                {
+                    Update(p);
+
+                }
+                else
+                {
+                    Create(p);
+                }
+            }
+            Delete(combatList);
+        }
+
+        public void Delete(List<Combat> combatList)
+        {
+            var query = GetAll().Except(combatList);
+            foreach (var p in query)
+            {
+                Delete(p.Id);
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ namespace ISD_13.Repository.Interfaces
 {
     public interface ICombatRepository : IRepository<Combat>
     {
-        IEnumerable<Combat> FindCombatsByUserId(int id);
+        List<Combat> FindCombatsByUserId(int id);
+        void SaveEdit(List<Combat> combatList);
     }
 }
