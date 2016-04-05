@@ -22,6 +22,10 @@ namespace ISD_13.Data
         public Player()
         {
             Combats = new List<Combat>();
-        }        
+        }
+        public override string ToString()
+        {
+            return Login;
+        }
     }
 }

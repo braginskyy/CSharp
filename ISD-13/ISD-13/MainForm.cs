@@ -11,19 +11,35 @@ using System.Windows.Forms;
 
 namespace ISD_13
 {
-    public partial class MainForm : Form , IMainForm
+    public partial class MainForm : Form, IMainForm
     {
-        public event EventHandler LoadPlayerTables;
-        public event EventHandler SavePlayer;        
+        public event EventHandler LoadAllTables;        
+        public event EventHandler SaveInfo;
         public MainPresenter presenter;
         public MainForm()
         {
             InitializeComponent();
-            presenter = new MainPresenter(this);            
+            presenter = new MainPresenter(this);
+        }
+        public int CurrentTabIndex
+        {
+            get { return MainTab.SelectedIndex; }
         }
         public object PlayerTable
         {
             set { PlayerDGV.DataSource = value; }
+        }
+        public object TransactionTable
+        {
+            set { TransactionDGV.DataSource = value; }
+        }
+        public object CombatTable
+        {
+            set { CombatDGV.DataSource = value; }
+        }
+        public object HitLogTable
+        {
+            set { HitDGV.DataSource = value; }
         }
         public bool ValidEmailCBStatus
         {
@@ -35,23 +51,22 @@ namespace ISD_13
         }
 
         private void MainForm_Load(object sender, EventArgs e)
-        {            
-            if (LoadPlayerTables != null) { LoadPlayerTables(this, EventArgs.Empty); }
-        } 
+        {
+            if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }            
+        }
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            if (SavePlayer != null) { SavePlayer(this, EventArgs.Empty); }
-            if (LoadPlayerTables != null) { LoadPlayerTables(this, EventArgs.Empty); }            
+            if (SaveInfo != null) { SaveInfo(this, EventArgs.Empty); }            
         }
 
         private void ValidEmailCB_CheckedChanged(object sender, EventArgs e)
         {
-            if (LoadPlayerTables != null) { LoadPlayerTables(this, EventArgs.Empty); } 
+            if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
         }
 
         private void TopTenUsersBySumCB_CheckedChanged(object sender, EventArgs e)
         {
-            if (LoadPlayerTables != null) { LoadPlayerTables(this, EventArgs.Empty); }
+            if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
         }
     }
 }

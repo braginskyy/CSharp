@@ -8,9 +8,13 @@ namespace ISD_13.Interfaces
 {
     public interface IMainForm
     {
-        event EventHandler LoadPlayerTables;
-        event EventHandler SavePlayer;
+        event EventHandler LoadAllTables;       
+        event EventHandler SaveInfo;
+        int CurrentTabIndex { get; }
         object PlayerTable { set; }
+        object TransactionTable { set; }
+        object CombatTable { set; }
+        object HitLogTable { set; }
         bool ValidEmailCBStatus { get; }
         bool TopTenUsersBySumCBStatus { get; }
     }

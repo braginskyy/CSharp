@@ -16,9 +16,9 @@ namespace ISD_13.Repository
         private ICombatRepository combatRepository;
         private IHitLogRepository hitLogRepository;
         private ITransactionRepository transactionRepository;
-        public UnitOfWork(Context db)
+        public UnitOfWork()
         {
-            this.db = db;
+            this.db = new Context();
         }
         public IPlayerRepository Player
         {

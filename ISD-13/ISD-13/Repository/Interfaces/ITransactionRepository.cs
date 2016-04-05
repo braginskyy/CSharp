@@ -11,5 +11,6 @@ namespace ISD_13.Repository.Interfaces
     public interface ITransactionRepository : IRepository<Transaction>
     { 
         IEnumerable<Transaction> FindAllTransactionByUserId(int id);
+        void SaveEdit(List<Transaction> transactionList);
     }
 }

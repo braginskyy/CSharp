@@ -17,8 +17,8 @@ namespace ISD_13
         {
             using (var db = new Context())
             {
-                //var player1 = new Player() { Login = "Ninja", Password = "123456", EMail = "testPlayer1@mail.ru", EMailValid = true };
-                //var player2 = new Player() { Login = "BatMan", Password = "000000", EMail = "Player2@mail.ru", EMailValid = true };
+                //var player1 = new Player() { Login = "Ninja", Password = "123456", EMail = "testPlayer1@mail.ru", EMailValid = true , Date = DateTime.Now};
+                //var player2 = new Player() { Login = "BatMan", Password = "000000", EMail = "Player2@mail.ru", EMailValid = true, Date = DateTime.Now };
                 //db.Players.AddRange(new List<Player> { player1, player2 });
                 //db.SaveChanges();
 
@@ -39,37 +39,31 @@ namespace ISD_13
                 //var transaction6 = new Transaction() { Date = DateTime.Now, Player = player2, Sum = 120 };
                 //db.Transactions.AddRange(new List<Transaction> { transaction1, transaction2, transaction3, transaction4, transaction5, transaction6 });
 
-                //var profile1 = new Profile() { Id = player1.Id, Date = DateTime.Now, Transactions = new List<Transaction>() { transaction1, transaction2, transaction3 } };
-                //var profile2 = new Profile() { Id = player2.Id, Date = DateTime.Now, Transactions = new List<Transaction>() { transaction4, transaction5, transaction6 } };
-
+                
                 //Combat combat1 = new Combat
                 //{
-                //    CombatTypePVP = true, 
-                //    FirstPlayer = player1.Login, 
-                //    SecondPlayer = player2.Login, 
-                //    Date = DateTime.Now, 
-                //    Winner = player1.Login, 
-                //    Experience = 15, 
-                //    CombatLog = new List<HitLog>() { hit1, hit2 }, 
-                //    FirstPlayerNav = player1,
-                //    SecondPlayerNav = player2                
+                //    CombatTypePVP = true,
+                //    FirstPlayer = player1,
+                //    SecondPlayer = player2,
+                //    Date = DateTime.Now,
+                //    Winner = player1,
+                //    Experience = 15,
+                //    CombatLog = new List<HitLog>() { hit1, hit2 }                   
                 //};
-                //combat1.Profiles.Add(profile1);
-                //combat1.Profiles.Add(profile2);
-                //Combat combat2 = new Combat 
-                //{ 
-                //    CombatTypePVP = true, 
-                //    FirstPlayer = player2.Login,
-                //    SecondPlayer = player1.Login, 
-                //    Date = DateTime.Now, 
-                //    Winner = player2.Login, 
-                //    Experience = 15, 
-                //    CombatLog = new List<HitLog>() { hit3, hit4 },
-                //    FirstPlayerNav = player2,
-                //    SecondPlayerNav = player1 
+                //combat1.Players.Add(player1);
+                //combat1.Players.Add(player2);                
+                //Combat combat2 = new Combat
+                //{
+                //    CombatTypePVP = true,
+                //    FirstPlayer = player2,
+                //    SecondPlayer = player1,
+                //    Date = DateTime.Now,
+                //    Winner = player2,
+                //    Experience = 15,
+                //    CombatLog = new List<HitLog>() { hit3, hit4 }
                 //};
-                //combat2.Profiles.Add(profile1);
-                //combat2.Profiles.Add(profile2);
+                //combat2.Players.Add(player1);
+                //combat2.Players.Add(player2);      
                 //db.Combats.Add(combat1);
                 //db.Combats.Add(combat2);
                 //db.SaveChanges();

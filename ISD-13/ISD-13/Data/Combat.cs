@@ -11,9 +11,9 @@ namespace ISD_13.Data
     {
         public int Id { get; set; }
         public bool CombatTypePVP { get; set; }
-        public string FirstPlayer { get; set; }
-        public string SecondPlayer { get; set; }
-        public string Winner { get; set; }
+        public Player FirstPlayer { get; set; }
+        public Player SecondPlayer { get; set; }
+        public Player Winner { get; set; }
         public int Experience { get; set; }
         [Column(TypeName = "datetime2")]
         public DateTime Date { get; set; }
@@ -22,8 +22,6 @@ namespace ISD_13.Data
         public Combat()
         {
             Players = new List<Player>();
-        }
-        public virtual Player FirstPlayerNav { get; set; }
-        public virtual Player SecondPlayerNav { get; set; }
+        }      
     }
 }
