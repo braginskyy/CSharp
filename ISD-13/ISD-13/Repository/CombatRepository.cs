@@ -15,9 +15,9 @@ namespace ISD_13.Repository
             : base(db)
         {
         }
-        public List<Combat> FindCombatsByUserId(int id)
+        public List<Combat> FindCombatsByUserLogin(string login)
         {
-            var query = db.Combats.Where(c => (c.FirstPlayer.Id == id) || (c.SecondPlayer.Id == id)).ToList();           
+            var query = db.Combats.Where(c => (c.FirstPlayer.Login == login) || (c.SecondPlayer.Login == login)).ToList();           
             return query; 
         }
         public void SaveEdit(List<Combat> combatList)

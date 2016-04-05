@@ -160,7 +160,7 @@
             this.TransactionsTab.Location = new System.Drawing.Point(4, 22);
             this.TransactionsTab.Name = "TransactionsTab";
             this.TransactionsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TransactionsTab.Size = new System.Drawing.Size(758, 242);
+            this.TransactionsTab.Size = new System.Drawing.Size(758, 226);
             this.TransactionsTab.TabIndex = 1;
             this.TransactionsTab.Text = "Transactions";
             this.TransactionsTab.UseVisualStyleBackColor = true;
@@ -189,7 +189,7 @@
             this.CombatsTab.Location = new System.Drawing.Point(4, 22);
             this.CombatsTab.Name = "CombatsTab";
             this.CombatsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.CombatsTab.Size = new System.Drawing.Size(758, 242);
+            this.CombatsTab.Size = new System.Drawing.Size(758, 226);
             this.CombatsTab.TabIndex = 2;
             this.CombatsTab.Text = "Combats";
             this.CombatsTab.UseVisualStyleBackColor = true;
@@ -218,6 +218,7 @@
             this.CombatDGV.ReadOnly = true;
             this.CombatDGV.Size = new System.Drawing.Size(746, 230);
             this.CombatDGV.TabIndex = 17;
+            this.CombatDGV.Click += new System.EventHandler(this.CombatDGV_Click);
             // 
             // HitsTab
             // 
@@ -225,7 +226,7 @@
             this.HitsTab.Location = new System.Drawing.Point(4, 22);
             this.HitsTab.Name = "HitsTab";
             this.HitsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.HitsTab.Size = new System.Drawing.Size(758, 242);
+            this.HitsTab.Size = new System.Drawing.Size(758, 226);
             this.HitsTab.TabIndex = 3;
             this.HitsTab.Text = "Hits";
             this.HitsTab.UseVisualStyleBackColor = true;

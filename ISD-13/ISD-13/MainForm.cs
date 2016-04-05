@@ -74,5 +74,10 @@ namespace ISD_13
         {
             if (FindPlayerInfo != null) { FindPlayerInfo(this, EventArgs.Empty); }           
         }
+           
+        private void CombatDGV_Click(object sender, EventArgs e)
+        {
+            if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
+        }
     }
 }

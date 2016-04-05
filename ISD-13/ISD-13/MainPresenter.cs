@@ -91,13 +91,10 @@ namespace ISD_13
         }
         public void LoadCombatTable()
         {
-            if (view.CurrentPlayerName == "")
+            combatList = unitOfWork.Combat.GetAll().ToList(); 
+            if (view.CurrentPlayerName != "")
             {
-                combatList = unitOfWork.Combat.GetAll().ToList();                
-            }
-            else
-            {
-                combatList = unitOfWork.Combat.FindCombatsByUserId(view.CurrentPlayerId); 
+                combatList = unitOfWork.Combat.FindCombatsByUserLogin(view.CurrentPlayerName);             
             }
             combatBindingSource.DataSource = combatList;
             view.CombatTable = combatBindingSource;

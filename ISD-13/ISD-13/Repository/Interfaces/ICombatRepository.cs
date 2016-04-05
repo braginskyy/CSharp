@@ -9,7 +9,7 @@ namespace ISD_13.Repository.Interfaces
 {
     public interface ICombatRepository : IRepository<Combat>
     {
-        List<Combat> FindCombatsByUserId(int id);
+        List<Combat> FindCombatsByUserLogin(string login);
         void SaveEdit(List<Combat> combatList);
     }
 }
