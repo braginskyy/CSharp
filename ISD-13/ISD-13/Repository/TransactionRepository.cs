@@ -16,8 +16,8 @@ namespace ISD_13.Repository
             : base(db)
         {
         }
-       
-        public IEnumerable<Transaction> FindAllTransactionByUserId(int id)
+
+        public List<Transaction> FindTransactionsByUserId(int id)
         {
             var query = db.Transactions.Where(t => t.Player.Id == id).ToList();
             return query;

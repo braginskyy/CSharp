@@ -13,14 +13,44 @@ namespace ISD_13
 {
     public partial class MainForm : Form, IMainForm
     {
-        public event EventHandler LoadAllTables;        
+        public event EventHandler LoadAllTables;
         public event EventHandler SaveInfo;
-        public event EventHandler FindPlayerInfo;
+        public event EventHandler SelectedPlayer;
+        public event EventHandler SelectedCombat;       
         public MainPresenter presenter;
         public MainForm()
         {
             InitializeComponent();
             presenter = new MainPresenter(this);
+            PlayerDGV.DataSource = playerBindingSource;
+            CombatDGV.DataSource = combatBindingSource;
+            TransactionDGV.DataSource = transactionBindingSource;
+            HitDGV.DataSource = hitLogBindingSource;
+        }
+        public object PlayerBindingSource
+        {            
+            set { playerBindingSource.DataSource = value; }
+        }
+        public object CombatBindingSource
+        {
+            set { combatBindingSource.DataSource = value; }
+        }
+        public object TransactionBindingSource
+        {
+            set { transactionBindingSource.DataSource = value; }
+        }
+        public object HitLogBindingSource
+        {
+            set { hitLogBindingSource.DataSource = value; }
+        }
+        public string CurrentCombat
+        {
+            get { return CurrentCombatIdTxt.Text; }
+            set { CurrentCombatIdTxt.Text = value; }
+        }
+        public int CurrentCombatId
+        {
+            get { return (int)CombatDGV[0, CombatDGV.CurrentCellAddress.Y].Value; }
         }
         public string CurrentPlayerName
         {
@@ -34,23 +64,7 @@ namespace ISD_13
         public int CurrentTabIndex
         {
             get { return MainTab.SelectedIndex; }
-        }
-        public object PlayerTable
-        {
-            set { PlayerDGV.DataSource = value; }
-        }
-        public object TransactionTable
-        {
-            set { TransactionDGV.DataSource = value; }
-        }
-        public object CombatTable
-        {
-            set { CombatDGV.DataSource = value; }
-        }
-        public object HitLogTable
-        {
-            set { HitDGV.DataSource = value; }
-        }
+        }        
         public bool ValidEmailCBStatus
         {
             get { return ValidEmailCB.Checked; }
@@ -72,12 +86,22 @@ namespace ISD_13
 
         private void PlayerDGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (FindPlayerInfo != null) { FindPlayerInfo(this, EventArgs.Empty); }           
+            if (SelectedPlayer != null) { SelectedPlayer(this, EventArgs.Empty); }           
         }
            
         private void CombatDGV_Click(object sender, EventArgs e)
         {
             if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
+        }
+
+        private void MainTab_Click(object sender, EventArgs e)
+        {
+            if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }
+        }
+
+        private void CombatDGV_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (SelectedCombat != null) { SelectedCombat(this, EventArgs.Empty); }
         }
     }
 }

@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace ISD_13.Repository.Interfaces
 {
     public interface ITransactionRepository : IRepository<Transaction>
-    { 
-        IEnumerable<Transaction> FindAllTransactionByUserId(int id);
+    {
+        List<Transaction> FindTransactionsByUserId(int id);
         void SaveEdit(List<Transaction> transactionList);
     }
 }

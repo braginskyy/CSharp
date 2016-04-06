@@ -8,16 +8,19 @@ namespace ISD_13.Interfaces
 {
     public interface IMainForm
     {
-        event EventHandler LoadAllTables;       
+        event EventHandler LoadAllTables;
         event EventHandler SaveInfo;
-        event EventHandler FindPlayerInfo;
-        string CurrentPlayerName { get;  set; }
+        event EventHandler SelectedPlayer;
+        event EventHandler SelectedCombat;
+        object PlayerBindingSource { set; }
+        object CombatBindingSource { set; }
+        object TransactionBindingSource { set; }
+        object HitLogBindingSource { set; }
+        string CurrentCombat { get; set; }
+        int CurrentCombatId { get; }
+        string CurrentPlayerName { get; set; }
         int CurrentPlayerId { get; }
-        int CurrentTabIndex { get; }
-        object PlayerTable { set; }
-        object TransactionTable { set; }
-        object CombatTable { set; }
-        object HitLogTable { set; }
+        int CurrentTabIndex { get; }       
         bool ValidEmailCBStatus { get; }        
     }
 }

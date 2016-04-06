@@ -41,13 +41,9 @@
             this.HitsTab = new System.Windows.Forms.TabPage();
             this.HitDGV = new System.Windows.Forms.DataGridView();
             this.CurrentPlayerTxt = new System.Windows.Forms.TextBox();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loginDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eMailDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eMailValidDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.playerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PlayerLbl = new System.Windows.Forms.Label();
+            this.CombatIdLbl = new System.Windows.Forms.Label();
+            this.CurrentCombatIdTxt = new System.Windows.Forms.TextBox();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.playerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +65,14 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.combatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hitLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.playerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eMailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eMailValidDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.combatsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerDGV)).BeginInit();
             this.MainTab.SuspendLayout();
             this.PlayersTab.SuspendLayout();
@@ -78,16 +82,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.CombatDGV)).BeginInit();
             this.HitsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HitDGV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.combatBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hitLogBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // SaveBtn
             // 
             this.SaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveBtn.Location = new System.Drawing.Point(701, 273);
+            this.SaveBtn.Location = new System.Drawing.Point(753, 279);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(75, 23);
             this.SaveBtn.TabIndex = 13;
@@ -99,7 +103,7 @@
             // 
             this.ValidEmailCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ValidEmailCB.AutoSize = true;
-            this.ValidEmailCB.Location = new System.Drawing.Point(12, 307);
+            this.ValidEmailCB.Location = new System.Drawing.Point(12, 311);
             this.ValidEmailCB.Name = "ValidEmailCB";
             this.ValidEmailCB.Size = new System.Drawing.Size(77, 17);
             this.ValidEmailCB.TabIndex = 14;
@@ -116,15 +120,16 @@
             this.PlayerDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PlayerDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
-            this.loginDataGridViewTextBoxColumn1,
-            this.passwordDataGridViewTextBoxColumn1,
-            this.eMailDataGridViewTextBoxColumn1,
-            this.eMailValidDataGridViewCheckBoxColumn1,
-            this.dataGridViewTextBoxColumn3});
+            this.loginDataGridViewTextBoxColumn,
+            this.passwordDataGridViewTextBoxColumn,
+            this.eMailDataGridViewTextBoxColumn,
+            this.eMailValidDataGridViewCheckBoxColumn,
+            this.dataGridViewTextBoxColumn3,
+            this.combatsDataGridViewTextBoxColumn});
             this.PlayerDGV.DataSource = this.playerBindingSource;
             this.PlayerDGV.Location = new System.Drawing.Point(6, 6);
             this.PlayerDGV.Name = "PlayerDGV";
-            this.PlayerDGV.Size = new System.Drawing.Size(746, 214);
+            this.PlayerDGV.Size = new System.Drawing.Size(800, 218);
             this.PlayerDGV.TabIndex = 16;
             this.PlayerDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlayerDGV_CellClick);
             // 
@@ -140,8 +145,9 @@
             this.MainTab.Location = new System.Drawing.Point(12, 12);
             this.MainTab.Name = "MainTab";
             this.MainTab.SelectedIndex = 0;
-            this.MainTab.Size = new System.Drawing.Size(766, 252);
+            this.MainTab.Size = new System.Drawing.Size(820, 256);
             this.MainTab.TabIndex = 17;
+            this.MainTab.Click += new System.EventHandler(this.MainTab_Click);
             // 
             // PlayersTab
             // 
@@ -149,7 +155,7 @@
             this.PlayersTab.Location = new System.Drawing.Point(4, 22);
             this.PlayersTab.Name = "PlayersTab";
             this.PlayersTab.Padding = new System.Windows.Forms.Padding(3);
-            this.PlayersTab.Size = new System.Drawing.Size(758, 226);
+            this.PlayersTab.Size = new System.Drawing.Size(812, 230);
             this.PlayersTab.TabIndex = 0;
             this.PlayersTab.Text = "Players";
             this.PlayersTab.UseVisualStyleBackColor = true;
@@ -160,7 +166,7 @@
             this.TransactionsTab.Location = new System.Drawing.Point(4, 22);
             this.TransactionsTab.Name = "TransactionsTab";
             this.TransactionsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TransactionsTab.Size = new System.Drawing.Size(758, 226);
+            this.TransactionsTab.Size = new System.Drawing.Size(812, 230);
             this.TransactionsTab.TabIndex = 1;
             this.TransactionsTab.Text = "Transactions";
             this.TransactionsTab.UseVisualStyleBackColor = true;
@@ -189,7 +195,7 @@
             this.CombatsTab.Location = new System.Drawing.Point(4, 22);
             this.CombatsTab.Name = "CombatsTab";
             this.CombatsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.CombatsTab.Size = new System.Drawing.Size(758, 226);
+            this.CombatsTab.Size = new System.Drawing.Size(812, 230);
             this.CombatsTab.TabIndex = 2;
             this.CombatsTab.Text = "Combats";
             this.CombatsTab.UseVisualStyleBackColor = true;
@@ -218,7 +224,7 @@
             this.CombatDGV.ReadOnly = true;
             this.CombatDGV.Size = new System.Drawing.Size(746, 230);
             this.CombatDGV.TabIndex = 17;
-            this.CombatDGV.Click += new System.EventHandler(this.CombatDGV_Click);
+            this.CombatDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CombatDGV_CellClick);
             // 
             // HitsTab
             // 
@@ -226,7 +232,7 @@
             this.HitsTab.Location = new System.Drawing.Point(4, 22);
             this.HitsTab.Name = "HitsTab";
             this.HitsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.HitsTab.Size = new System.Drawing.Size(758, 226);
+            this.HitsTab.Size = new System.Drawing.Size(812, 230);
             this.HitsTab.TabIndex = 3;
             this.HitsTab.Text = "Hits";
             this.HitsTab.UseVisualStyleBackColor = true;
@@ -256,52 +262,39 @@
             // 
             // CurrentPlayerTxt
             // 
-            this.CurrentPlayerTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CurrentPlayerTxt.Location = new System.Drawing.Point(12, 275);
+            this.CurrentPlayerTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CurrentPlayerTxt.Location = new System.Drawing.Point(57, 281);
             this.CurrentPlayerTxt.Name = "CurrentPlayerTxt";
-            this.CurrentPlayerTxt.Size = new System.Drawing.Size(683, 20);
+            this.CurrentPlayerTxt.Size = new System.Drawing.Size(328, 20);
             this.CurrentPlayerTxt.TabIndex = 18;
             // 
-            // dataGridViewTextBoxColumn2
+            // PlayerLbl
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.PlayerLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PlayerLbl.AutoSize = true;
+            this.PlayerLbl.Location = new System.Drawing.Point(12, 284);
+            this.PlayerLbl.Name = "PlayerLbl";
+            this.PlayerLbl.Size = new System.Drawing.Size(42, 13);
+            this.PlayerLbl.TabIndex = 19;
+            this.PlayerLbl.Text = "Player :";
             // 
-            // loginDataGridViewTextBoxColumn1
+            // CombatIdLbl
             // 
-            this.loginDataGridViewTextBoxColumn1.DataPropertyName = "Login";
-            this.loginDataGridViewTextBoxColumn1.HeaderText = "Login";
-            this.loginDataGridViewTextBoxColumn1.Name = "loginDataGridViewTextBoxColumn1";
+            this.CombatIdLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CombatIdLbl.AutoSize = true;
+            this.CombatIdLbl.Location = new System.Drawing.Point(414, 284);
+            this.CombatIdLbl.Name = "CombatIdLbl";
+            this.CombatIdLbl.Size = new System.Drawing.Size(58, 13);
+            this.CombatIdLbl.TabIndex = 21;
+            this.CombatIdLbl.Text = "CombatId :";
             // 
-            // passwordDataGridViewTextBoxColumn1
+            // CurrentCombatIdTxt
             // 
-            this.passwordDataGridViewTextBoxColumn1.DataPropertyName = "Password";
-            this.passwordDataGridViewTextBoxColumn1.HeaderText = "Password";
-            this.passwordDataGridViewTextBoxColumn1.Name = "passwordDataGridViewTextBoxColumn1";
-            // 
-            // eMailDataGridViewTextBoxColumn1
-            // 
-            this.eMailDataGridViewTextBoxColumn1.DataPropertyName = "EMail";
-            this.eMailDataGridViewTextBoxColumn1.HeaderText = "EMail";
-            this.eMailDataGridViewTextBoxColumn1.Name = "eMailDataGridViewTextBoxColumn1";
-            // 
-            // eMailValidDataGridViewCheckBoxColumn1
-            // 
-            this.eMailValidDataGridViewCheckBoxColumn1.DataPropertyName = "EMailValid";
-            this.eMailValidDataGridViewCheckBoxColumn1.HeaderText = "EMailValid";
-            this.eMailValidDataGridViewCheckBoxColumn1.Name = "eMailValidDataGridViewCheckBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Date";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // playerBindingSource
-            // 
-            this.playerBindingSource.DataSource = typeof(ISD_13.Data.Player);
+            this.CurrentCombatIdTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CurrentCombatIdTxt.Location = new System.Drawing.Point(475, 281);
+            this.CurrentCombatIdTxt.Name = "CurrentCombatIdTxt";
+            this.CurrentCombatIdTxt.Size = new System.Drawing.Size(270, 20);
+            this.CurrentCombatIdTxt.TabIndex = 20;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -437,11 +430,60 @@
             // 
             this.hitLogBindingSource.DataSource = typeof(ISD_13.Data.HitLog);
             // 
+            // playerBindingSource
+            // 
+            this.playerBindingSource.DataSource = typeof(ISD_13.Data.Player);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // loginDataGridViewTextBoxColumn
+            // 
+            this.loginDataGridViewTextBoxColumn.DataPropertyName = "Login";
+            this.loginDataGridViewTextBoxColumn.HeaderText = "Login";
+            this.loginDataGridViewTextBoxColumn.Name = "loginDataGridViewTextBoxColumn";
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            // 
+            // eMailDataGridViewTextBoxColumn
+            // 
+            this.eMailDataGridViewTextBoxColumn.DataPropertyName = "EMail";
+            this.eMailDataGridViewTextBoxColumn.HeaderText = "EMail";
+            this.eMailDataGridViewTextBoxColumn.Name = "eMailDataGridViewTextBoxColumn";
+            // 
+            // eMailValidDataGridViewCheckBoxColumn
+            // 
+            this.eMailValidDataGridViewCheckBoxColumn.DataPropertyName = "EMailValid";
+            this.eMailValidDataGridViewCheckBoxColumn.HeaderText = "EMailValid";
+            this.eMailValidDataGridViewCheckBoxColumn.Name = "eMailValidDataGridViewCheckBoxColumn";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Date";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // combatsDataGridViewTextBoxColumn
+            // 
+            this.combatsDataGridViewTextBoxColumn.DataPropertyName = "Combats";
+            this.combatsDataGridViewTextBoxColumn.HeaderText = "Combats";
+            this.combatsDataGridViewTextBoxColumn.Name = "combatsDataGridViewTextBoxColumn";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 331);
+            this.ClientSize = new System.Drawing.Size(844, 335);
+            this.Controls.Add(this.CombatIdLbl);
+            this.Controls.Add(this.CurrentCombatIdTxt);
+            this.Controls.Add(this.PlayerLbl);
             this.Controls.Add(this.CurrentPlayerTxt);
             this.Controls.Add(this.MainTab);
             this.Controls.Add(this.SaveBtn);
@@ -458,10 +500,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.CombatDGV)).EndInit();
             this.HitsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.HitDGV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.combatBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hitLogBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -471,16 +513,9 @@
 
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource playerBindingSource;
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.CheckBox ValidEmailCB;
         private System.Windows.Forms.DataGridView PlayerDGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn loginDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn eMailDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn eMailValidDataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.TabControl MainTab;
         private System.Windows.Forms.TabPage PlayersTab;
         private System.Windows.Forms.TabPage TransactionsTab;
@@ -511,6 +546,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn combatDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource hitLogBindingSource;
         private System.Windows.Forms.TextBox CurrentPlayerTxt;
+        private System.Windows.Forms.Label PlayerLbl;
+        private System.Windows.Forms.Label CombatIdLbl;
+        private System.Windows.Forms.TextBox CurrentCombatIdTxt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn loginDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eMailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn eMailValidDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn combatsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource playerBindingSource;
 
     }
 }

@@ -14,27 +14,44 @@ namespace ISD_13
     public class MainPresenter
     {
         private readonly IMainForm view;
-        private readonly IUnitOfWork unitOfWork;
+        private readonly IProxy proxy;
         private List<Player> playerList;
         private List<Transaction> transactionList;
         private List<Combat> combatList;
-        private List<HitLog> hitLogList;
-        private BindingSource playerBindingSource = new BindingSource();
-        private BindingSource transactionBindingSource = new BindingSource();
-        private BindingSource combatBindingSource = new BindingSource();
-        private BindingSource hitLogBindingSource = new BindingSource();
+        private List<HitLog> hitLogList;        
         public MainPresenter(IMainForm view)
         {
             this.view = view;
-            this.unitOfWork = new UnitOfWork();
+            this.proxy = new Proxy();
             view.LoadAllTables += view_LoadAllTables;
             view.SaveInfo += SaveInfo;
-            view.FindPlayerInfo += view_FindPlayerInfo;
+            view.SelectedPlayer += view_SelectedPlayer;
+            view.SelectedCombat += view_SelectedCombat;
         }
 
-        void view_FindPlayerInfo(object sender, EventArgs e)
+        void view_SelectedCombat(object sender, EventArgs e)
         {
-            view.CurrentPlayerName = unitOfWork.Player.Get(view.CurrentPlayerId).Login;
+            if (proxy.Combat.Get(view.CurrentCombatId) != null)
+            {
+                view.CurrentCombat = proxy.Combat.Get(view.CurrentCombatId).Id.ToString();
+            }
+            else
+            {
+                view.CurrentCombat = "";
+            }
+        }
+
+        void view_SelectedPlayer(object sender, EventArgs e)
+        {
+            view.CurrentCombat = "";
+            if (proxy.Player.Get(view.CurrentPlayerId) != null)
+            {
+                view.CurrentPlayerName = proxy.Player.Get(view.CurrentPlayerId).Login;
+            }
+            else
+            {
+                view.CurrentPlayerName = "";
+            }
         }
 
         void SaveInfo(object sender, EventArgs e)
@@ -43,29 +60,29 @@ namespace ISD_13
             {
                 case 0:
                     {
-                        unitOfWork.Player.SaveEdit(playerList);
-                        unitOfWork.Save();
+                        proxy.Player.SaveEdit(playerList);
+                        proxy.Save();
                         LoadPlayerTable();
                         break;
                     }
                 case 1:
                     {
-                        unitOfWork.Transaction.SaveEdit(transactionList);
-                        unitOfWork.Save();
+                        proxy.Transaction.SaveEdit(transactionList);
+                        proxy.Save();
                         LoadTransactionTable();
                         break;
                     }
                 case 2:
                     {
-                        unitOfWork.Combat.SaveEdit(combatList);
-                        unitOfWork.Save();
+                        proxy.Combat.SaveEdit(combatList);
+                        proxy.Save();
                         LoadCombatTable();
                         break;
                     }
                 case 3:
                     {
-                        unitOfWork.HitLog.SaveEdit(hitLogList);
-                        unitOfWork.Save();
+                        proxy.HitLog.SaveEdit(hitLogList);
+                        proxy.Save();
                         LoadHitLogTable();
                         break;
                     }
@@ -85,36 +102,36 @@ namespace ISD_13
         }
         public void LoadTransactionTable()
         {
-            transactionList = unitOfWork.Transaction.GetAll().ToList();
-            transactionBindingSource.DataSource = transactionList;
-            view.TransactionTable = transactionBindingSource;
+            transactionList = proxy.Transaction.GetAll().ToList();
+            if (view.CurrentPlayerName != "")
+            {
+                transactionList = proxy.Transaction.FindTransactionsByUserId(view.CurrentPlayerId);
+            }
+            view.TransactionBindingSource = transactionList;
         }
         public void LoadCombatTable()
         {
-            combatList = unitOfWork.Combat.GetAll().ToList(); 
+            combatList = proxy.Combat.GetAll().ToList();
             if (view.CurrentPlayerName != "")
             {
-                combatList = unitOfWork.Combat.FindCombatsByUserLogin(view.CurrentPlayerName);             
+                combatList = proxy.Combat.FindCombatsByUserId(view.CurrentPlayerId);
             }
-            combatBindingSource.DataSource = combatList;
-            view.CombatTable = combatBindingSource;
-           
+            view.CombatBindingSource = combatList;
+
         }
         public void LoadHitLogTable()
         {
-            hitLogList = unitOfWork.HitLog.GetAll().ToList();
-            hitLogBindingSource.DataSource = hitLogList;
-            view.HitLogTable = hitLogBindingSource;
+            hitLogList = proxy.HitLog.GetAll().ToList();
+            view.HitLogBindingSource = hitLogList;
         }
         public void LoadPlayerTable()
         {
-            playerList = unitOfWork.Player.GetAll().ToList();
-            if (view.ValidEmailCBStatus) 
-            { 
-                playerList = unitOfWork.Player.FindUsersByValidEmail().ToList(); 
+            playerList = proxy.Player.GetAll().ToList();
+            if (view.ValidEmailCBStatus)
+            {
+                playerList = proxy.Player.FindUsersByValidEmail().ToList();
             }           
-            playerBindingSource.DataSource = playerList;
-            view.PlayerTable = playerBindingSource;
+            view.PlayerBindingSource = playerList;
         }
     }
 }
