@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace ISD_13.Data
 {
-    public class Transaction : AbstractPlayer
+    public class AbstractPlayer
     {
-        public virtual Player Player { get; set; }
-        public int Sum { get; set; }       
+        public int Id { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime Date { get; set; }
     }
 }

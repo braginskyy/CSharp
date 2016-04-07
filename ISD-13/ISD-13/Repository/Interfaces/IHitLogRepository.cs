@@ -9,7 +9,7 @@ namespace ISD_13.Repository.Interfaces
 {
     public interface IHitLogRepository : IRepository<HitLog>
     {
-        IEnumerable<HitLog> FindHitsByUserId(int id);
-        void SaveEdit(List<HitLog> hitLogList);
+        List<HitLog> FindHitLogsByUserId(int id);
+        void SaveEdit(List<HitLog> hitLogList, bool deleteMod);
     }   
 }

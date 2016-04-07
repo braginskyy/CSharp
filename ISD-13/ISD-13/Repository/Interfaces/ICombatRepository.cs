@@ -10,6 +10,6 @@ namespace ISD_13.Repository.Interfaces
     public interface ICombatRepository : IRepository<Combat>
     {
         List<Combat> FindCombatsByUserId(int id);
-        void SaveEdit(List<Combat> combatList);
+        void SaveEdit(List<Combat> combatList, bool deleteMod);
     }
 }

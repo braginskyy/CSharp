@@ -15,35 +15,14 @@ namespace ISD_13.Repository
             : base(db)
         {
         }
-        public IEnumerable<Player> FindRegisteredUsersByDate(DateTime date)
-        {
-            var query = GetAll().Where(p => p.Date < date).ToList();
-            return query;
-        }
-
+       
         public IEnumerable<Player> FindUsersByValidEmail()
         {
             var query = GetAll().Where(p => p.EMailValid == true).ToList();
             return query;
-        }
+        }       
 
-        public IEnumerable<Player> TopTenUsersBySum()
-        {
-            var query = db.Transactions.Join(db.Players, t => t.Player.Id, p => p.Id, (t, p) => new
-                {
-                    Id = p.Id,
-                    Sum = t.Sum
-
-                }).OrderByDescending(t => t.Sum).Take(10).ToList();
-            List<Player> topTen = null;
-            foreach (var q in query)
-            {
-                topTen.Add(Get(q.Id));                
-            }
-            return topTen;
-        }
-
-        public void SaveEdit(List<Player> playerList)
+        public void SaveEdit(List<Player> playerList, bool deleteMod)
         {
             foreach (Player p in playerList)
             {
@@ -57,7 +36,14 @@ namespace ISD_13.Repository
                     Create(p);
                 }
             }
-            Delete(playerList);
+            if (deleteMod)
+            {
+                Delete(playerList);
+            }
+            else
+            {
+                DeleteWhithEmailValidation(playerList); 
+            }            
         }
 
         public void Delete(List<Player> playerList)
@@ -66,6 +52,18 @@ namespace ISD_13.Repository
             foreach (var p in query)
             {
                 Delete(p.Id);
+            }
+        }
+
+        public void DeleteWhithEmailValidation(List<Player> playerList)
+        {
+            foreach (Player p in playerList)
+            {
+                var query = GetAll().Where(x => x.EMailValid == true).Except(playerList);
+                foreach (var d in query)
+                {
+                    Delete(d.Id);
+                }
             }
         }
     }

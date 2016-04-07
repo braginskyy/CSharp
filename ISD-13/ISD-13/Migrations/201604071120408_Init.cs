@@ -3,7 +3,7 @@ namespace ISD_13.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class SaveUpdates : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {

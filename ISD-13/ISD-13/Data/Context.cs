@@ -9,6 +9,10 @@ namespace ISD_13.Data
 {
     public class Context : DbContext
     {
+        public Context()
+        {
+            this.Configuration.ProxyCreationEnabled = false;
+        }
         public DbSet<Player> Players { get; set; }
         public DbSet<Combat> Combats { get; set; }
         public DbSet<HitLog> HitLogs { get; set; }

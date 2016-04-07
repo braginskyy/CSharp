@@ -17,32 +17,54 @@ namespace ISD_13.Repository
         }
         public List<Combat> FindCombatsByUserId(int id)
         {
-            var query = db.Combats.Where(c => (c.FirstPlayer.Id == id) || (c.SecondPlayer.Id == id)).ToList();           
-            return query; 
+            var query = db.Combats.Where(c => (c.FirstPlayer.Id == id) || (c.SecondPlayer.Id == id)).ToList();
+            return query;
         }
-        public void SaveEdit(List<Combat> combatList)
+
+        public void SaveEdit(List<Combat> combatList, bool deleteMod)
         {
-            foreach (Combat p in combatList)
+            foreach (Combat c in combatList)
             {
-                if (GetAll().Any(x => x.Id == p.Id))
+                if (GetAll().Any(x => x.Id == c.Id))
                 {
-                    Update(p);
+                    Update(c);
 
                 }
                 else
                 {
-                    Create(p);
+                    Create(c);
                 }
             }
-            Delete(combatList);
+            if (deleteMod)
+            {
+                Delete(combatList);
+            }
+            else
+            {
+                DeleteWhithSelectedPlayer(combatList);
+            }
+            
         }
 
         public void Delete(List<Combat> combatList)
         {
             var query = GetAll().Except(combatList);
-            foreach (var p in query)
+            foreach (var c in query)
             {
-                Delete(p.Id);
+                Delete(c.Id);
+            }
+        }
+        public void DeleteWhithSelectedPlayer(List<Combat> combatList)
+        {
+            foreach (Combat c in combatList)
+            {
+                var query = GetAll()
+                    .Where(x => (x.FirstPlayer == c.FirstPlayer) || (x.SecondPlayer == c.SecondPlayer))
+                    .Except(combatList);
+                foreach (var d in query)
+                {
+                    Delete(d.Id);
+                }
             }
         }
     }

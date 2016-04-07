@@ -22,29 +22,47 @@ namespace ISD_13.Repository
             var query = db.Transactions.Where(t => t.Player.Id == id).ToList();
             return query;
         }
-        public void SaveEdit(List<Transaction> transactionList)
+        public void SaveEdit(List<Transaction> transactionList, bool deleteMod)
         {
-            foreach (Transaction p in transactionList)
+            foreach (Transaction t in transactionList)
             {
-                if (GetAll().Any(x => x.Id == p.Id))
+                if (GetAll().Any(x => x.Id == t.Id))
                 {
-                    Update(p);
+                    Update(t);
 
                 }
                 else
                 {
-                    Create(p);
+                    Create(t);
                 }
             }
-            Delete(transactionList);
+            if (deleteMod)
+            {
+                Delete(transactionList);
+            }
+            else
+            {
+                DeleteWhithSelectedPlayer(transactionList);
+            }
         }
 
         public void Delete(List<Transaction> transactionList)
         {
             var query = GetAll().Except(transactionList);
-            foreach (var p in query)
+            foreach (var t in query)
             {
-                Delete(p.Id);
+                Delete(t.Id);
+            }
+        }
+        public void DeleteWhithSelectedPlayer(List<Transaction> transactionList)
+        {
+            foreach (Transaction t in transactionList)
+            {
+                var query = GetAll().Where(x => x.Player == t.Player).Except(transactionList);
+                foreach (var d in query)
+                {
+                    Delete(d.Id);
+                }
             }
         }
     }

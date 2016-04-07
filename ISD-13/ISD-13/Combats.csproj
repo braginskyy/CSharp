@@ -51,31 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\AbstractPlayer.cs" />
     <Compile Include="Data\Combat.cs" />
     <Compile Include="Data\Context.cs" />
     <Compile Include="Data\HitLog.cs" />
     <Compile Include="Data\Player.cs" />
     <Compile Include="Data\Transaction.cs" />
     <Compile Include="Interfaces\IMainForm.cs" />
-    <Compile Include="Migrations\201604012020153_New.cs" />
-    <Compile Include="Migrations\201604012020153_New.Designer.cs">
-      <DependentUpon>201604012020153_New.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604012024447_New1.cs" />
-    <Compile Include="Migrations\201604012024447_New1.Designer.cs">
-      <DependentUpon>201604012024447_New1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604031831485_SaveUpdates.cs" />
-    <Compile Include="Migrations\201604031831485_SaveUpdates.Designer.cs">
-      <DependentUpon>201604031831485_SaveUpdates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604032035109_Test.cs" />
-    <Compile Include="Migrations\201604032035109_Test.Designer.cs">
-      <DependentUpon>201604032035109_Test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604041933261_ToString.cs" />
-    <Compile Include="Migrations\201604041933261_ToString.Designer.cs">
-      <DependentUpon>201604041933261_ToString.cs</DependentUpon>
+    <Compile Include="Migrations\201604071303477_Init.cs" />
+    <Compile Include="Migrations\201604071303477_Init.Designer.cs">
+      <DependentUpon>201604071303477_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\Interfaces\IProxy.cs" />
@@ -102,20 +87,8 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604012020153_New.resx">
-      <DependentUpon>201604012020153_New.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604012024447_New1.resx">
-      <DependentUpon>201604012024447_New1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604031831485_SaveUpdates.resx">
-      <DependentUpon>201604031831485_SaveUpdates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604032035109_Test.resx">
-      <DependentUpon>201604032035109_Test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604041933261_ToString.resx">
-      <DependentUpon>201604041933261_ToString.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604071303477_Init.resx">
+      <DependentUpon>201604071303477_Init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

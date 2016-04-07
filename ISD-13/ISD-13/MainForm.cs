@@ -21,11 +21,7 @@ namespace ISD_13
         public MainForm()
         {
             InitializeComponent();
-            presenter = new MainPresenter(this);
-            PlayerDGV.DataSource = playerBindingSource;
-            CombatDGV.DataSource = combatBindingSource;
-            TransactionDGV.DataSource = transactionBindingSource;
-            HitDGV.DataSource = hitLogBindingSource;
+            presenter = new MainPresenter(this);           
         }
         public object PlayerBindingSource
         {            
@@ -72,6 +68,10 @@ namespace ISD_13
         
         private void MainForm_Load(object sender, EventArgs e)
         {
+            PlayerDGV.DataSource = playerBindingSource;
+            CombatDGV.DataSource = combatBindingSource;
+            TransactionDGV.DataSource = transactionBindingSource;
+            HitDGV.DataSource = hitLogBindingSource;
             if (LoadAllTables != null) { LoadAllTables(this, EventArgs.Empty); }            
         }
         private void SaveBtn_Click(object sender, EventArgs e)
@@ -102,6 +102,16 @@ namespace ISD_13
         private void CombatDGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (SelectedCombat != null) { SelectedCombat(this, EventArgs.Empty); }
+        }
+
+        private void TransactionDGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
+
+        private void HitDGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
         }
     }
 }

@@ -3,7 +3,7 @@ namespace ISD_13.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class New : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {
@@ -13,22 +13,22 @@ namespace ISD_13.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         CombatTypePVP = c.Boolean(nullable: false),
-                        FirstPlayer = c.String(),
-                        SecondPlayer = c.String(),
-                        Winner = c.String(),
                         Experience = c.Int(nullable: false),
                         Date = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         Player_Id = c.Int(),
-                        FirstPlayerNav_Id = c.Int(),
-                        SecondPlayerNav_Id = c.Int(),
+                        FirstPlayer_Id = c.Int(),
+                        SecondPlayer_Id = c.Int(),
+                        Winner_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Players", t => t.Player_Id)
-                .ForeignKey("dbo.Players", t => t.FirstPlayerNav_Id)
-                .ForeignKey("dbo.Players", t => t.SecondPlayerNav_Id)
+                .ForeignKey("dbo.Players", t => t.FirstPlayer_Id)
+                .ForeignKey("dbo.Players", t => t.SecondPlayer_Id)
+                .ForeignKey("dbo.Players", t => t.Winner_Id)
                 .Index(t => t.Player_Id)
-                .Index(t => t.FirstPlayerNav_Id)
-                .Index(t => t.SecondPlayerNav_Id);
+                .Index(t => t.FirstPlayer_Id)
+                .Index(t => t.SecondPlayer_Id)
+                .Index(t => t.Winner_Id);
             
             CreateTable(
                 "dbo.HitLogs",
@@ -54,7 +54,7 @@ namespace ISD_13.Migrations
                         Password = c.String(),
                         EMail = c.String(),
                         EMailValid = c.Boolean(nullable: false),
-                        DateCreate = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
+                        Date = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         Combat_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -78,17 +78,19 @@ namespace ISD_13.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Combats", "SecondPlayerNav_Id", "dbo.Players");
+            DropForeignKey("dbo.Combats", "Winner_Id", "dbo.Players");
+            DropForeignKey("dbo.Combats", "SecondPlayer_Id", "dbo.Players");
             DropForeignKey("dbo.Players", "Combat_Id", "dbo.Combats");
-            DropForeignKey("dbo.Combats", "FirstPlayerNav_Id", "dbo.Players");
+            DropForeignKey("dbo.Combats", "FirstPlayer_Id", "dbo.Players");
             DropForeignKey("dbo.Transactions", "Player_Id", "dbo.Players");
             DropForeignKey("dbo.Combats", "Player_Id", "dbo.Players");
             DropForeignKey("dbo.HitLogs", "Combat_Id", "dbo.Combats");
             DropIndex("dbo.Transactions", new[] { "Player_Id" });
             DropIndex("dbo.Players", new[] { "Combat_Id" });
             DropIndex("dbo.HitLogs", new[] { "Combat_Id" });
-            DropIndex("dbo.Combats", new[] { "SecondPlayerNav_Id" });
-            DropIndex("dbo.Combats", new[] { "FirstPlayerNav_Id" });
+            DropIndex("dbo.Combats", new[] { "Winner_Id" });
+            DropIndex("dbo.Combats", new[] { "SecondPlayer_Id" });
+            DropIndex("dbo.Combats", new[] { "FirstPlayer_Id" });
             DropIndex("dbo.Combats", new[] { "Player_Id" });
             DropTable("dbo.Transactions");
             DropTable("dbo.Players");

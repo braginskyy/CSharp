@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 namespace ISD_13.Repository.Interfaces
 {
     public interface IPlayerRepository : IRepository<Player>
-    {
-        IEnumerable<Player> FindRegisteredUsersByDate(DateTime date);
+    {        
         IEnumerable<Player> FindUsersByValidEmail();
-        IEnumerable<Player> TopTenUsersBySum();
-        void SaveEdit (List<Player> playerList);
+        void SaveEdit(List<Player> playerList, bool deleteMod);
     }
 }

@@ -18,7 +18,7 @@ namespace ISD_13
         private List<Player> playerList;
         private List<Transaction> transactionList;
         private List<Combat> combatList;
-        private List<HitLog> hitLogList;        
+        private List<HitLog> hitLogList;
         public MainPresenter(IMainForm view)
         {
             this.view = view;
@@ -60,28 +60,28 @@ namespace ISD_13
             {
                 case 0:
                     {
-                        proxy.Player.SaveEdit(playerList);
+                        proxy.Player.SaveEdit(playerList, !view.ValidEmailCBStatus);
                         proxy.Save();
                         LoadPlayerTable();
                         break;
                     }
                 case 1:
                     {
-                        proxy.Transaction.SaveEdit(transactionList);
+                        proxy.Transaction.SaveEdit(transactionList, view.CurrentPlayerName == "");
                         proxy.Save();
                         LoadTransactionTable();
                         break;
                     }
                 case 2:
                     {
-                        proxy.Combat.SaveEdit(combatList);
+                        proxy.Combat.SaveEdit(combatList, view.CurrentPlayerName == "");
                         proxy.Save();
                         LoadCombatTable();
                         break;
                     }
                 case 3:
                     {
-                        proxy.HitLog.SaveEdit(hitLogList);
+                        proxy.HitLog.SaveEdit(hitLogList, view.CurrentCombat == "");
                         proxy.Save();
                         LoadHitLogTable();
                         break;
@@ -122,6 +122,10 @@ namespace ISD_13
         public void LoadHitLogTable()
         {
             hitLogList = proxy.HitLog.GetAll().ToList();
+            if (view.CurrentCombat != "")
+            {
+                hitLogList = proxy.HitLog.FindHitLogsByUserId(view.CurrentCombatId);
+            }
             view.HitLogBindingSource = hitLogList;
         }
         public void LoadPlayerTable()
@@ -130,7 +134,7 @@ namespace ISD_13
             if (view.ValidEmailCBStatus)
             {
                 playerList = proxy.Player.FindUsersByValidEmail().ToList();
-            }           
+            }
             view.PlayerBindingSource = playerList;
         }
     }

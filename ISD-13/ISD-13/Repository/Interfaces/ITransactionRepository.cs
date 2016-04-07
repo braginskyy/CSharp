@@ -11,6 +11,6 @@ namespace ISD_13.Repository.Interfaces
     public interface ITransactionRepository : IRepository<Transaction>
     {
         List<Transaction> FindTransactionsByUserId(int id);
-        void SaveEdit(List<Transaction> transactionList);
+        void SaveEdit(List<Transaction> transactionList, bool deleteMod);
     }
 }
