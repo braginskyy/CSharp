@@ -10,17 +10,20 @@ namespace ISD_13.Interfaces
     {
         event EventHandler LoadAllTables;
         event EventHandler SaveInfo;
-        event EventHandler SelectedPlayer;
-        event EventHandler SelectedCombat;
+        event EventHandler FindUserByLogin;
+        event EventHandler FindHitLogsByCombatId;
+        event EventHandler EditTransactionCell;
+        string TransactiomPlayerLogin { get; }
+        string TransactionId { get; }
         object PlayerBindingSource { set; }
         object CombatBindingSource { set; }
         object TransactionBindingSource { set; }
         object HitLogBindingSource { set; }
-        string CurrentCombat { get; set; }
-        int CurrentCombatId { get; }
-        string CurrentPlayerName { get; set; }
-        int CurrentPlayerId { get; }
-        int CurrentTabIndex { get; }       
+        string SelectedCombat { get; set; }
+        string SelectedCombatId { get; set; }
+        string SelectedPlayerName { get; set; }
+        int SelectedPlayerId { get; set; }
+        int SelectedTabIndex { get; }       
         bool ValidEmailCBStatus { get; }        
     }
 }

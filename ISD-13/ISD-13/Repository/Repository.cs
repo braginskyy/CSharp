@@ -1,8 +1,10 @@
 ﻿using ISD_13.Data;
 using ISD_13.Repository.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,8 +34,16 @@ namespace ISD_13.Repository
         }
 
         public void Update(T item)
-        {
+        {            
             db.Entry(item).State = EntityState.Modified;            
+        }
+
+        public void AddOrUpdate(List<T> list)
+        {
+            foreach (T item in list)
+            {
+                db.Set<T>().AddOrUpdate(x => x.Id, item);
+            }
         }
 
         public void Delete(int id)
@@ -43,6 +53,6 @@ namespace ISD_13.Repository
             {
                 db.Set<T>().Remove(item);                
             }
-        }        
+        }
     }
 }

@@ -10,6 +10,8 @@ namespace ISD_13.Repository.Interfaces
     public interface IPlayerRepository : IRepository<Player>
     {        
         IEnumerable<Player> FindUsersByValidEmail();
-        void SaveEdit(List<Player> playerList, bool deleteMod);
+        Player FindUserByLogin(string login);
+        void Delete(List<Player> playerList);
+        void DeleteWhithFilterByValidEmail(List<Player> playerList);
     }
 }

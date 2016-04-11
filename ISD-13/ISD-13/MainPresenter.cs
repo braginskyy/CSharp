@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace ISD_13
 {
@@ -25,63 +25,96 @@ namespace ISD_13
             this.proxy = new Proxy();
             view.LoadAllTables += view_LoadAllTables;
             view.SaveInfo += SaveInfo;
-            view.SelectedPlayer += view_SelectedPlayer;
-            view.SelectedCombat += view_SelectedCombat;
+            view.FindUserByLogin += view_FindPlayerByName;
+            view.FindHitLogsByCombatId += view_FindHitLogsByCombatId;
+            view.EditTransactionCell += view_EditTransactionCell;
         }
 
-        void view_SelectedCombat(object sender, EventArgs e)
+        void view_EditTransactionCell(object sender, EventArgs e)
         {
-            if (proxy.Combat.Get(view.CurrentCombatId) != null)
+            if (playerList.Where(x => x.Login == view.TransactiomPlayerLogin).FirstOrDefault() != null)
             {
-                view.CurrentCombat = proxy.Combat.Get(view.CurrentCombatId).Id.ToString();
-            }
-            else
-            {
-                view.CurrentCombat = "";
+                transactionList.Where(x => x.Id.ToString() == view.TransactionId).FirstOrDefault().Player =
+                    playerList.Where(x => x.Login == view.TransactiomPlayerLogin).FirstOrDefault();
             }
         }
 
-        void view_SelectedPlayer(object sender, EventArgs e)
+        void view_FindHitLogsByCombatId(object sender, EventArgs e)
         {
-            view.CurrentCombat = "";
-            if (proxy.Player.Get(view.CurrentPlayerId) != null)
+            if (proxy.HitLog.FindHitLogsByCombatId(view.SelectedCombat) != null)
             {
-                view.CurrentPlayerName = proxy.Player.Get(view.CurrentPlayerId).Login;
+                view.SelectedCombatId = view.SelectedCombat;
             }
-            else
+        }
+
+        void view_FindPlayerByName(object sender, EventArgs e)
+        {
+            if (proxy.Player.FindUserByLogin(view.SelectedPlayerName) != null)
             {
-                view.CurrentPlayerName = "";
+                view.SelectedPlayerId = proxy.Player.FindUserByLogin(view.SelectedPlayerName).Id;
             }
         }
 
         void SaveInfo(object sender, EventArgs e)
         {
-            switch (view.CurrentTabIndex)
+            switch (view.SelectedTabIndex)
             {
                 case 0:
                     {
-                        proxy.Player.SaveEdit(playerList, !view.ValidEmailCBStatus);
+                        proxy.Player.AddOrUpdate(playerList);
+                        if (view.ValidEmailCBStatus)
+                        {
+                            proxy.Player.DeleteWhithFilterByValidEmail(playerList);
+                        }
+                        else
+                        {
+                            proxy.Player.Delete(playerList);
+                        }
                         proxy.Save();
                         LoadPlayerTable();
                         break;
                     }
                 case 1:
                     {
-                        proxy.Transaction.SaveEdit(transactionList, view.CurrentPlayerName == "");
+                        proxy.Transaction.AddOrUpdate(transactionList);
+                        if (view.SelectedPlayerName != string.Empty)
+                        {
+                            proxy.Transaction.DeleteWhithSelectedPlayer(transactionList);
+                        }
+                        else
+                        {
+                            proxy.Transaction.Delete(transactionList);
+                        }
                         proxy.Save();
                         LoadTransactionTable();
                         break;
                     }
                 case 2:
                     {
-                        proxy.Combat.SaveEdit(combatList, view.CurrentPlayerName == "");
+                        proxy.Combat.AddOrUpdate(combatList);
+                        if (view.SelectedPlayerName != string.Empty)
+                        {
+                            proxy.Combat.DeleteWhithSelectedPlayer(combatList);
+                        }
+                        else
+                        {
+                            proxy.Combat.Delete(combatList);
+                        }
                         proxy.Save();
                         LoadCombatTable();
                         break;
                     }
                 case 3:
                     {
-                        proxy.HitLog.SaveEdit(hitLogList, view.CurrentCombat == "");
+                        proxy.HitLog.AddOrUpdate(hitLogList);
+                        if (view.SelectedCombat != string.Empty)
+                        {
+                            proxy.HitLog.DeleteWhithSelectedCombat(hitLogList);
+                        }
+                        else
+                        {
+                            proxy.HitLog.Delete(hitLogList);
+                        }
                         proxy.Save();
                         LoadHitLogTable();
                         break;
@@ -103,18 +136,18 @@ namespace ISD_13
         public void LoadTransactionTable()
         {
             transactionList = proxy.Transaction.GetAll().ToList();
-            if (view.CurrentPlayerName != "")
+            if (view.SelectedPlayerName != "")
             {
-                transactionList = proxy.Transaction.FindTransactionsByUserId(view.CurrentPlayerId);
+                transactionList = proxy.Transaction.FindTransactionsByUserId(view.SelectedPlayerId);
             }
             view.TransactionBindingSource = transactionList;
         }
         public void LoadCombatTable()
         {
             combatList = proxy.Combat.GetAll().ToList();
-            if (view.CurrentPlayerName != "")
+            if (view.SelectedPlayerName != "")
             {
-                combatList = proxy.Combat.FindCombatsByUserId(view.CurrentPlayerId);
+                combatList = proxy.Combat.FindCombatsByUserId(view.SelectedPlayerId);
             }
             view.CombatBindingSource = combatList;
 
@@ -122,9 +155,9 @@ namespace ISD_13
         public void LoadHitLogTable()
         {
             hitLogList = proxy.HitLog.GetAll().ToList();
-            if (view.CurrentCombat != "")
+            if (view.SelectedCombat != "")
             {
-                hitLogList = proxy.HitLog.FindHitLogsByUserId(view.CurrentCombatId);
+                hitLogList = proxy.HitLog.FindHitLogsByCombatId(view.SelectedCombatId);
             }
             view.HitLogBindingSource = hitLogList;
         }

@@ -14,36 +14,12 @@ namespace ISD_13.Repository
         public HitLogRepository(Context db)
             : base(db)
         {
-        }
-        public List<HitLog> FindHitLogsByUserId(int id)
+        }       
+        public List<HitLog> FindHitLogsByCombatId(string id)
         {
-            var query = db.HitLogs.Where(h => h.Combat.Id == id).ToList();
+            var query = db.HitLogs.Where(h => h.Combat.Id.ToString() == id).ToList();
             return query;
-        }
-        public void SaveEdit(List<HitLog> hitLogList, bool deleteMod)
-        {
-            foreach (HitLog h in hitLogList)
-            {
-                if (GetAll().Any(x => x.Id == h.Id))
-                {
-                    Update(h);
-
-                }
-                else
-                {
-                    Create(h);
-                }
-            }
-            if (deleteMod)
-            {
-                Delete(hitLogList);
-            }
-            else
-            {
-                DeleteWhithSelectedCombat(hitLogList);
-            }
-            
-        }
+        }       
 
         public void Delete(List<HitLog> hitLogList)
         {

@@ -10,8 +10,8 @@ namespace ISD_13.Data
     public class Context : DbContext
     {
         public Context()
-        {
-            this.Configuration.ProxyCreationEnabled = false;
+        {        
+            Database.SetInitializer<Context>(new MigrateDatabaseToLatestVersion<Context, Migrations.Configuration>());       
         }
         public DbSet<Player> Players { get; set; }
         public DbSet<Combat> Combats { get; set; }

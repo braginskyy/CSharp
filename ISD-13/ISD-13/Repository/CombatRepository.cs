@@ -21,31 +21,6 @@ namespace ISD_13.Repository
             return query;
         }
 
-        public void SaveEdit(List<Combat> combatList, bool deleteMod)
-        {
-            foreach (Combat c in combatList)
-            {
-                if (GetAll().Any(x => x.Id == c.Id))
-                {
-                    Update(c);
-
-                }
-                else
-                {
-                    Create(c);
-                }
-            }
-            if (deleteMod)
-            {
-                Delete(combatList);
-            }
-            else
-            {
-                DeleteWhithSelectedPlayer(combatList);
-            }
-            
-        }
-
         public void Delete(List<Combat> combatList)
         {
             var query = GetAll().Except(combatList);

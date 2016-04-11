@@ -14,5 +14,6 @@ namespace ISD_13.Repository.Interfaces
         void Create(T item);
         void Update(T item);
         void Delete(int id);       
+        void AddOrUpdate(List<T> list);
     }
 }
