@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -259,6 +260,19 @@ namespace ISD_13
         {
             SaveStatusLbl.ForeColor = Color.Red;
             SaveStatusLbl.Text = "You have unsaved changes";
+        }
+
+        private void PlayerDGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (PlayerDGV.CurrentCell == PlayerDGV[3, e.RowIndex])
+            {  
+                if (!Regex.IsMatch(PlayerDGV.CurrentCell.EditedFormattedValue.ToString(), @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$", RegexOptions.IgnoreCase))
+                {
+                    MessageBox.Show("Error email");
+                    PlayerDGV.CurrentCell.Value = string.Empty;
+                }               
+            }            
         }
     }
 }
