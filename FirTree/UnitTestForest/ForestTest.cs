@@ -16,11 +16,23 @@ namespace UnitTestForest
             forest = new Forest();
         }
         [Test]
-        public void TestAddFirTreeInForest()
+        public void TestCountFirTreeInForestAfterAdd()
         {
             int countTree = forest.AllTree.Count;
-            forest.TreeBorn(new FirTree());
+            IFirTree tree = new FirTree();
+
+            forest.TreeBorn(tree);
+
             Assert.That(forest.AllTree.Count, Is.EqualTo(countTree + 1));
+        }
+        [Test]
+        public void TestAddFirTreeInForest()
+        {            
+            IFirTree tree = new FirTree();
+
+            forest.TreeBorn(tree);
+
+            Assert.That(forest.AllTree[forest.AllTree.Count - 1], Is.EqualTo(tree));           
         }
     }
 }
