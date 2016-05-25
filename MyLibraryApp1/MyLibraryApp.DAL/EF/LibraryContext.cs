@@ -11,7 +11,7 @@ namespace MyLibraryApp.DAL.EF
     public class LibraryContext : DbContext
     {        
         public LibraryContext()
-            : base("MainConnectionStrind")
+            : base("DBConnection")
         {
             Database.SetInitializer<LibraryContext>(new MigrateDatabaseToLatestVersion<LibraryContext, Migrations.Configuration>());
         }       

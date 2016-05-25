@@ -5,23 +5,21 @@ Visual Studio 2013, MSSQL 2014.
 Run the application, and then compile it twice, the first time need to create and initialize the DB
 app has 4 tabs BOOKS, USERS, HISTORYS and AUTHORS.
 
+
 BOOKS Tab:
 It displays a list of books.
 There is a filter in three columns and filter (the presence of books)
 There is a form of adding a book (the book have to be a name and at least one author).
+
 There is a form of taking and putting the book. To take the book, it is necessary to select it from the list on the left and enter the users email.(Email can be viewed in the tab USERS) 
 If email is entered correctly and the book is available, add a new entry in the HISTORYS, and the status of the book to become not available. You can take only available books.
 To hand over the book it is necessary to enter only the name. This is to add a new entry in the HISTORYS and the status of the book will be available.
 
 USERS Tab:
 You can view a list of users and add new. The user must have a name and email. 
+
 HISTORYS Tab:
 You can see a list of stories.
+
 AUTHORS Tab:
 You can see a list of authors. Ñlicking on the author to see a list of his books.
-
-
-
-
-
-
