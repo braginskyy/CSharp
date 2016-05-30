@@ -7,13 +7,8 @@ namespace MyLibraryApp.DAL.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<MyLibraryApp.DAL.EF.LibraryContext>
-    {       
-        public Configuration()
-        {
-            AutomaticMigrationsEnabled = true;            
-        }
-
+    internal sealed class Configuration : DropCreateDatabaseAlways<MyLibraryApp.DAL.EF.LibraryContext>
+    {    
         protected override void Seed(MyLibraryApp.DAL.EF.LibraryContext context)
         {
             if (context.Books.Count() == 0)

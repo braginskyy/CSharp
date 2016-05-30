@@ -1,4 +1,5 @@
 ﻿using MyLibraryApp.DAL.Entities;
+using MyLibraryApp.DAL.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,7 +14,7 @@ namespace MyLibraryApp.DAL.EF
         public LibraryContext()
             : base("DBConnection")
         {
-            Database.SetInitializer<LibraryContext>(new MigrateDatabaseToLatestVersion<LibraryContext, Migrations.Configuration>());
+            Database.SetInitializer<LibraryContext>(new Configuration());            
         }       
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
